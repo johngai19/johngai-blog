@@ -1,36 +1,57 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# johngai.com — Bilingual Tech & Life Blog
 
-## Getting Started
+A modern bilingual (Chinese/English) personal blog built with Next.js 15, Supabase, and Stripe. Deployed on Vercel.
 
-First, run the development server:
+**Live**: [https://johngai.com](https://johngai.com)
+
+## Features
+
+- **Bilingual content** — Chinese and English versions of every article with tab switching
+- **Subscription system** — Free newsletter + Pro ($19/mo) + Elite ($199/mo) via Stripe
+- **Admin dashboard** — Article management, subscriber stats, MRR tracking
+- **GitHub OAuth + Magic Link** — Passwordless authentication via Supabase Auth
+- **AI-powered** — Cover images (DALL-E 3), content translation pipeline
+- **Daily backups** — Automated to private GitHub repo with 4-version retention
+
+## Tech Stack
+
+Next.js 15 (App Router) · TypeScript · Tailwind CSS · Supabase · Stripe · Vercel
+
+## Quick Start
 
 ```bash
+git clone https://github.com/johngai19/johngai-blog.git
+cd johngai-blog
+npm install
+cp .env.local.example .env.local  # fill in your credentials
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Documentation
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Document | Description |
+|----------|-------------|
+| [CLAUDE.md](CLAUDE.md) | Agent development guide (project structure, conventions, commands) |
+| [CONTRIBUTING.md](CONTRIBUTING.md) | Contribution workflow and code style |
+| [docs/API.md](docs/API.md) | REST API reference |
+| [docs/TODO.md](docs/TODO.md) | Development roadmap and task tracking |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Architecture
 
-## Learn More
+```
+Browser → Vercel (CDN + SSR) → Supabase (PostgreSQL + Auth) → Stripe (Payments)
+                                     ↓
+                              Article content (zh/en)
+                              User profiles
+                              Subscription records
+```
 
-To learn more about Next.js, take a look at the following resources:
+## Content Pipeline
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+876 articles from 4 sources (weizhiyong.com, johngai.com, Zhihu, Baidu Space) are being processed through an automated pipeline: Chinese cleanup → English translation → cover image generation → Supabase upload.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Translation follows a 10-rule style guide derived from analysis of the author's 17 years of writing.
 
-## Deploy on Vercel
+## License
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Private. All rights reserved.
