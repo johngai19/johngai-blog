@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
-import { stripe, PLANS } from '@/lib/stripe'
+import { stripe } from '@/lib/stripe'
+import { PLANS } from '@/lib/plans'
 
 export async function POST(request: NextRequest) {
   try {

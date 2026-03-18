@@ -3,7 +3,7 @@
 import { useState, Suspense } from 'react'
 import { useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { PLANS } from '@/lib/stripe'
+import { PLANS } from '@/lib/plans'
 import { Check, Loader2, Crown, Zap } from 'lucide-react'
 
 function PricingContent() {

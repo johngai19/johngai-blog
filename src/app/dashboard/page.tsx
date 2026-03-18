@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback, Suspense } from 'react'
 import { useSearchParams, useRouter } from 'next/navigation'
 import Link from 'next/link'
 import { createClient } from '@/lib/supabase'
-import { PLANS } from '@/lib/stripe'
+import { PLANS } from '@/lib/plans'
 import type { User } from '@supabase/supabase-js'
 import { CreditCard, FileText, Mail, Loader2, CheckCircle, Crown } from 'lucide-react'
 
