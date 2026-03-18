@@ -64,7 +64,7 @@ export default function Footer({ lang = 'zh' }: FooterProps) {
             <ul className="space-y-2 text-sm" style={{ color: '#6B7280' }}>
               <li>
                 <a
-                  href="https://github.com/weizy0219"
+                  href="https://github.com/johngai19"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:opacity-70 transition-opacity"

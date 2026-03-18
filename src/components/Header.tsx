@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { Menu, X } from 'lucide-react'
+import AuthButton from './AuthButton'
 
 interface HeaderProps {
   lang?: 'zh' | 'en'
@@ -69,6 +70,9 @@ export default function Header({ lang = 'zh' }: HeaderProps) {
           </nav>
 
           <div className="flex items-center gap-3">
+            {/* Auth button */}
+            <AuthButton lang={lang} />
+
             {/* Language toggle */}
             <button
               onClick={toggleLang}
