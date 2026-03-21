@@ -13,6 +13,7 @@ import {
   Trash2,
   ArrowLeft,
   ChevronDown,
+  Upload,
 } from 'lucide-react'
 import { CATEGORIES, CATEGORY_LABELS } from '@/types'
 
@@ -63,6 +64,7 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
   const [preview, setPreview] = useState(false)
   const [tagInput, setTagInput] = useState('')
   const [showMeta, setShowMeta] = useState(true)
+  const [uploadingCover, setUploadingCover] = useState(false)
 
   // Load existing article
   useEffect(() => {
@@ -277,6 +279,20 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
           {preview ? <EyeOff size={12} /> : <Eye size={12} />}
           {preview ? '编辑' : '预览'}
         </button>
+
+        {/* Live preview on site */}
+        {!isNew && article.slug && (
+          <a
+            href={`/articles/${article.slug}?preview=true`}
+            target="_blank"
+            rel="noopener"
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs border transition-colors"
+            style={{ borderColor: '#E5E3DF', color: '#6B7280' }}
+          >
+            <Globe size={12} />
+            站内预览
+          </a>
+        )}
 
         {/* Save as draft */}
         {article.status !== 'published' && (
@@ -607,16 +623,49 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
                       className="block text-xs font-medium mb-1"
                       style={{ color: '#6B7280' }}
                     >
-                      封面图 URL
+                      封面图
                     </label>
-                    <input
-                      type="text"
-                      value={article.cover_image}
-                      onChange={(e) => update('cover_image', e.target.value)}
-                      placeholder="/covers/slug.png"
-                      className="w-full px-2 py-1.5 rounded-lg border text-sm outline-none"
-                      style={{ borderColor: '#E5E3DF', color: '#1A1A1A' }}
-                    />
+                    <div className="flex gap-2">
+                      <input
+                        type="text"
+                        value={article.cover_image}
+                        onChange={(e) => update('cover_image', e.target.value)}
+                        placeholder="/covers/slug.png 或上传"
+                        className="flex-1 px-2 py-1.5 rounded-lg border text-sm outline-none"
+                        style={{ borderColor: '#E5E3DF', color: '#1A1A1A' }}
+                      />
+                      <label
+                        className="flex items-center gap-1 px-2 py-1.5 rounded-lg border text-xs cursor-pointer hover:opacity-70 transition-opacity"
+                        style={{ borderColor: '#E5E3DF', color: '#6B7280' }}
+                      >
+                        <Upload size={12} />
+                        {uploadingCover ? '上传中…' : '上传'}
+                        <input
+                          type="file"
+                          accept="image/*"
+                          className="hidden"
+                          onChange={async (e) => {
+                            const file = e.target.files?.[0]
+                            if (!file) return
+                            setUploadingCover(true)
+                            const formData = new FormData()
+                            formData.append('file', file)
+                            try {
+                              const res = await fetch('/api/admin/upload', {
+                                method: 'POST',
+                                body: formData,
+                              })
+                              const data = await res.json()
+                              if (data.url) update('cover_image', data.url)
+                            } catch {
+                              // silent
+                            }
+                            setUploadingCover(false)
+                            e.target.value = ''
+                          }}
+                        />
+                      </label>
+                    </div>
                     {article.cover_image && (
                       <img
                         src={article.cover_image}

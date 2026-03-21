@@ -2,7 +2,7 @@ import { createServerClient } from './supabase'
 import type { Article, ArticleListParams, PaginatedArticles } from '@/types'
 
 export async function getArticles(params: ArticleListParams = {}): Promise<PaginatedArticles> {
-  const { page = 1, pageSize = 12, category, status = 'published' } = params
+  const { page = 1, pageSize = 12, category, status = 'published', search } = params
   const supabase = createServerClient()
 
   let query = supabase
@@ -13,6 +13,13 @@ export async function getArticles(params: ArticleListParams = {}): Promise<Pagin
 
   if (category) {
     query = query.eq('category', category)
+  }
+
+  if (search) {
+    // Search in both Chinese and English titles and content
+    query = query.or(
+      `title_zh.ilike.%${search}%,title_en.ilike.%${search}%,content_zh.ilike.%${search}%,content_en.ilike.%${search}%`
+    )
   }
 
   const from = (page - 1) * pageSize
@@ -36,15 +43,19 @@ export async function getArticles(params: ArticleListParams = {}): Promise<Pagin
   }
 }
 
-export async function getArticle(slug: string): Promise<Article | null> {
+export async function getArticle(slug: string, preview = false): Promise<Article | null> {
   const supabase = createServerClient()
 
-  const { data, error } = await supabase
+  let query = supabase
     .from('articles')
     .select('*')
     .eq('slug', slug)
-    .eq('status', 'published')
-    .single()
+
+  if (!preview) {
+    query = query.eq('status', 'published')
+  }
+
+  const { data, error } = await query.single()
 
   if (error) {
     console.error('Error fetching article:', error)

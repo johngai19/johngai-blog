@@ -17,14 +17,15 @@ export const revalidate = 600
 
 interface ArticlePageProps {
   params: Promise<{ slug: string }>
-  searchParams: Promise<{ lang?: string }>
+  searchParams: Promise<{ lang?: string; preview?: string }>
 }
 
 export async function generateMetadata({ params, searchParams }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params
   const sp = await searchParams
   const lang = (sp.lang === 'en' ? 'en' : 'zh') as 'zh' | 'en'
-  const article = await getArticle(slug)
+  const isPreview = sp.preview === 'true'
+  const article = await getArticle(slug, isPreview)
 
   if (!article) return { title: 'Article Not Found' }
 
@@ -52,7 +53,8 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
   const sp = await searchParams
   const lang = (sp.lang === 'en' ? 'en' : 'zh') as 'zh' | 'en'
 
-  const article = await getArticle(slug)
+  const isPreview = sp.preview === 'true'
+  const article = await getArticle(slug, isPreview)
   if (!article) notFound()
 
   const relatedArticles = await getRelatedArticles(slug, article.category, 3)
@@ -70,6 +72,14 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
     <>
       <Header lang={lang} />
       <main className="flex-1">
+        {article.status !== 'published' && (
+          <div
+            className="text-center text-sm py-2 font-medium"
+            style={{ backgroundColor: '#FEF3C7', color: '#92400E' }}
+          >
+            预览模式 — 此文章尚未发布
+          </div>
+        )}
         <article className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
           {/* Back link */}
           <Link

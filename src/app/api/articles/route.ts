@@ -18,8 +18,9 @@ export async function GET(req: NextRequest) {
     const pageSize = Math.min(50, Math.max(1, parseInt(searchParams.get('pageSize') ?? '12', 10)))
     const category = searchParams.get('category') ?? undefined
     const lang = (searchParams.get('lang') ?? 'zh') as 'zh' | 'en'
+    const search = searchParams.get('search') ?? undefined
 
-    const result = await getArticles({ page, pageSize, category, lang })
+    const result = await getArticles({ page, pageSize, category, lang, search })
     return NextResponse.json(result)
   } catch (err) {
     console.error('Articles API error:', err)

@@ -36,6 +36,7 @@ export interface ArticleListParams {
   category?: string
   lang?: Lang
   status?: string
+  search?: string
 }
 
 export interface PaginatedArticles {
