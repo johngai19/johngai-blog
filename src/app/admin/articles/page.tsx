@@ -4,7 +4,7 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import type { Article } from '@/types'
-import { Eye, Edit, CheckSquare, Square, Globe, FileText, Archive } from 'lucide-react'
+import { Eye, Edit, CheckSquare, Square, Globe, FileText, Archive, Plus, Trash2 } from 'lucide-react'
 
 export default function AdminArticlesPage() {
   const [articles, setArticles] = useState<Article[]>([])
@@ -64,6 +64,16 @@ export default function AdminArticlesPage() {
     loadArticles()
   }
 
+  const bulkDelete = async () => {
+    if (selected.size === 0) return
+    if (!confirm(`确定删除 ${selected.size} 篇文章？此操作不可撤销。`)) return
+    for (const id of Array.from(selected)) {
+      await supabase.from('articles').delete().eq('id', id)
+    }
+    setSelected(new Set())
+    loadArticles()
+  }
+
   const statusIcon = (s: string) => {
     if (s === 'published') return <Globe size={12} style={{ color: '#16A34A' }} />
     if (s === 'draft') return <FileText size={12} style={{ color: '#9CA3AF' }} />
@@ -83,6 +93,14 @@ export default function AdminArticlesPage() {
           <h1 className="text-xl font-semibold" style={{ color: '#1A1A1A' }}>文章管理</h1>
           <p className="text-sm mt-0.5" style={{ color: '#9CA3AF' }}>{articles.length} 篇文章</p>
         </div>
+        <Link
+          href="/admin/articles/new"
+          className="flex items-center gap-1.5 px-4 py-2 rounded-lg text-sm font-medium text-white transition-opacity hover:opacity-90"
+          style={{ backgroundColor: '#D4830A' }}
+        >
+          <Plus size={14} />
+          写文章
+        </Link>
       </div>
 
       {/* Filters + bulk actions */}
@@ -118,6 +136,14 @@ export default function AdminArticlesPage() {
               style={{ borderColor: '#E5E3DF', color: '#6B7280' }}
             >
               设为草稿
+            </button>
+            <button
+              onClick={bulkDelete}
+              className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-xs font-medium"
+              style={{ color: '#EF4444' }}
+            >
+              <Trash2 size={12} />
+              删除
             </button>
           </div>
         )}
@@ -195,14 +221,25 @@ export default function AdminArticlesPage() {
                     </span>
                   </td>
                   <td className="px-4 py-3">
-                    <Link
-                      href={`/articles/${article.slug}`}
-                      target="_blank"
-                      className="p-1 rounded transition-opacity hover:opacity-60"
-                      style={{ color: '#9CA3AF' }}
-                    >
-                      <Edit size={13} />
-                    </Link>
+                    <div className="flex items-center gap-1">
+                      <Link
+                        href={`/admin/articles/${article.id}/edit`}
+                        className="p-1 rounded transition-opacity hover:opacity-60"
+                        style={{ color: '#D4830A' }}
+                        title="编辑"
+                      >
+                        <Edit size={13} />
+                      </Link>
+                      <Link
+                        href={`/articles/${article.slug}`}
+                        target="_blank"
+                        className="p-1 rounded transition-opacity hover:opacity-60"
+                        style={{ color: '#9CA3AF' }}
+                        title="查看"
+                      >
+                        <Eye size={13} />
+                      </Link>
+                    </div>
                   </td>
                 </tr>
               ))}
