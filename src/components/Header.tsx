@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
 import { Menu, X, Search } from 'lucide-react'
 import AuthButton from './AuthButton'
+import ThemeToggle from './ThemeToggle'
 
 interface HeaderProps {
   lang?: 'zh' | 'en'
@@ -79,6 +80,9 @@ export default function Header({ lang = 'zh' }: HeaderProps) {
             >
               <Search size={16} />
             </Link>
+
+            {/* Theme toggle */}
+            <ThemeToggle />
 
             {/* Auth button */}
             <AuthButton lang={lang} />

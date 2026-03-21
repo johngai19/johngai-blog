@@ -203,3 +203,123 @@ body {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+
+/* ============================================
+   Dark Mode
+   ============================================ */
+
+html.dark body {
+  background-color: #111113;
+  color: #E4E4E7;
+}
+
+html.dark .prose {
+  color: #D4D4D8;
+}
+
+html.dark .prose h1,
+html.dark .prose h2,
+html.dark .prose h3,
+html.dark .prose h4,
+html.dark .prose h5,
+html.dark .prose h6 {
+  color: #FAFAFA;
+}
+
+html.dark .prose h2 {
+  border-bottom-color: #27272A;
+}
+
+html.dark .prose strong {
+  color: #FAFAFA;
+}
+
+html.dark .prose blockquote {
+  color: #A1A1AA;
+}
+
+html.dark .prose code:not(pre code) {
+  background: #27272A;
+  border-color: #3F3F46;
+  color: #E4E4E7;
+}
+
+html.dark .prose thead tr {
+  background: #18181B;
+  border-bottom-color: #3F3F46;
+}
+
+html.dark .prose th,
+html.dark .prose td {
+  border-bottom-color: #27272A;
+}
+
+html.dark .prose hr {
+  border-top-color: #27272A;
+}
+
+html.dark .prose a {
+  color: #F59E0B;
+}
+
+/* Dark mode overrides for inline-styled elements */
+html.dark header[class*="sticky"],
+html.dark footer[class*="mt-auto"] {
+  background-color: #18181B !important;
+  border-color: #27272A !important;
+}
+
+html.dark [style*="background-color: #FAFAF8"],
+html.dark [style*="backgroundColor: #FAFAF8"] {
+  background-color: #111113 !important;
+}
+
+html.dark [style*="background-color: #FFFFFF"],
+html.dark [style*="backgroundColor: #FFFFFF"] {
+  background-color: #18181B !important;
+}
+
+html.dark [style*="color: #1A1A1A"],
+html.dark [style*="color:#1A1A1A"] {
+  color: #FAFAFA !important;
+}
+
+html.dark [style*="color: #6B7280"] {
+  color: #A1A1AA !important;
+}
+
+html.dark [style*="color: #9CA3AF"] {
+  color: #71717A !important;
+}
+
+html.dark [style*="border-color: #E5E3DF"],
+html.dark [style*="borderColor: #E5E3DF"] {
+  border-color: #27272A !important;
+}
+
+html.dark [style*="border: 1px solid #E5E3DF"] {
+  border-color: #27272A !important;
+}
+
+html.dark [style*="border-bottom: 1px solid #F3F4F6"],
+html.dark [style*="border-bottom: 1px solid #F9FAFB"] {
+  border-color: #27272A !important;
+}
+
+html.dark [style*="background-color: #F3F0EB"],
+html.dark [style*="backgroundColor: #F3F0EB"] {
+  background-color: #27272A !important;
+}
+
+html.dark input,
+html.dark textarea,
+html.dark select {
+  background-color: #18181B !important;
+  color: #E4E4E7 !important;
+  border-color: #3F3F46 !important;
+}
+
+html.dark input::placeholder,
+html.dark textarea::placeholder {
+  color: #52525B !important;
+}

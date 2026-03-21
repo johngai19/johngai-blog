@@ -43,6 +43,12 @@ export default function RootLayout({
     <html lang="zh" className={`${inter.variable} ${notoSerifSC.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="alternate" type="application/rss+xml" title="John's Blog" href="/feed.xml" />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('theme');var d=t==='dark'||(t==null&&matchMedia('(prefers-color-scheme:dark)').matches);if(d)document.documentElement.classList.add('dark')}catch(e){}})()`,
+          }}
+        />
       </head>
       <body
         className="antialiased min-h-screen flex flex-col"
