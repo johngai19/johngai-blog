@@ -48,21 +48,21 @@ export interface PaginatedArticles {
 }
 
 export const CATEGORIES = [
-  'technology',
+  'engineering',
+  'industry',
+  'books',
   'life',
-  'reading',
-  'travel',
-  'thoughts',
-  'tutorial',
+  'startup',
+  'writing',
 ] as const
 
 export type Category = (typeof CATEGORIES)[number]
 
 export const CATEGORY_LABELS: Record<string, { zh: string; en: string; color: string }> = {
-  technology: { zh: '技术', en: 'Tech', color: 'bg-blue-50 text-blue-700' },
-  life: { zh: '生活', en: 'Life', color: 'bg-green-50 text-green-700' },
-  reading: { zh: '读书', en: 'Reading', color: 'bg-purple-50 text-purple-700' },
-  travel: { zh: '旅行', en: 'Travel', color: 'bg-amber-50 text-amber-700' },
-  thoughts: { zh: '随想', en: 'Thoughts', color: 'bg-rose-50 text-rose-700' },
-  tutorial: { zh: '教程', en: 'Tutorial', color: 'bg-teal-50 text-teal-700' },
+  engineering: { zh: '工程与技术', en: 'Engineering', color: 'bg-blue-50 text-blue-700' },
+  industry: { zh: '工业与行业', en: 'Industry', color: 'bg-slate-50 text-slate-700' },
+  books: { zh: '读书与思想', en: 'Books & Ideas', color: 'bg-purple-50 text-purple-700' },
+  life: { zh: '人生随笔', en: 'Life Notes', color: 'bg-green-50 text-green-700' },
+  startup: { zh: '创业与经营', en: 'Startup', color: 'bg-amber-50 text-amber-700' },
+  writing: { zh: '文学与创作', en: 'Writing', color: 'bg-rose-50 text-rose-700' },
 }
