@@ -323,3 +323,20 @@ html.dark input::placeholder,
 html.dark textarea::placeholder {
   color: #52525B !important;
 }
+
+/* ============================================
+   Animations
+   ============================================ */
+
+@keyframes slide-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.animate-slide-up {
+  animation: slide-up 0.3s ease-out;
+}

@@ -39,6 +39,7 @@ interface ArticleContentProps {
 export default function ArticleContent({ article, initialLang }: ArticleContentProps) {
   const [contentLang, setContentLang] = useState<Lang>(initialLang)
   const [activeId, setActiveId] = useState<string>('')
+  const [mobileTocOpen, setMobileTocOpen] = useState(false)
 
   const zhContent = article.content_zh || ''
   const enContent = article.content_en || ''
@@ -63,6 +64,43 @@ export default function ArticleContent({ article, initialLang }: ArticleContentP
     headings.forEach((el) => observer.observe(el))
     return () => observer.disconnect()
   }, [currentContent])
+
+  // Close mobile TOC on escape key
+  useEffect(() => {
+    function handleKeyDown(e: KeyboardEvent) {
+      if (e.key === 'Escape') setMobileTocOpen(false)
+    }
+    if (mobileTocOpen) {
+      document.addEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = 'hidden'
+    } else {
+      document.body.style.overflow = ''
+    }
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown)
+      document.body.style.overflow = ''
+    }
+  }, [mobileTocOpen])
+
+  const tocNav = (
+    <nav className="space-y-1">
+      {toc.map((item) => (
+        <a
+          key={item.id}
+          href={`#${item.id}`}
+          onClick={() => setMobileTocOpen(false)}
+          className="block text-xs leading-relaxed transition-colors truncate"
+          style={{
+            paddingLeft: `${(item.level - 1) * 12}px`,
+            color: activeId === item.id ? '#D4830A' : '#9CA3AF',
+            fontWeight: activeId === item.id ? '500' : '400',
+          }}
+        >
+          {item.text}
+        </a>
+      ))}
+    </nav>
+  )
 
   return (
     <div className="flex gap-10">
@@ -136,31 +174,71 @@ export default function ArticleContent({ article, initialLang }: ArticleContentP
         </div>
       </div>
 
-      {/* TOC Sidebar */}
+      {/* Desktop TOC Sidebar */}
       {toc.length > 2 && (
         <aside className="hidden xl:block w-56 flex-shrink-0">
           <div className="sticky top-20">
             <h3 className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#9CA3AF' }}>
               {contentLang === 'zh' ? '目录' : 'Contents'}
             </h3>
-            <nav className="space-y-1">
-              {toc.map((item) => (
-                <a
-                  key={item.id}
-                  href={`#${item.id}`}
-                  className="block text-xs leading-relaxed transition-colors truncate"
-                  style={{
-                    paddingLeft: `${(item.level - 1) * 12}px`,
-                    color: activeId === item.id ? '#D4830A' : '#9CA3AF',
-                    fontWeight: activeId === item.id ? '500' : '400',
-                  }}
-                >
-                  {item.text}
-                </a>
-              ))}
-            </nav>
+            {tocNav}
           </div>
         </aside>
+      )}
+
+      {/* Mobile TOC floating button (visible below xl) */}
+      {toc.length > 2 && (
+        <>
+          <button
+            onClick={() => setMobileTocOpen(true)}
+            className="xl:hidden fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-105"
+            style={{ backgroundColor: '#D4830A', color: '#FFFFFF' }}
+            aria-label={contentLang === 'zh' ? '目录' : 'Table of contents'}
+          >
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <line x1="8" y1="6" x2="21" y2="6" />
+              <line x1="8" y1="12" x2="21" y2="12" />
+              <line x1="8" y1="18" x2="21" y2="18" />
+              <line x1="3" y1="6" x2="3.01" y2="6" />
+              <line x1="3" y1="12" x2="3.01" y2="12" />
+              <line x1="3" y1="18" x2="3.01" y2="18" />
+            </svg>
+          </button>
+
+          {/* Mobile TOC slide-up panel */}
+          {mobileTocOpen && (
+            <div className="xl:hidden fixed inset-0 z-50">
+              {/* Backdrop */}
+              <div
+                className="absolute inset-0 bg-black/30"
+                onClick={() => setMobileTocOpen(false)}
+              />
+              {/* Panel */}
+              <div
+                className="absolute bottom-0 left-0 right-0 max-h-[60vh] rounded-t-2xl overflow-y-auto p-6 animate-slide-up"
+                style={{ backgroundColor: '#FFFFFF' }}
+              >
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>
+                    {contentLang === 'zh' ? '目录' : 'Contents'}
+                  </h3>
+                  <button
+                    onClick={() => setMobileTocOpen(false)}
+                    className="p-1 rounded-full hover:bg-gray-100 transition-colors"
+                    style={{ color: '#6B7280' }}
+                    aria-label="Close"
+                  >
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="18" y1="6" x2="6" y2="18" />
+                      <line x1="6" y1="6" x2="18" y2="18" />
+                    </svg>
+                  </button>
+                </div>
+                {tocNav}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </div>
   )

@@ -11,6 +11,8 @@ import Footer from '@/components/Footer'
 import ArticleCard from '@/components/ArticleCard'
 import ArticleContent from '@/components/ArticleContent'
 import SubscribeForm from '@/components/SubscribeForm'
+import ReadingProgress from '@/components/ReadingProgress'
+import SocialShare from '@/components/SocialShare'
 import { Clock, Eye, ArrowLeft, Calendar } from 'lucide-react'
 
 export const revalidate = 600
@@ -19,6 +21,8 @@ interface ArticlePageProps {
   params: Promise<{ slug: string }>
   searchParams: Promise<{ lang?: string; preview?: string }>
 }
+
+const SITE_URL = 'https://johngai.com'
 
 export async function generateMetadata({ params, searchParams }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params
@@ -37,15 +41,47 @@ export async function generateMetadata({ params, searchParams }: ArticlePageProp
     ? article.excerpt_zh || article.excerpt_en || ''
     : article.excerpt_en || article.excerpt_zh || ''
 
+  const canonicalUrl = `${SITE_URL}/articles/${slug}`
+
   return {
     title,
     description: excerpt,
+    alternates: {
+      canonical: canonicalUrl,
+      languages: {
+        'zh-CN': `${canonicalUrl}?lang=zh`,
+        'en-US': `${canonicalUrl}?lang=en`,
+      },
+    },
     openGraph: {
+      title,
+      description: excerpt,
+      url: canonicalUrl,
+      type: 'article',
+      images: article.cover_image ? [article.cover_image] : [],
+      ...(article.published_at || article.tags ? {
+        article: {
+          ...(article.published_at ? { publishedTime: article.published_at } : {}),
+          ...(article.updated_at ? { modifiedTime: article.updated_at } : {}),
+          ...(article.tags && article.tags.length > 0 ? { tags: article.tags } : {}),
+          ...(article.category ? { section: article.category } : {}),
+        },
+      } : {}),
+    },
+    twitter: {
+      card: 'summary_large_image',
       title,
       description: excerpt,
       images: article.cover_image ? [article.cover_image] : [],
     },
   }
+}
+
+function getWordCount(content: string): number {
+  // Count Chinese characters + English words
+  const chineseChars = (content.match(/[\u4e00-\u9fa5]/g) || []).length
+  const englishWords = content.replace(/[\u4e00-\u9fa5]/g, ' ').split(/\s+/).filter(Boolean).length
+  return chineseChars + englishWords
 }
 
 export default async function ArticlePage({ params, searchParams }: ArticlePageProps) {
@@ -63,13 +99,49 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
     ? article.title_zh || article.title_en || 'Untitled'
     : article.title_en || article.title_zh || 'Untitled'
 
+  const excerpt = lang === 'zh'
+    ? article.excerpt_zh || article.excerpt_en || ''
+    : article.excerpt_en || article.excerpt_zh || ''
+
+  const currentContent = lang === 'zh'
+    ? article.content_zh || article.content_en || ''
+    : article.content_en || article.content_zh || ''
+
   const categoryInfo = article.category ? CATEGORY_LABELS[article.category] : null
   const categoryLabel = categoryInfo
     ? lang === 'zh' ? categoryInfo.zh : categoryInfo.en
     : article.category
 
+  const canonicalUrl = `${SITE_URL}/articles/${slug}`
+  const articleUrl = `${canonicalUrl}${lang === 'en' ? '?lang=en' : ''}`
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline: title,
+    description: excerpt,
+    ...(article.cover_image ? { image: article.cover_image } : {}),
+    ...(article.published_at ? { datePublished: article.published_at } : {}),
+    ...(article.updated_at ? { dateModified: article.updated_at } : {}),
+    author: {
+      '@type': 'Person',
+      name: 'John Wei',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: "John's Blog",
+    },
+    wordCount: getWordCount(currentContent),
+    inLanguage: lang === 'zh' ? 'zh-CN' : 'en-US',
+  }
+
   return (
     <>
+      <ReadingProgress />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Header lang={lang} />
       <main className="flex-1">
         {article.status !== 'published' && (
@@ -153,6 +225,9 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
           <Suspense fallback={<div className="py-10 text-center" style={{ color: '#9CA3AF' }}>Loading...</div>}>
             <ArticleContent article={article} initialLang={lang} />
           </Suspense>
+
+          {/* Social sharing */}
+          <SocialShare url={articleUrl} title={title} lang={lang} />
 
           {/* Tags */}
           {article.tags && article.tags.length > 0 && (
