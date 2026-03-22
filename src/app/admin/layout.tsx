@@ -2,7 +2,7 @@ import { redirect } from 'next/navigation'
 import { cookies } from 'next/headers'
 import { createServerClient, type CookieOptions } from '@supabase/ssr'
 import Link from 'next/link'
-import { LayoutDashboard, FileText, Users, Image as ImageIcon } from 'lucide-react'
+import { LayoutDashboard, FileText, Users, Image as ImageIcon, Mail } from 'lucide-react'
 
 export const dynamic = 'force-dynamic'
 
@@ -44,6 +44,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     { href: '/admin/articles', label: '文章', icon: FileText },
     { href: '/admin/media', label: '媒体库', icon: ImageIcon },
     { href: '/admin/subscribers', label: '订阅者', icon: Users },
+    { href: '/admin/newsletter', label: 'Newsletter', icon: Mail },
   ]
 
   return (
