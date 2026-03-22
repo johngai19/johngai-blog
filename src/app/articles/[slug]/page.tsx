@@ -13,6 +13,7 @@ import ArticleContent from '@/components/ArticleContent'
 import SubscribeForm from '@/components/SubscribeForm'
 import ReadingProgress from '@/components/ReadingProgress'
 import SocialShare from '@/components/SocialShare'
+import Comments from '@/components/Comments'
 import { Clock, Eye, ArrowLeft, Calendar } from 'lucide-react'
 
 export const revalidate = 600
@@ -265,6 +266,11 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
               </Suspense>
             </div>
           </div>
+        </section>
+
+        {/* Comments */}
+        <section className="max-w-3xl mx-auto px-4 sm:px-6">
+          <Comments slug={slug} lang={lang} />
         </section>
 
         {/* Related articles */}
