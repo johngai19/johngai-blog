@@ -3,9 +3,10 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { useRouter, usePathname, useSearchParams } from 'next/navigation'
-import { Menu, X, Search } from 'lucide-react'
+import { Menu, X } from 'lucide-react'
 import AuthButton from './AuthButton'
 import ThemeToggle from './ThemeToggle'
+import SearchBar from './SearchBar'
 
 interface HeaderProps {
   lang?: 'zh' | 'en'
@@ -71,15 +72,10 @@ export default function Header({ lang = 'zh' }: HeaderProps) {
           </nav>
 
           <div className="flex items-center gap-3">
-            {/* Search */}
-            <Link
-              href={`/search?lang=${lang}`}
-              className="p-1.5 rounded-lg transition-opacity hover:opacity-60"
-              style={{ color: '#6B7280' }}
-              aria-label={lang === 'zh' ? '搜索' : 'Search'}
-            >
-              <Search size={16} />
-            </Link>
+            {/* Search bar — hidden on mobile (accessible via /search page) */}
+            <div className="hidden sm:block">
+              <SearchBar lang={lang} />
+            </div>
 
             {/* Theme toggle */}
             <ThemeToggle />

@@ -153,3 +153,71 @@ export function getContent(article: Article, lang: 'zh' | 'en'): string {
   if (lang === 'zh') return article.content_zh || article.content_en || ''
   return article.content_en || article.content_zh || ''
 }
+
+export interface SearchResult {
+  article: Article
+  snippet: string
+}
+
+/**
+ * Search articles by keyword across title, excerpt, and content (both languages).
+ * Returns articles with a plain-text snippet showing where the match was found.
+ */
+export async function searchArticles(
+  q: string,
+  limit = 20
+): Promise<SearchResult[]> {
+  if (!q.trim()) return []
+
+  const supabase = createServerClient()
+  const term = q.trim()
+
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('status', 'published')
+    .or(
+      `title_zh.ilike.%${term}%,title_en.ilike.%${term}%,excerpt_zh.ilike.%${term}%,excerpt_en.ilike.%${term}%,content_zh.ilike.%${term}%,content_en.ilike.%${term}%`
+    )
+    .order('published_at', { ascending: false })
+    .limit(limit)
+
+  if (error) {
+    console.error('Error searching articles:', error)
+    return []
+  }
+
+  const articles = (data as Article[]) ?? []
+  return articles.map((article) => ({
+    article,
+    snippet: extractSnippet(article, term),
+  }))
+}
+
+/** Extract a ~150-char snippet from the article showing the match context. */
+function extractSnippet(article: Article, term: string): string {
+  const termLower = term.toLowerCase()
+
+  // Prefer excerpt fields first (already short), then content
+  const candidates = [
+    article.excerpt_zh,
+    article.excerpt_en,
+    article.content_zh,
+    article.content_en,
+  ]
+
+  for (const text of candidates) {
+    if (!text) continue
+    const idx = text.toLowerCase().indexOf(termLower)
+    if (idx === -1) continue
+    const start = Math.max(0, idx - 60)
+    const end = Math.min(text.length, idx + 90)
+    let snippet = text.slice(start, end).replace(/[#*`>]/g, '').trim()
+    if (start > 0) snippet = '…' + snippet
+    if (end < text.length) snippet = snippet + '…'
+    return snippet
+  }
+
+  // Fallback: return whichever excerpt exists
+  return (article.excerpt_zh || article.excerpt_en || '').slice(0, 150)
+}

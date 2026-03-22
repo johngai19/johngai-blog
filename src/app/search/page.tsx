@@ -1,5 +1,11 @@
 import { Suspense } from 'react'
 import SearchContent from './SearchContent'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Search',
+  description: 'Search articles on johngai.com',
+}
 
 export default function SearchPage() {
   return (
