@@ -16,6 +16,7 @@ import {
   Upload,
 } from 'lucide-react'
 import { CATEGORIES, CATEGORY_LABELS } from '@/types'
+import AIAssistPanel from '@/components/admin/AIAssistPanel'
 
 interface ArticleData {
   id?: string
@@ -64,6 +65,7 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
   const [preview, setPreview] = useState(false)
   const [tagInput, setTagInput] = useState('')
   const [showMeta, setShowMeta] = useState(true)
+  const [showAI, setShowAI] = useState(false)
   const [uploadingCover, setUploadingCover] = useState(false)
 
   // Load existing article
@@ -429,6 +431,65 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
                 className="w-full h-full min-h-[400px] p-5 text-sm leading-relaxed outline-none resize-y font-mono"
                 style={{ color: '#1A1A1A', backgroundColor: 'transparent' }}
               />
+            )}
+          </div>
+
+          {/* AI Assist panel (collapsible) */}
+          <div
+            className="rounded-xl border"
+            style={{ borderColor: '#E5E3DF', backgroundColor: '#FFFFFF' }}
+          >
+            <button
+              onClick={() => setShowAI(!showAI)}
+              className="w-full flex items-center justify-between px-5 py-3 text-sm font-medium"
+              style={{ color: '#1A1A1A' }}
+            >
+              <span className="flex items-center gap-2">
+                AI 写作助手
+                <span
+                  className="px-1.5 py-0.5 rounded text-xs font-normal"
+                  style={{ backgroundColor: '#FFF7ED', color: '#D4830A' }}
+                >
+                  GPT-4o
+                </span>
+              </span>
+              <ChevronDown
+                size={14}
+                style={{
+                  transform: showAI ? 'rotate(180deg)' : 'none',
+                  transition: 'transform 0.2s',
+                  color: '#9CA3AF',
+                }}
+              />
+            </button>
+
+            {showAI && (
+              <div
+                className="px-5 pb-5 border-t"
+                style={{ borderColor: '#F3F4F6' }}
+              >
+                <div className="pt-4">
+                  <AIAssistPanel
+                    content={activeTab === 'zh' ? article.content_zh : article.content_en}
+                    title={activeTab === 'zh' ? article.title_zh : article.title_en}
+                    activeLang={activeTab}
+                    onApplyContent={(text) =>
+                      update(activeTab === 'zh' ? 'content_zh' : 'content_en', text)
+                    }
+                    onApplyExcerpt={(lang, text) =>
+                      update(lang === 'zh' ? 'excerpt_zh' : 'excerpt_en', text)
+                    }
+                    onApplyTitle={(zhTitle, enTitle) => {
+                      if (zhTitle) update('title_zh', zhTitle)
+                      if (enTitle) update('title_en', enTitle)
+                    }}
+                    onApplyCategory={(category, tags) => {
+                      if (category) update('category', category)
+                      if (tags.length > 0) update('tags', tags)
+                    }}
+                  />
+                </div>
+              </div>
             )}
           </div>
 
