@@ -8,10 +8,7 @@ export default function Footer({ lang = 'zh' }: FooterProps) {
   const currentYear = new Date().getFullYear()
 
   return (
-    <footer
-      className="mt-auto border-t"
-      style={{ borderColor: '#E5E3DF', backgroundColor: '#FAFAF8' }}
-    >
+    <footer className="mt-auto border-t border-[#E5E3DF] dark:border-[#333333] bg-[#FAFAF8] dark:bg-[#1A1A1A]">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
           {/* Brand */}
@@ -23,9 +20,9 @@ export default function Footer({ lang = 'zh' }: FooterProps) {
               >
                 J
               </span>
-              <span className="font-semibold">John&apos;s Blog</span>
+              <span className="font-semibold text-[#1A1A1A] dark:text-[#E5E3DF]">John&apos;s Blog</span>
             </div>
-            <p className="text-sm" style={{ color: '#6B7280' }}>
+            <p className="text-sm text-[#6B7280] dark:text-[#9CA3AF]">
               {lang === 'zh'
                 ? '技术、生活与思考的记录地。'
                 : 'Notes on technology, life, and ideas.'}
@@ -34,10 +31,10 @@ export default function Footer({ lang = 'zh' }: FooterProps) {
 
           {/* Links */}
           <div>
-            <h4 className="font-medium text-sm mb-3">
+            <h4 className="font-medium text-sm mb-3 text-[#1A1A1A] dark:text-[#E5E3DF]">
               {lang === 'zh' ? '导航' : 'Navigation'}
             </h4>
-            <ul className="space-y-2 text-sm" style={{ color: '#6B7280' }}>
+            <ul className="space-y-2 text-sm text-[#6B7280] dark:text-[#9CA3AF]">
               <li>
                 <Link href={`/?lang=${lang}`} className="hover:opacity-70 transition-opacity">
                   {lang === 'zh' ? '首页' : 'Home'}
@@ -58,10 +55,10 @@ export default function Footer({ lang = 'zh' }: FooterProps) {
 
           {/* Contact */}
           <div>
-            <h4 className="font-medium text-sm mb-3">
+            <h4 className="font-medium text-sm mb-3 text-[#1A1A1A] dark:text-[#E5E3DF]">
               {lang === 'zh' ? '联系' : 'Contact'}
             </h4>
-            <ul className="space-y-2 text-sm" style={{ color: '#6B7280' }}>
+            <ul className="space-y-2 text-sm text-[#6B7280] dark:text-[#9CA3AF]">
               <li>
                 <a
                   href="https://github.com/johngai19"
@@ -84,10 +81,7 @@ export default function Footer({ lang = 'zh' }: FooterProps) {
           </div>
         </div>
 
-        <div
-          className="mt-8 pt-6 border-t text-sm text-center"
-          style={{ borderColor: '#E5E3DF', color: '#6B7280' }}
-        >
+        <div className="mt-8 pt-6 border-t text-sm text-center border-[#E5E3DF] dark:border-[#333333] text-[#6B7280] dark:text-[#9CA3AF]">
           © {currentYear} John Wei. {lang === 'zh' ? '保留所有权利。' : 'All rights reserved.'}
         </div>
       </div>

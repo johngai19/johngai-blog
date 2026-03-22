@@ -108,18 +108,15 @@ export default function ArticleContent({ article, initialLang }: ArticleContentP
       <div className="flex-1 min-w-0">
         {/* Language tab toggle */}
         {hasBoth && (
-          <div
-            className="flex gap-1 p-1 rounded-lg border mb-8 w-fit"
-            style={{ borderColor: '#E5E3DF', backgroundColor: '#F3F0EB' }}
-          >
+          <div className="flex gap-1 p-1 rounded-lg border mb-8 w-fit border-[#E5E3DF] dark:border-[#333333] bg-[#F3F0EB] dark:bg-[#2A2A2A]">
             {(['zh', 'en'] as const).map((l) => (
               <button
                 key={l}
                 onClick={() => setContentLang(l)}
                 className="px-4 py-1.5 rounded-md text-sm font-medium transition-all"
                 style={{
-                  backgroundColor: contentLang === l ? '#FFFFFF' : 'transparent',
-                  color: contentLang === l ? '#1A1A1A' : '#6B7280',
+                  backgroundColor: contentLang === l ? (document.documentElement.classList.contains('dark') ? '#1A1A1A' : '#FFFFFF') : 'transparent',
+                  color: contentLang === l ? (document.documentElement.classList.contains('dark') ? '#E5E3DF' : '#1A1A1A') : '#6B7280',
                   boxShadow: contentLang === l ? '0 1px 3px rgba(0,0,0,0.08)' : 'none',
                 }}
               >
@@ -178,7 +175,7 @@ export default function ArticleContent({ article, initialLang }: ArticleContentP
       {toc.length > 2 && (
         <aside className="hidden xl:block w-56 flex-shrink-0">
           <div className="sticky top-20">
-            <h3 className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: '#9CA3AF' }}>
+            <h3 className="text-xs font-semibold uppercase tracking-widest mb-3 text-[#9CA3AF] dark:text-[#6B7280]">
               {contentLang === 'zh' ? '目录' : 'Contents'}
             </h3>
             {tocNav}
@@ -210,22 +207,18 @@ export default function ArticleContent({ article, initialLang }: ArticleContentP
             <div className="xl:hidden fixed inset-0 z-50">
               {/* Backdrop */}
               <div
-                className="absolute inset-0 bg-black/30"
+                className="absolute inset-0 bg-black/30 dark:bg-black/50"
                 onClick={() => setMobileTocOpen(false)}
               />
               {/* Panel */}
-              <div
-                className="absolute bottom-0 left-0 right-0 max-h-[60vh] rounded-t-2xl overflow-y-auto p-6 animate-slide-up"
-                style={{ backgroundColor: '#FFFFFF' }}
-              >
+              <div className="absolute bottom-0 left-0 right-0 max-h-[60vh] rounded-t-2xl overflow-y-auto p-6 animate-slide-up bg-white dark:bg-[#242424]">
                 <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>
+                  <h3 className="text-sm font-semibold text-[#1A1A1A] dark:text-[#E5E3DF]">
                     {contentLang === 'zh' ? '目录' : 'Contents'}
                   </h3>
                   <button
                     onClick={() => setMobileTocOpen(false)}
-                    className="p-1 rounded-full hover:bg-gray-100 transition-colors"
-                    style={{ color: '#6B7280' }}
+                    className="p-1 rounded-full hover:bg-gray-100 dark:hover:bg-[#333333] transition-colors text-[#6B7280]"
                     aria-label="Close"
                   >
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

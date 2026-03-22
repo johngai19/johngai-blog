@@ -30,17 +30,11 @@ export default function ArticleCard({ article, lang, featured = false }: Article
     : article.category
 
   return (
-    <article
-      className="group rounded-xl overflow-hidden border transition-shadow hover:shadow-md"
-      style={{
-        borderColor: '#E5E3DF',
-        backgroundColor: '#FFFFFF',
-      }}
-    >
+    <article className="group rounded-xl overflow-hidden border border-[#E5E3DF] dark:border-[#333333] bg-white dark:bg-[#242424] transition-shadow hover:shadow-md dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
       {/* Cover image */}
       {article.cover_image && (
         <Link href={`/articles/${article.slug}?lang=${lang}`}>
-          <div className={`relative overflow-hidden ${featured ? 'h-52' : 'h-40'} bg-gray-100`}>
+          <div className={`relative overflow-hidden ${featured ? 'h-52' : 'h-40'} bg-gray-100 dark:bg-[#2A2A2A]`}>
             <Image
               src={article.cover_image}
               alt={title}
@@ -58,13 +52,13 @@ export default function ArticleCard({ article, lang, featured = false }: Article
           {categoryLabel && (
             <span
               className={`inline-block text-xs font-medium px-2 py-0.5 rounded-full ${
-                categoryInfo?.color ?? 'bg-gray-50 text-gray-600'
+                categoryInfo?.color ?? 'bg-gray-50 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
               }`}
             >
               {categoryLabel}
             </span>
           )}
-          <span className="text-xs" style={{ color: '#6B7280' }}>
+          <span className="text-xs text-[#6B7280] dark:text-[#9CA3AF]">
             {formatDate(article.published_at, lang)}
           </span>
         </div>
@@ -72,10 +66,9 @@ export default function ArticleCard({ article, lang, featured = false }: Article
         {/* Title */}
         <Link href={`/articles/${article.slug}?lang=${lang}`}>
           <h2
-            className={`font-semibold leading-snug mb-2 group-hover:opacity-70 transition-opacity ${
+            className={`font-semibold leading-snug mb-2 group-hover:opacity-70 transition-opacity text-[#1A1A1A] dark:text-[#E5E3DF] ${
               featured ? 'text-lg' : 'text-base'
             } ${lang === 'zh' ? 'font-[var(--font-noto-serif-sc)]' : ''}`}
-            style={{ color: '#1A1A1A' }}
           >
             {title}
           </h2>
@@ -83,16 +76,13 @@ export default function ArticleCard({ article, lang, featured = false }: Article
 
         {/* Excerpt */}
         {excerpt && (
-          <p
-            className="text-sm line-clamp-3 mb-4"
-            style={{ color: '#6B7280' }}
-          >
+          <p className="text-sm line-clamp-3 mb-4 text-[#6B7280] dark:text-[#9CA3AF]">
             {excerpt}
           </p>
         )}
 
         {/* Meta row */}
-        <div className="flex items-center gap-4 text-xs" style={{ color: '#9CA3AF' }}>
+        <div className="flex items-center gap-4 text-xs text-[#9CA3AF] dark:text-[#6B7280]">
           {article.reading_time_min && (
             <span className="flex items-center gap-1">
               <Clock size={12} />

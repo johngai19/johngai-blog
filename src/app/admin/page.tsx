@@ -65,6 +65,7 @@ export default async function AdminPage() {
       icon: FileText,
       color: '#3B82F6',
       bg: '#EFF6FF',
+      darkBg: '#1E3A5F',
     },
     {
       label: '邮件订阅者',
@@ -73,6 +74,7 @@ export default async function AdminPage() {
       icon: Users,
       color: '#10B981',
       bg: '#ECFDF5',
+      darkBg: '#064E3B',
     },
     {
       label: '活跃订阅',
@@ -81,6 +83,7 @@ export default async function AdminPage() {
       icon: CreditCard,
       color: '#D4830A',
       bg: '#FEF3C7',
+      darkBg: '#451A03',
     },
     {
       label: '月收入 (MRR)',
@@ -89,14 +92,15 @@ export default async function AdminPage() {
       icon: TrendingUp,
       color: '#8B5CF6',
       bg: '#F5F3FF',
+      darkBg: '#2E1065',
     },
   ]
 
   return (
     <div className="p-6 space-y-6">
       <div>
-        <h1 className="text-xl font-semibold" style={{ color: '#1A1A1A' }}>概览</h1>
-        <p className="text-sm mt-0.5" style={{ color: '#9CA3AF' }}>博客运营数据</p>
+        <h1 className="text-xl font-semibold text-[#1A1A1A] dark:text-[#E5E3DF]">概览</h1>
+        <p className="text-sm mt-0.5 text-[#9CA3AF]">博客运营数据</p>
       </div>
 
       {/* Stat cards */}
@@ -104,37 +108,36 @@ export default async function AdminPage() {
         {statCards.map(({ label, value, sub, icon: Icon, color, bg }) => (
           <div
             key={label}
-            className="rounded-2xl border p-4"
-            style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E3DF' }}
+            className="rounded-2xl border p-4 bg-white dark:bg-[#242424] border-[#E5E3DF] dark:border-[#333333]"
           >
             <div className="flex items-center justify-between mb-3">
-              <span className="text-xs font-medium" style={{ color: '#9CA3AF' }}>{label}</span>
+              <span className="text-xs font-medium text-[#9CA3AF]">{label}</span>
               <div className="w-8 h-8 rounded-xl flex items-center justify-center" style={{ backgroundColor: bg }}>
                 <Icon size={14} style={{ color }} />
               </div>
             </div>
-            <p className="text-2xl font-bold" style={{ color: '#1A1A1A' }}>{value}</p>
-            <p className="text-xs mt-0.5" style={{ color: '#9CA3AF' }}>{sub}</p>
+            <p className="text-2xl font-bold text-[#1A1A1A] dark:text-[#E5E3DF]">{value}</p>
+            <p className="text-xs mt-0.5 text-[#9CA3AF]">{sub}</p>
           </div>
         ))}
       </div>
 
       {/* Recent signups */}
-      <div className="rounded-2xl border" style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E3DF' }}>
-        <div className="px-4 py-3 border-b" style={{ borderColor: '#E5E3DF' }}>
-          <h2 className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>最近注册用户</h2>
+      <div className="rounded-2xl border bg-white dark:bg-[#242424] border-[#E5E3DF] dark:border-[#333333]">
+        <div className="px-4 py-3 border-b border-[#E5E3DF] dark:border-[#333333]">
+          <h2 className="text-sm font-semibold text-[#1A1A1A] dark:text-[#E5E3DF]">最近注册用户</h2>
         </div>
-        <div className="divide-y" style={{ borderColor: '#F3F4F6' }}>
+        <div className="divide-y divide-[#F3F4F6] dark:divide-[#2A2A2A]">
           {stats.recentSignups.length === 0 ? (
-            <p className="px-4 py-6 text-sm text-center" style={{ color: '#9CA3AF' }}>暂无数据</p>
+            <p className="px-4 py-6 text-sm text-center text-[#9CA3AF]">暂无数据</p>
           ) : (
             stats.recentSignups.map((u) => (
               <div key={u.id} className="flex items-center justify-between px-4 py-3">
                 <div>
-                  <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>
+                  <p className="text-sm font-medium text-[#1A1A1A] dark:text-[#E5E3DF]">
                     {u.display_name ?? '未命名用户'}
                   </p>
-                  <p className="text-xs" style={{ color: '#9CA3AF' }}>
+                  <p className="text-xs text-[#9CA3AF]">
                     {new Date(u.created_at).toLocaleDateString('zh-CN')}
                   </p>
                 </div>

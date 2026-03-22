@@ -90,8 +90,8 @@ export default function AdminArticlesPage() {
     <div className="p-6 space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-semibold" style={{ color: '#1A1A1A' }}>文章管理</h1>
-          <p className="text-sm mt-0.5" style={{ color: '#9CA3AF' }}>{articles.length} 篇文章</p>
+          <h1 className="text-xl font-semibold text-[#1A1A1A] dark:text-[#E5E3DF]">文章管理</h1>
+          <p className="text-sm mt-0.5 text-[#9CA3AF]">{articles.length} 篇文章</p>
         </div>
         <Link
           href="/admin/articles/new"
@@ -111,7 +111,7 @@ export default function AdminArticlesPage() {
             onClick={() => setFilter(f)}
             className="px-3 py-1.5 rounded-lg text-xs font-medium transition-colors"
             style={{
-              backgroundColor: filter === f ? '#1A1A1A' : '#FFFFFF',
+              backgroundColor: filter === f ? '#1A1A1A' : undefined,
               color: filter === f ? '#FFFFFF' : '#6B7280',
               border: `1px solid ${filter === f ? '#1A1A1A' : '#E5E3DF'}`,
             }}
@@ -122,7 +122,7 @@ export default function AdminArticlesPage() {
 
         {selected.size > 0 && (
           <div className="flex items-center gap-2 ml-auto">
-            <span className="text-xs" style={{ color: '#6B7280' }}>已选 {selected.size} 篇</span>
+            <span className="text-xs text-[#6B7280]">已选 {selected.size} 篇</span>
             <button
               onClick={() => bulkUpdate('published')}
               className="px-3 py-1.5 rounded-lg text-xs font-medium"
@@ -132,8 +132,7 @@ export default function AdminArticlesPage() {
             </button>
             <button
               onClick={() => bulkUpdate('draft')}
-              className="px-3 py-1.5 rounded-lg text-xs font-medium border"
-              style={{ borderColor: '#E5E3DF', color: '#6B7280' }}
+              className="px-3 py-1.5 rounded-lg text-xs font-medium border border-[#E5E3DF] dark:border-[#333333] text-[#6B7280]"
             >
               设为草稿
             </button>
@@ -150,15 +149,15 @@ export default function AdminArticlesPage() {
       </div>
 
       {/* Table */}
-      <div className="rounded-2xl border overflow-hidden" style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E3DF' }}>
+      <div className="rounded-2xl border overflow-hidden bg-white dark:bg-[#242424] border-[#E5E3DF] dark:border-[#333333]">
         {loading ? (
-          <div className="p-8 text-center text-sm" style={{ color: '#9CA3AF' }}>加载中…</div>
+          <div className="p-8 text-center text-sm text-[#9CA3AF]">加载中…</div>
         ) : articles.length === 0 ? (
-          <div className="p-8 text-center text-sm" style={{ color: '#9CA3AF' }}>暂无文章</div>
+          <div className="p-8 text-center text-sm text-[#9CA3AF]">暂无文章</div>
         ) : (
           <table className="w-full text-sm">
             <thead>
-              <tr style={{ borderBottom: '1px solid #F3F4F6' }}>
+              <tr className="border-b border-[#F3F4F6] dark:border-[#2A2A2A]">
                 <th className="px-4 py-3 text-left w-10">
                   <button onClick={toggleAll}>
                     {selected.size === articles.length && articles.length > 0
@@ -166,11 +165,11 @@ export default function AdminArticlesPage() {
                       : <Square size={14} style={{ color: '#9CA3AF' }} />}
                   </button>
                 </th>
-                <th className="px-4 py-3 text-left font-medium" style={{ color: '#6B7280' }}>标题</th>
-                <th className="px-4 py-3 text-left font-medium hidden md:table-cell" style={{ color: '#6B7280' }}>分类</th>
-                <th className="px-4 py-3 text-left font-medium hidden lg:table-cell" style={{ color: '#6B7280' }}>浏览量</th>
-                <th className="px-4 py-3 text-left font-medium" style={{ color: '#6B7280' }}>状态</th>
-                <th className="px-4 py-3 text-left font-medium hidden md:table-cell" style={{ color: '#6B7280' }}>日期</th>
+                <th className="px-4 py-3 text-left font-medium text-[#6B7280]">标题</th>
+                <th className="px-4 py-3 text-left font-medium hidden md:table-cell text-[#6B7280]">分类</th>
+                <th className="px-4 py-3 text-left font-medium hidden lg:table-cell text-[#6B7280]">浏览量</th>
+                <th className="px-4 py-3 text-left font-medium text-[#6B7280]">状态</th>
+                <th className="px-4 py-3 text-left font-medium hidden md:table-cell text-[#6B7280]">日期</th>
                 <th className="px-4 py-3" />
               </tr>
             </thead>
@@ -178,8 +177,7 @@ export default function AdminArticlesPage() {
               {articles.map((article) => (
                 <tr
                   key={article.id}
-                  style={{ borderBottom: '1px solid #F9FAFB' }}
-                  className="hover:bg-gray-50 transition-colors"
+                  className="border-b border-[#F9FAFB] dark:border-[#2A2A2A] hover:bg-gray-50 dark:hover:bg-[#2A2A2A] transition-colors"
                 >
                   <td className="px-4 py-3">
                     <button onClick={() => toggleSelect(article.id)}>
@@ -189,32 +187,32 @@ export default function AdminArticlesPage() {
                     </button>
                   </td>
                   <td className="px-4 py-3">
-                    <p className="font-medium truncate max-w-56" style={{ color: '#1A1A1A' }}>
+                    <p className="font-medium truncate max-w-56 text-[#1A1A1A] dark:text-[#E5E3DF]">
                       {article.title_zh ?? article.title_en ?? '无标题'}
                     </p>
-                    <p className="text-xs truncate max-w-56" style={{ color: '#9CA3AF' }}>
+                    <p className="text-xs truncate max-w-56 text-[#9CA3AF]">
                       {article.title_en ?? article.slug}
                     </p>
                   </td>
                   <td className="px-4 py-3 hidden md:table-cell">
-                    <span className="text-xs" style={{ color: '#6B7280' }}>
+                    <span className="text-xs text-[#6B7280]">
                       {article.category ?? '—'}
                     </span>
                   </td>
                   <td className="px-4 py-3 hidden lg:table-cell">
-                    <span className="flex items-center gap-1 text-xs" style={{ color: '#6B7280' }}>
+                    <span className="flex items-center gap-1 text-xs text-[#6B7280]">
                       <Eye size={11} />
                       {article.view_count}
                     </span>
                   </td>
                   <td className="px-4 py-3">
-                    <span className="flex items-center gap-1 text-xs">
+                    <span className="flex items-center gap-1 text-xs text-[#1A1A1A] dark:text-[#E5E3DF]">
                       {statusIcon(article.status)}
                       {statusLabel(article.status)}
                     </span>
                   </td>
                   <td className="px-4 py-3 hidden md:table-cell">
-                    <span className="text-xs" style={{ color: '#9CA3AF' }}>
+                    <span className="text-xs text-[#9CA3AF]">
                       {article.published_at
                         ? new Date(article.published_at).toLocaleDateString('zh-CN')
                         : new Date(article.created_at).toLocaleDateString('zh-CN')}
@@ -233,8 +231,7 @@ export default function AdminArticlesPage() {
                       <Link
                         href={`/articles/${article.slug}`}
                         target="_blank"
-                        className="p-1 rounded transition-opacity hover:opacity-60"
-                        style={{ color: '#9CA3AF' }}
+                        className="p-1 rounded transition-opacity hover:opacity-60 text-[#9CA3AF]"
                         title="查看"
                       >
                         <Eye size={13} />

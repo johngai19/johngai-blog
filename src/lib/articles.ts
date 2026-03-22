@@ -45,11 +45,12 @@ export async function getArticles(params: ArticleListParams = {}): Promise<Pagin
 
 export async function getArticle(slug: string, preview = false): Promise<Article | null> {
   const supabase = createServerClient()
+  const decodedSlug = decodeURIComponent(slug)
 
   let query = supabase
     .from('articles')
     .select('*')
-    .eq('slug', slug)
+    .eq('slug', decodedSlug)
 
   if (!preview) {
     query = query.eq('status', 'published')

@@ -96,14 +96,12 @@ export default function SearchBar({ lang = 'zh' }: SearchBarProps) {
     <div ref={containerRef} className="relative">
       {/* Input */}
       <div
-        className="flex items-center gap-1.5 rounded-lg border px-2 py-1 transition-colors"
-        style={{
-          borderColor: open ? '#D4830A' : '#E5E3DF',
-          backgroundColor: '#FFFFFF',
-          minWidth: '180px',
-        }}
+        className={`flex items-center gap-1.5 rounded-lg border px-2 py-1 transition-colors bg-white dark:bg-[#2A2A2A] ${
+          open ? 'border-[#D4830A]' : 'border-[#E5E3DF] dark:border-[#333333]'
+        }`}
+        style={{ minWidth: '180px' }}
       >
-        <Search size={14} style={{ color: '#9CA3AF', flexShrink: 0 }} />
+        <Search size={14} className="text-[#9CA3AF] flex-shrink-0" />
         <input
           ref={inputRef}
           type="text"
@@ -112,8 +110,7 @@ export default function SearchBar({ lang = 'zh' }: SearchBarProps) {
           onFocus={() => query.trim() && setOpen(true)}
           onKeyDown={handleKeyDown}
           placeholder={lang === 'zh' ? '搜索文章…' : 'Search…'}
-          className="flex-1 outline-none text-xs bg-transparent w-full"
-          style={{ color: '#1A1A1A', minWidth: 0 }}
+          className="flex-1 outline-none text-xs bg-transparent w-full text-[#1A1A1A] dark:text-[#E5E3DF] placeholder:text-[#9CA3AF] dark:placeholder:text-[#555555]"
           aria-label={lang === 'zh' ? '搜索' : 'Search'}
           aria-expanded={showDropdown}
           aria-haspopup="listbox"
@@ -127,7 +124,7 @@ export default function SearchBar({ lang = 'zh' }: SearchBarProps) {
             aria-label="Clear search"
             type="button"
           >
-            <X size={12} style={{ color: '#9CA3AF' }} />
+            <X size={12} className="text-[#9CA3AF]" />
           </button>
         )}
       </div>
@@ -135,16 +132,16 @@ export default function SearchBar({ lang = 'zh' }: SearchBarProps) {
       {/* Dropdown */}
       {showDropdown && (
         <div
-          className="absolute top-full left-0 right-0 mt-1 rounded-xl border shadow-lg overflow-hidden z-50"
-          style={{ borderColor: '#E5E3DF', backgroundColor: '#FFFFFF', minWidth: '280px' }}
+          className="absolute top-full left-0 right-0 mt-1 rounded-xl border shadow-lg overflow-hidden z-50 border-[#E5E3DF] dark:border-[#333333] bg-white dark:bg-[#242424]"
+          style={{ minWidth: '280px' }}
           role="listbox"
         >
           {loading ? (
-            <div className="px-4 py-3 text-xs" style={{ color: '#9CA3AF' }}>
+            <div className="px-4 py-3 text-xs text-[#9CA3AF]">
               {lang === 'zh' ? '搜索中…' : 'Searching…'}
             </div>
           ) : results.length === 0 ? (
-            <div className="px-4 py-3 text-xs" style={{ color: '#9CA3AF' }}>
+            <div className="px-4 py-3 text-xs text-[#9CA3AF]">
               {lang === 'zh' ? '未找到相关文章' : 'No results found'}
             </div>
           ) : (
@@ -166,18 +163,15 @@ export default function SearchBar({ lang = 'zh' }: SearchBarProps) {
                     <li key={article.id} role="option">
                       <Link
                         href={`/articles/${article.slug}?lang=${lang}`}
-                        className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 transition-colors"
+                        className="flex items-start gap-3 px-4 py-3 hover:bg-gray-50 dark:hover:bg-[#2A2A2A] transition-colors"
                         onClick={() => setOpen(false)}
                       >
                         <div className="flex-1 min-w-0">
-                          <p
-                            className="text-sm font-medium truncate leading-snug"
-                            style={{ color: '#1A1A1A' }}
-                          >
+                          <p className="text-sm font-medium truncate leading-snug text-[#1A1A1A] dark:text-[#E5E3DF]">
                             {title}
                           </p>
                           {categoryLabel && (
-                            <p className="text-xs mt-0.5" style={{ color: '#9CA3AF' }}>
+                            <p className="text-xs mt-0.5 text-[#9CA3AF]">
                               {categoryLabel}
                             </p>
                           )}
@@ -189,10 +183,7 @@ export default function SearchBar({ lang = 'zh' }: SearchBarProps) {
               </ul>
 
               {/* Footer: link to full search page */}
-              <div
-                className="border-t px-4 py-2.5"
-                style={{ borderColor: '#F0EDEA' }}
-              >
+              <div className="border-t px-4 py-2.5 border-[#F0EDEA] dark:border-[#333333]">
                 <Link
                   href={`/search?q=${encodeURIComponent(query.trim())}&lang=${lang}`}
                   className="flex items-center gap-1.5 text-xs font-medium hover:opacity-70 transition-opacity"

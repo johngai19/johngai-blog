@@ -51,11 +51,9 @@ export default function RootLayout({
         />
       </head>
       <body
-        className="antialiased min-h-screen flex flex-col"
+        className="antialiased min-h-screen flex flex-col bg-[#FAFAF8] text-[#1A1A1A] dark:bg-[#1A1A1A] dark:text-[#E5E3DF]"
         style={{
           fontFamily: "var(--font-inter), 'Noto Serif SC', system-ui, sans-serif",
-          backgroundColor: '#FAFAF8',
-          color: '#1A1A1A',
         }}
       >
         {children}

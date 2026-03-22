@@ -47,13 +47,10 @@ export default async function AdminLayout({ children }: { children: React.ReactN
   ]
 
   return (
-    <div className="min-h-screen flex" style={{ backgroundColor: '#FAFAF8' }}>
+    <div className="min-h-screen flex bg-[#FAFAF8] dark:bg-[#1A1A1A]">
       {/* Sidebar */}
-      <aside
-        className="w-52 shrink-0 border-r flex flex-col"
-        style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E3DF' }}
-      >
-        <div className="p-4 border-b" style={{ borderColor: '#E5E3DF' }}>
+      <aside className="w-52 shrink-0 border-r flex flex-col bg-white dark:bg-[#242424] border-[#E5E3DF] dark:border-[#333333]">
+        <div className="p-4 border-b border-[#E5E3DF] dark:border-[#333333]">
           <Link href="/" className="flex items-center gap-2">
             <div
               className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white"
@@ -61,7 +58,7 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             >
               J
             </div>
-            <span className="text-sm font-semibold" style={{ color: '#1A1A1A' }}>Admin</span>
+            <span className="text-sm font-semibold text-[#1A1A1A] dark:text-[#E5E3DF]">Admin</span>
           </Link>
         </div>
         <nav className="flex-1 p-3 space-y-1">
@@ -69,16 +66,15 @@ export default async function AdminLayout({ children }: { children: React.ReactN
             <Link
               key={href}
               href={href}
-              className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors hover:opacity-70"
-              style={{ color: '#1A1A1A' }}
+              className="flex items-center gap-2.5 px-3 py-2 rounded-lg text-sm transition-colors hover:opacity-70 text-[#1A1A1A] dark:text-[#E5E3DF] hover:bg-gray-100 dark:hover:bg-[#2A2A2A]"
             >
               <Icon size={15} />
               {label}
             </Link>
           ))}
         </nav>
-        <div className="p-3 border-t" style={{ borderColor: '#E5E3DF' }}>
-          <p className="text-xs truncate" style={{ color: '#9CA3AF' }}>{user.email}</p>
+        <div className="p-3 border-t border-[#E5E3DF] dark:border-[#333333]">
+          <p className="text-xs truncate text-[#9CA3AF]">{user.email}</p>
         </div>
       </aside>
 
