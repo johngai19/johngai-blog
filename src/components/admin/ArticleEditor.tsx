@@ -14,6 +14,7 @@ import {
   ArrowLeft,
   ChevronDown,
   Upload,
+  Clock,
 } from 'lucide-react'
 import { CATEGORIES, CATEGORY_LABELS } from '@/types'
 import AIAssistPanel from '@/components/admin/AIAssistPanel'
@@ -306,6 +307,18 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
           >
             <Globe size={12} />
             站内预览
+          </a>
+        )}
+
+        {/* Revision history link */}
+        {!isNew && articleId && (
+          <a
+            href={`/admin/articles/${articleId}/revisions`}
+            className="flex items-center gap-1 px-2.5 py-1.5 rounded-lg text-xs border transition-colors"
+            style={{ borderColor: '#E5E3DF', color: '#6B7280' }}
+          >
+            <Clock size={12} />
+            修订历史
           </a>
         )}
 

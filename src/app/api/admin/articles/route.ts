@@ -133,6 +133,23 @@ export async function PUT(request: NextRequest) {
     }
   }
 
+  // Save current version as a revision before overwriting
+  const { data: currentArticle } = await supabase
+    .from('articles')
+    .select('title_zh, title_en, content_zh, content_en')
+    .eq('id', body.id)
+    .single()
+  if (currentArticle) {
+    await supabase.from('article_revisions').insert({
+      article_id: body.id,
+      title_zh: currentArticle.title_zh,
+      title_en: currentArticle.title_en,
+      content_zh: currentArticle.content_zh,
+      content_en: currentArticle.content_en,
+      edited_by: 'admin',
+    })
+  }
+
   const now = new Date().toISOString()
   const updates: Record<string, unknown> = { updated_at: now }
 
