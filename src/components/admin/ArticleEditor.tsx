@@ -30,7 +30,7 @@ interface ArticleData {
   cover_image: string
   category: string
   tags: string[]
-  status: 'draft' | 'published' | 'archived'
+  status: 'draft' | 'published' | 'archived' | 'scheduled'
   source: string
   source_url: string
   published_at: string
@@ -144,7 +144,7 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
     )
   }
 
-  const save = async (overrideStatus?: 'draft' | 'published') => {
+  const save = async (overrideStatus?: 'draft' | 'published' | 'archived' | 'scheduled') => {
     setSaving(true)
     setError('')
     setSuccess('')
@@ -257,8 +257,17 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
           className="flex items-center gap-1 text-xs px-2 py-1 rounded-full"
           style={{
             backgroundColor:
-              article.status === 'published' ? '#DCFCE7' : '#F3F4F6',
-            color: article.status === 'published' ? '#16A34A' : '#6B7280',
+              article.status === 'published'
+                ? '#DCFCE7'
+                : article.status === 'scheduled'
+                  ? '#EFF6FF'
+                  : '#F3F4F6',
+            color:
+              article.status === 'published'
+                ? '#16A34A'
+                : article.status === 'scheduled'
+                  ? '#2563EB'
+                  : '#6B7280',
           }}
         >
           {article.status === 'published' ? (
@@ -266,7 +275,11 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
           ) : (
             <FileText size={11} />
           )}
-          {article.status === 'published' ? '已发布' : '草稿'}
+          {article.status === 'published'
+            ? '已发布'
+            : article.status === 'scheduled'
+              ? '定时发布'
+              : '草稿'}
         </span>
 
         {/* Preview toggle */}
@@ -310,9 +323,20 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
 
         {/* Publish / Save */}
         <button
-          onClick={() =>
-            save(article.status === 'published' ? 'published' : undefined)
-          }
+          onClick={() => {
+            if (article.status === 'scheduled') {
+              // Validate future date before saving as scheduled
+              if (!article.published_at || new Date(article.published_at) <= new Date()) {
+                setError('定时发布时间必须是未来时间')
+                return
+              }
+            }
+            save(
+              article.status === 'published' || article.status === 'scheduled'
+                ? article.status
+                : undefined
+            )
+          }}
           disabled={saving}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-white transition-opacity hover:opacity-90"
           style={{ backgroundColor: '#D4830A' }}
@@ -322,7 +346,9 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
             ? '保存中…'
             : article.status === 'published'
               ? '保存'
-              : '发布'}
+              : article.status === 'scheduled'
+                ? '定时发布'
+                : '发布'}
         </button>
 
         {/* Delete */}
@@ -575,7 +601,7 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
                       onChange={(e) =>
                         update(
                           'status',
-                          e.target.value as 'draft' | 'published' | 'archived'
+                          e.target.value as 'draft' | 'published' | 'archived' | 'scheduled'
                         )
                       }
                       className="w-full px-2 py-1.5 rounded-lg border text-sm outline-none"
@@ -583,8 +609,44 @@ export default function ArticleEditor({ articleId }: { articleId?: string }) {
                     >
                       <option value="draft">草稿</option>
                       <option value="published">已发布</option>
+                      <option value="scheduled">定时发布</option>
                       <option value="archived">已归档</option>
                     </select>
+                    {article.status === 'scheduled' && (
+                      <div className="mt-2">
+                        <label
+                          className="block text-xs font-medium mb-1"
+                          style={{ color: '#6B7280' }}
+                        >
+                          定时发布时间
+                        </label>
+                        <input
+                          type="datetime-local"
+                          value={article.published_at}
+                          onChange={(e) => {
+                            update('published_at', e.target.value)
+                            // Clear error if date is now valid
+                            if (e.target.value && new Date(e.target.value) > new Date()) {
+                              setError('')
+                            }
+                          }}
+                          min={new Date(Date.now() + 60_000).toISOString().slice(0, 16)}
+                          className="w-full px-2 py-1.5 rounded-lg border text-sm outline-none"
+                          style={{
+                            borderColor:
+                              article.published_at && new Date(article.published_at) <= new Date()
+                                ? '#EF4444'
+                                : '#E5E3DF',
+                            color: '#1A1A1A',
+                          }}
+                        />
+                        {article.published_at && new Date(article.published_at) <= new Date() && (
+                          <p className="text-xs mt-1" style={{ color: '#EF4444' }}>
+                            请选择未来的时间
+                          </p>
+                        )}
+                      </div>
+                    )}
                   </div>
                 </div>
 

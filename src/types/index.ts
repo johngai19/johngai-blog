@@ -10,7 +10,7 @@ export interface Article {
   cover_image: string | null
   category: string | null
   tags: string[] | null
-  status: 'draft' | 'published' | 'archived'
+  status: 'draft' | 'published' | 'archived' | 'scheduled'
   source: string | null
   source_url: string | null
   published_at: string | null
