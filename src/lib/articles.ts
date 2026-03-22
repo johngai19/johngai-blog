@@ -45,25 +45,29 @@ export async function getArticles(params: ArticleListParams = {}): Promise<Pagin
 
 export async function getArticle(slug: string, preview = false): Promise<Article | null> {
   const supabase = createServerClient()
-  const decodedSlug = decodeURIComponent(slug)
 
-  let query = supabase
-    .from('articles')
-    .select('*')
-    .eq('slug', decodedSlug)
+  // Slugs may be stored as URL-encoded (%e5%85%b3...) or raw Chinese.
+  // Browser sends encoded form. Try both decoded and original.
+  const decoded = decodeURIComponent(slug)
+  const candidates = [decoded, slug]
+  // Also try encoding the decoded form (for slugs stored as %e5...)
+  try { candidates.push(encodeURIComponent(decoded).toLowerCase()) } catch {}
 
-  if (!preview) {
-    query = query.eq('status', 'published')
+  for (const candidate of [...new Set(candidates)]) {
+    let query = supabase
+      .from('articles')
+      .select('*')
+      .eq('slug', candidate)
+
+    if (!preview) {
+      query = query.eq('status', 'published')
+    }
+
+    const { data } = await query.single()
+    if (data) return data as Article
   }
 
-  const { data, error } = await query.single()
-
-  if (error) {
-    console.error('Error fetching article:', error)
-    return null
-  }
-
-  return data as Article
+  return null
 }
 
 export async function getFeaturedArticles(limit = 3): Promise<Article[]> {
