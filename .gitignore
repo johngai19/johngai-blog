@@ -7,3 +7,12 @@ dist/
 .DS_Store
 backups/
 .env*.local
+
+# Content pipeline (stored in Supabase, not git)
+content/raw/
+content/cleaned/
+content/translated/
+content/covers/
+content/podcast/
+content/index.json
+tsconfig.tsbuildinfo
