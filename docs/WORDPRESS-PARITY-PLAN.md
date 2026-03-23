@@ -478,32 +478,32 @@ This document defines a phased plan to close feature gaps between johngai.com (N
 
 ## Summary Table
 
-| # | Feature | Phase | Complexity | Dependencies |
-|---|---------|-------|------------|--------------|
-| 1.1 | WYSIWYG Article Editor | 1 | L | `novel` or `milkdown` |
-| 1.2 | Media Library UI | 1 | M | Supabase Storage, `sharp` |
-| 1.3 | Bulk Import UI | 1 | M | `gray-matter`, `jszip` |
-| 2.1 | sitemap.xml | 2 | S | built-in Next.js |
-| 2.2 | robots.txt | 2 | S | built-in Next.js |
-| 2.3 | RSS Feed | 2 | S | `feed` (optional) |
-| 2.4 | Structured Data | 2 | S | none |
-| 2.5 | Full-Text Search | 2 | M | Supabase FTS |
-| 3.1 | Comments | 3 | S | `@giscus/react` |
-| 3.2 | Social Sharing | 3 | S | `qrcode` |
-| 3.3 | Dark Mode | 3 | M | Tailwind CSS 4 |
-| 3.4 | Newsletter Sending | 3 | M | `resend` (installed), `@react-email/components` |
-| 4.1 | Analytics | 4 | S | `@vercel/analytics` |
-| 4.2 | Rate Limiting | 4 | S | `@upstash/ratelimit` (optional) |
-| 4.3 | Error Boundaries | 4 | S | built-in Next.js |
-| 4.4 | Loading States | 4 | S | built-in Next.js |
-| 4.5 | Revision History | 4 | L | `diff`, Supabase migration |
-| 4.6 | Article Scheduling | 4 | M | Vercel Cron |
-| 5.1 | AI 写作助手 | 5 | M | Claude/GPT API |
-| 5.2 | 自动翻译 Pipeline | 5 | M | Claude API + 风格指南 |
-| 5.3 | 智能分类和标签 | 5 | S | Claude Haiku |
-| 5.4 | AI 摘要和封面描述 | 5 | S | Claude API |
-| 5.5 | 智能语义搜索 | 5 | L | pgvector + OpenAI Embeddings |
-| 5.6 | AI 内容推荐 | 5 | M | pgvector |
+| # | Feature | Phase | Status | Completed |
+|---|---------|-------|--------|-----------|
+| 1.1 | WYSIWYG Article Editor | 1 | ✅ | Pre-existing |
+| 1.2 | Media Library UI | 1 | ✅ | 2026-03-22 (Supabase Storage, 1443 images) |
+| 1.3 | Bulk Import UI | 1 | ✅ | 2026-03-22 (import-all-to-supabase.mjs) |
+| 2.1 | sitemap.xml | 2 | ✅ | Pre-existing |
+| 2.2 | robots.txt | 2 | ✅ | Pre-existing |
+| 2.3 | RSS Feed | 2 | ✅ | Pre-existing |
+| 2.4 | Structured Data | 2 | ✅ | Pre-existing |
+| 2.5 | Full-Text Search | 2 | ✅ | 2026-03-22 |
+| 3.1 | Comments (Giscus) | 3 | ✅ | 2026-03-23 |
+| 3.2 | Social Sharing | 3 | ✅ | Pre-existing |
+| 3.3 | Dark Mode | 3 | ✅ | 2026-03-22 |
+| 3.4 | Newsletter Sending | 3 | ✅ | 2026-03-23 |
+| 4.1 | Analytics | 4 | ✅ | 2026-03-22 |
+| 4.2 | Rate Limiting | 4 | ✅ | 2026-03-23 |
+| 4.3 | Error Boundaries | 4 | ✅ | 2026-03-22 |
+| 4.4 | Loading States | 4 | ✅ | 2026-03-22 |
+| 4.5 | Revision History | 4 | ✅ | 2026-03-23 (needs migration SQL) |
+| 4.6 | Article Scheduling | 4 | ✅ | 2026-03-23 |
+| 5.1 | AI 写作助手 | 5 | ✅ | 2026-03-23 |
+| 5.2 | 自动翻译 Pipeline | 5 | 📋 | — |
+| 5.3 | 智能分类和标签 | 5 | ✅ | Included in 5.1 (categorize action) |
+| 5.4 | AI 摘要和封面描述 | 5 | ✅ | Included in 5.1 (summarize action) |
+| 5.5 | 智能语义搜索 | 5 | 📋 | Needs pgvector |
+| 5.6 | AI 内容推荐 | 5 | 📋 | Needs pgvector |
 
 ---
 
