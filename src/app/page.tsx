@@ -16,7 +16,7 @@ interface HomeProps {
 
 export default async function Home({ searchParams }: HomeProps) {
   const params = await searchParams
-  const lang = (params.lang === 'en' ? 'en' : 'zh') as 'zh' | 'en'
+  const lang = (params.lang === 'zh' ? 'zh' : 'en') as 'zh' | 'en'
 
   const [featuredArticles, categories] = await Promise.all([
     getFeaturedArticles(3),

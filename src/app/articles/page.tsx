@@ -24,7 +24,7 @@ interface ArticlesPageProps {
 
 export default async function ArticlesPage({ searchParams }: ArticlesPageProps) {
   const params = await searchParams
-  const lang = (params.lang === 'en' ? 'en' : 'zh') as 'zh' | 'en'
+  const lang = (params.lang === 'zh' ? 'zh' : 'en') as 'zh' | 'en'
   const category = params.category
   const page = Math.max(1, parseInt(params.page ?? '1', 10))
   const pageSize = 12

@@ -28,7 +28,7 @@ const SITE_URL = 'https://johngai.com'
 export async function generateMetadata({ params, searchParams }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params
   const sp = await searchParams
-  const lang = (sp.lang === 'en' ? 'en' : 'zh') as 'zh' | 'en'
+  const lang = (sp.lang === 'zh' ? 'zh' : 'en') as 'zh' | 'en'
   const isPreview = sp.preview === 'true'
   const article = await getArticle(slug, isPreview)
 
@@ -88,7 +88,7 @@ function getWordCount(content: string): number {
 export default async function ArticlePage({ params, searchParams }: ArticlePageProps) {
   const { slug } = await params
   const sp = await searchParams
-  const lang = (sp.lang === 'en' ? 'en' : 'zh') as 'zh' | 'en'
+  const lang = (sp.lang === 'zh' ? 'zh' : 'en') as 'zh' | 'en'
 
   const isPreview = sp.preview === 'true'
   const article = await getArticle(slug, isPreview)

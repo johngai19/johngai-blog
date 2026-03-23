@@ -31,10 +31,10 @@ export default function ArticleCard({ article, lang, featured = false }: Article
 
   return (
     <article className="group rounded-xl overflow-hidden border border-[#E5E3DF] dark:border-[#333333] bg-white dark:bg-[#242424] transition-shadow hover:shadow-md dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)]">
-      {/* Cover image */}
-      {article.cover_image && (
-        <Link href={`/articles/${article.slug}?lang=${lang}`}>
-          <div className={`relative overflow-hidden ${featured ? 'h-52' : 'h-40'} bg-gray-100 dark:bg-[#2A2A2A]`}>
+      {/* Cover image or category gradient */}
+      <Link href={`/articles/${article.slug}?lang=${lang}`}>
+        <div className={`relative overflow-hidden ${featured ? 'h-52' : 'h-32'} ${article.cover_image ? 'bg-gray-100 dark:bg-[#2A2A2A]' : ''}`}>
+          {article.cover_image ? (
             <Image
               src={article.cover_image}
               alt={title}
@@ -42,9 +42,26 @@ export default function ArticleCard({ article, lang, featured = false }: Article
               className="object-cover transition-transform duration-300 group-hover:scale-105"
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
             />
-          </div>
-        </Link>
-      )}
+          ) : (
+            <div className={`w-full h-full flex items-center justify-center transition-transform duration-300 group-hover:scale-105 ${
+              article.category === 'engineering' ? 'bg-gradient-to-br from-blue-500/20 to-cyan-500/20 dark:from-blue-900/40 dark:to-cyan-900/40' :
+              article.category === 'life' ? 'bg-gradient-to-br from-green-500/20 to-emerald-500/20 dark:from-green-900/40 dark:to-emerald-900/40' :
+              article.category === 'books' ? 'bg-gradient-to-br from-purple-500/20 to-violet-500/20 dark:from-purple-900/40 dark:to-violet-900/40' :
+              article.category === 'industry' ? 'bg-gradient-to-br from-orange-500/20 to-amber-500/20 dark:from-orange-900/40 dark:to-amber-900/40' :
+              article.category === 'startup' ? 'bg-gradient-to-br from-red-500/20 to-rose-500/20 dark:from-red-900/40 dark:to-rose-900/40' :
+              'bg-gradient-to-br from-amber-500/20 to-yellow-500/20 dark:from-amber-900/40 dark:to-yellow-900/40'
+            }`}>
+              <span className="text-3xl opacity-30">
+                {article.category === 'engineering' ? '⚙️' :
+                 article.category === 'life' ? '🌿' :
+                 article.category === 'books' ? '📚' :
+                 article.category === 'industry' ? '🏭' :
+                 article.category === 'startup' ? '🚀' : '✍️'}
+              </span>
+            </div>
+          )}
+        </div>
+      </Link>
 
       <div className="p-5">
         {/* Category + date row */}

@@ -15,7 +15,7 @@ interface SubscribePageProps {
 
 export default async function SubscribePage({ searchParams }: SubscribePageProps) {
   const params = await searchParams
-  const lang = (params.lang === 'en' ? 'en' : 'zh') as 'zh' | 'en'
+  const lang = (params.lang === 'zh' ? 'zh' : 'en') as 'zh' | 'en'
 
   const features = [
     {
