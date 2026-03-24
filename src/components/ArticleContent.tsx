@@ -164,6 +164,21 @@ export default function ArticleContent({ article, initialLang }: ArticleContentP
                   .replace(/[^\w\u4e00-\u9fa5-]/g, '')
                 return <h4 id={id} {...props}>{children}</h4>
               },
+              img: ({ src, alt, ...props }) => {
+                if (!src) return null
+                return (
+                  <span className="block my-4">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={src}
+                      alt={alt || ''}
+                      loading="lazy"
+                      className="max-w-full h-auto rounded-lg mx-auto"
+                      {...props}
+                    />
+                  </span>
+                )
+              },
             }}
           >
             {currentContent}
