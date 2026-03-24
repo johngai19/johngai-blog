@@ -44,6 +44,8 @@ export async function generateMetadata({ params, searchParams }: ArticlePageProp
 
   const canonicalUrl = `${SITE_URL}/articles/${slug}`
 
+  const ogImage = article.cover_image || `${SITE_URL}/api/og?title=${encodeURIComponent(title)}&category=${article.category || 'writing'}&date=${article.published_at?.slice(0, 10) || ''}`
+
   return {
     title,
     description: excerpt,
@@ -59,7 +61,7 @@ export async function generateMetadata({ params, searchParams }: ArticlePageProp
       description: excerpt,
       url: canonicalUrl,
       type: 'article',
-      images: article.cover_image ? [article.cover_image] : [],
+      images: [ogImage],
       ...(article.published_at || article.tags ? {
         article: {
           ...(article.published_at ? { publishedTime: article.published_at } : {}),
@@ -73,7 +75,7 @@ export async function generateMetadata({ params, searchParams }: ArticlePageProp
       card: 'summary_large_image',
       title,
       description: excerpt,
-      images: article.cover_image ? [article.cover_image] : [],
+      images: [ogImage],
     },
   }
 }
