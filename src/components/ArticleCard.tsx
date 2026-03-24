@@ -17,10 +17,18 @@ export default function ArticleCard({ article, lang, featured = false }: Article
       ? article.title_zh || article.title_en || 'Untitled'
       : article.title_en || article.title_zh || 'Untitled'
 
-  const excerpt =
+  const rawExcerpt =
     lang === 'zh'
       ? article.excerpt_zh || article.excerpt_en || ''
       : article.excerpt_en || article.excerpt_zh || ''
+  // Strip markdown formatting from excerpt
+  const excerpt = rawExcerpt
+    .replace(/^#+\s+/gm, '')       // Remove headings
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1') // Links to text
+    .replace(/[*_~`]/g, '')        // Remove emphasis markers
+    .replace(/\n/g, ' ')           // Newlines to spaces
+    .trim()
+    .slice(0, 200)
 
   const categoryInfo = article.category ? CATEGORY_LABELS[article.category] : null
   const categoryLabel = categoryInfo
