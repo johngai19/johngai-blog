@@ -42,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="zh" className={`${inter.variable} ${notoSerifSC.variable}`}>
+    <html lang="en" className={`${inter.variable} ${notoSerifSC.variable}`}>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="alternate" type="application/rss+xml" title="John's Blog" href="/feed.xml" />
