@@ -148,10 +148,7 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
       <Header lang={lang} />
       <main className="flex-1">
         {article.status !== 'published' && (
-          <div
-            className="text-center text-sm py-2 font-medium"
-            style={{ backgroundColor: '#FEF3C7', color: '#92400E' }}
-          >
+          <div className="text-center text-sm py-2 font-medium bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-200">
             预览模式 — 此文章尚未发布
           </div>
         )}
@@ -159,8 +156,7 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
           {/* Back link */}
           <Link
             href={`/articles?lang=${lang}`}
-            className="inline-flex items-center gap-1.5 text-sm mb-8 transition-opacity hover:opacity-60"
-            style={{ color: '#6B7280' }}
+            className="inline-flex items-center gap-1.5 text-sm mb-8 text-gray-500 dark:text-gray-400 transition-opacity hover:opacity-60"
           >
             <ArrowLeft size={14} />
             {lang === 'zh' ? '返回文章列表' : 'Back to articles'}
@@ -172,7 +168,7 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
               <div className="mb-3">
                 <span
                   className={`text-xs font-medium px-2.5 py-1 rounded-full ${
-                    categoryInfo?.color ?? 'bg-gray-50 text-gray-600'
+                    categoryInfo?.color ?? 'bg-gray-50 dark:bg-gray-800 text-gray-600 dark:text-gray-300'
                   }`}
                 >
                   {categoryLabel}
@@ -181,14 +177,14 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
             )}
 
             <h1
-              className="text-3xl sm:text-4xl font-bold leading-tight tracking-tight mb-4"
-              style={{ color: '#1A1A1A', fontFamily: lang === 'zh' ? "'Noto Serif SC', serif" : 'inherit' }}
+              className="text-3xl sm:text-4xl font-bold leading-tight tracking-tight mb-4 text-gray-900 dark:text-gray-100"
+              style={{ fontFamily: lang === 'zh' ? "'Noto Serif SC', serif" : 'inherit' }}
             >
               {title}
             </h1>
 
             {/* Meta */}
-            <div className="flex flex-wrap items-center gap-4 text-sm" style={{ color: '#9CA3AF' }}>
+            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-400 dark:text-gray-500">
               {article.published_at && (
                 <span className="flex items-center gap-1.5">
                   <Calendar size={14} />
@@ -225,7 +221,7 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
           )}
 
           {/* Content with TOC */}
-          <Suspense fallback={<div className="py-10 text-center" style={{ color: '#9CA3AF' }}>Loading...</div>}>
+          <Suspense fallback={<div className="py-10 text-center text-gray-400 dark:text-gray-500">Loading...</div>}>
             <ArticleContent article={article} initialLang={lang} />
           </Suspense>
 
@@ -234,12 +230,11 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
 
           {/* Tags */}
           {article.tags && article.tags.length > 0 && (
-            <div className="mt-10 pt-6 border-t flex flex-wrap gap-2" style={{ borderColor: '#E5E3DF' }}>
+            <div className="mt-10 pt-6 border-t border-gray-200 dark:border-gray-700 flex flex-wrap gap-2">
               {article.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="text-xs px-3 py-1 rounded-full border"
-                  style={{ borderColor: '#E5E3DF', color: '#6B7280' }}
+                  className="text-xs px-3 py-1 rounded-full border border-gray-200 dark:border-gray-700 text-gray-500 dark:text-gray-400"
                 >
                   #{tag}
                 </span>
@@ -249,16 +244,13 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
         </article>
 
         {/* Subscribe CTA */}
-        <section
-          className="border-t border-b"
-          style={{ borderColor: '#E5E3DF', backgroundColor: '#FFFFFF' }}
-        >
+        <section className="border-t border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
             <div className="max-w-md mx-auto text-center">
-              <h3 className="text-xl font-semibold mb-2" style={{ color: '#1A1A1A' }}>
+              <h3 className="text-xl font-semibold mb-2 text-gray-900 dark:text-gray-100">
                 {lang === 'zh' ? '喜欢这篇文章？' : 'Enjoyed this article?'}
               </h3>
-              <p className="text-sm mb-6" style={{ color: '#6B7280' }}>
+              <p className="text-sm mb-6 text-gray-500 dark:text-gray-400">
                 {lang === 'zh'
                   ? '订阅邮件，新文章发布时第一时间收到通知。'
                   : 'Subscribe to get notified when new posts are published.'}
@@ -278,7 +270,7 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
         {/* Related articles */}
         {relatedArticles.length > 0 && (
           <section className="max-w-5xl mx-auto px-4 sm:px-6 py-12">
-            <h3 className="text-lg font-semibold mb-6" style={{ color: '#1A1A1A' }}>
+            <h3 className="text-lg font-semibold mb-6 text-gray-900 dark:text-gray-100">
               {lang === 'zh' ? '相关文章' : 'Related Articles'}
             </h3>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

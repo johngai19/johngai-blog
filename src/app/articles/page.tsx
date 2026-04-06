@@ -41,10 +41,10 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
           {/* Page title */}
           <div className="mb-8">
-            <h1 className="text-3xl font-bold tracking-tight mb-1" style={{ color: '#1A1A1A' }}>
+            <h1 className="text-3xl font-bold tracking-tight mb-1 text-gray-900 dark:text-gray-100">
               {lang === 'zh' ? '所有文章' : 'All Articles'}
             </h1>
-            <p className="text-sm" style={{ color: '#9CA3AF' }}>
+            <p className="text-sm text-gray-400 dark:text-gray-500">
               {total} {lang === 'zh' ? '篇' : 'posts'}
             </p>
           </div>
@@ -53,22 +53,19 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
           <div className="flex flex-col sm:flex-row gap-4 mb-8">
             {/* Language toggle */}
             <div className="flex items-center gap-2">
-              <span className="text-xs font-medium" style={{ color: '#6B7280' }}>
+              <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
                 {lang === 'zh' ? '语言：' : 'Language:'}
               </span>
-              <div
-                className="flex rounded-lg border overflow-hidden"
-                style={{ borderColor: '#E5E3DF' }}
-              >
+              <div className="flex rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
                 {(['zh', 'en'] as const).map((l) => (
                   <Link
                     key={l}
                     href={`/articles?lang=${l}${category ? `&category=${category}` : ''}`}
-                    className="px-3 py-1.5 text-xs font-medium transition-colors"
-                    style={{
-                      backgroundColor: lang === l ? '#D4830A' : '#FFFFFF',
-                      color: lang === l ? '#FFFFFF' : '#6B7280',
-                    }}
+                    className={`px-3 py-1.5 text-xs font-medium transition-colors ${
+                      lang === l
+                        ? 'bg-amber-600 dark:bg-amber-500 text-white'
+                        : 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400'
+                    }`}
                   >
                     {l === 'zh' ? '中文' : 'English'}
                   </Link>
@@ -78,17 +75,16 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
 
             {/* Category filter */}
             <div className="flex items-center gap-2 flex-wrap">
-              <span className="text-xs font-medium" style={{ color: '#6B7280' }}>
+              <span className="text-xs font-medium text-gray-500 dark:text-gray-400">
                 {lang === 'zh' ? '分类：' : 'Category:'}
               </span>
               <Link
                 href={`/articles?lang=${lang}`}
-                className="text-xs px-3 py-1.5 rounded-full border transition-colors"
-                style={{
-                  borderColor: !category ? '#D4830A' : '#E5E3DF',
-                  backgroundColor: !category ? '#F5E6C8' : '#FFFFFF',
-                  color: !category ? '#D4830A' : '#6B7280',
-                }}
+                className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+                  !category
+                    ? 'border-amber-600 dark:border-amber-400 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400'
+                    : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400'
+                }`}
               >
                 {lang === 'zh' ? '全部' : 'All'}
               </Link>
@@ -100,12 +96,11 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                   <Link
                     key={cat}
                     href={`/articles?lang=${lang}&category=${cat}`}
-                    className="text-xs px-3 py-1.5 rounded-full border transition-colors"
-                    style={{
-                      borderColor: isActive ? '#D4830A' : '#E5E3DF',
-                      backgroundColor: isActive ? '#F5E6C8' : '#FFFFFF',
-                      color: isActive ? '#D4830A' : '#6B7280',
-                    }}
+                    className={`text-xs px-3 py-1.5 rounded-full border transition-colors ${
+                      isActive
+                        ? 'border-amber-600 dark:border-amber-400 bg-amber-100 dark:bg-amber-900/30 text-amber-600 dark:text-amber-400'
+                        : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400'
+                    }`}
                   >
                     {label}
                   </Link>
@@ -122,10 +117,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
               ))}
             </div>
           ) : (
-            <div
-              className="text-center py-20 rounded-xl border"
-              style={{ borderColor: '#E5E3DF', color: '#9CA3AF' }}
-            >
+            <div className="text-center py-20 rounded-xl border border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500">
               <p className="text-lg mb-2">
                 {lang === 'zh' ? '暂无文章' : 'No articles found'}
               </p>
@@ -141,8 +133,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
               {page > 1 && (
                 <Link
                   href={`/articles?lang=${lang}${category ? `&category=${category}` : ''}&page=${page - 1}`}
-                  className="px-4 py-2 rounded-lg border text-sm transition-colors hover:bg-gray-50"
-                  style={{ borderColor: '#E5E3DF', color: '#1A1A1A' }}
+                  className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   {lang === 'zh' ? '上一页' : 'Previous'}
                 </Link>
@@ -165,12 +156,11 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
                     <Link
                       key={pageNum}
                       href={`/articles?lang=${lang}${category ? `&category=${category}` : ''}&page=${pageNum}`}
-                      className="w-9 h-9 flex items-center justify-center rounded-lg text-sm font-medium transition-colors"
-                      style={{
-                        backgroundColor: isActive ? '#D4830A' : '#FFFFFF',
-                        color: isActive ? '#FFFFFF' : '#6B7280',
-                        border: isActive ? 'none' : '1px solid #E5E3DF',
-                      }}
+                      className={`w-9 h-9 flex items-center justify-center rounded-lg text-sm font-medium transition-colors ${
+                        isActive
+                          ? 'bg-amber-600 dark:bg-amber-500 text-white'
+                          : 'bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400 border border-gray-200 dark:border-gray-700'
+                      }`}
                     >
                       {pageNum}
                     </Link>
@@ -181,8 +171,7 @@ export default async function ArticlesPage({ searchParams }: ArticlesPageProps) 
               {page < totalPages && (
                 <Link
                   href={`/articles?lang=${lang}${category ? `&category=${category}` : ''}&page=${page + 1}`}
-                  className="px-4 py-2 rounded-lg border text-sm transition-colors hover:bg-gray-50"
-                  style={{ borderColor: '#E5E3DF', color: '#1A1A1A' }}
+                  className="px-4 py-2 rounded-lg border border-gray-200 dark:border-gray-700 text-sm text-gray-900 dark:text-gray-100 transition-colors hover:bg-gray-50 dark:hover:bg-gray-800"
                 >
                   {lang === 'zh' ? '下一页' : 'Next'}
                 </Link>
