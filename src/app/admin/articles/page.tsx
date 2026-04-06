@@ -4,13 +4,14 @@ import { useState, useEffect, useCallback } from 'react'
 import Link from 'next/link'
 import { createClient as createSupabaseClient } from '@supabase/supabase-js'
 import type { Article } from '@/types'
-import { Eye, Edit, CheckSquare, Square, Globe, FileText, Archive, Plus, Trash2 } from 'lucide-react'
+import { Eye, Edit, CheckSquare, Square, Globe, FileText, Archive, Plus, Trash2, AlertTriangle, Languages } from 'lucide-react'
 
 export default function AdminArticlesPage() {
   const [articles, setArticles] = useState<Article[]>([])
   const [loading, setLoading] = useState(true)
   const [selected, setSelected] = useState<Set<string>>(new Set())
-  const [filter, setFilter] = useState<'all' | 'published' | 'draft' | 'archived'>('all')
+  const [filter, setFilter] = useState<'all' | 'published' | 'draft' | 'archived' | 'missing_zh' | 'missing_en'>('all')
+  const [search, setSearch] = useState('')
 
   const supabase = createSupabaseClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
@@ -24,14 +25,34 @@ export default function AdminArticlesPage() {
       .select('*')
       .order('created_at', { ascending: false })
 
-    if (filter !== 'all') {
+    if (filter === 'published' || filter === 'draft' || filter === 'archived') {
       query = query.eq('status', filter)
     }
+    // missing_zh and missing_en are filtered client-side after fetch
 
     const { data } = await query
-    setArticles((data as Article[]) ?? [])
+    let result = (data as Article[]) ?? []
+
+    // Client-side filters for content health
+    if (filter === 'missing_zh') {
+      result = result.filter(a => !a.content_zh || a.content_zh.length < 50)
+    } else if (filter === 'missing_en') {
+      result = result.filter(a => !a.content_en || a.content_en.length < 50)
+    }
+
+    // Search filter
+    if (search.trim()) {
+      const q = search.toLowerCase()
+      result = result.filter(a =>
+        (a.title_zh ?? '').toLowerCase().includes(q) ||
+        (a.title_en ?? '').toLowerCase().includes(q) ||
+        (a.slug ?? '').toLowerCase().includes(q)
+      )
+    }
+
+    setArticles(result)
     setLoading(false)
-  }, [filter]) // eslint-disable-line react-hooks/exhaustive-deps
+  }, [filter, search]) // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     loadArticles()
@@ -103,9 +124,21 @@ export default function AdminArticlesPage() {
         </Link>
       </div>
 
+      {/* Search */}
+      <div>
+        <input
+          type="text"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+          placeholder="搜索标题、slug..."
+          className="w-full max-w-sm px-3 py-2 rounded-lg border text-sm outline-none"
+          style={{ borderColor: '#E5E3DF', color: '#1A1A1A' }}
+        />
+      </div>
+
       {/* Filters + bulk actions */}
       <div className="flex items-center gap-3 flex-wrap">
-        {(['all', 'published', 'draft', 'archived'] as const).map((f) => (
+        {(['all', 'published', 'draft', 'archived', 'missing_zh', 'missing_en'] as const).map((f) => (
           <button
             key={f}
             onClick={() => setFilter(f)}
@@ -116,7 +149,7 @@ export default function AdminArticlesPage() {
               border: `1px solid ${filter === f ? '#1A1A1A' : '#E5E3DF'}`,
             }}
           >
-            {f === 'all' ? '全部' : f === 'published' ? '已发布' : f === 'draft' ? '草稿' : '已归档'}
+            {f === 'all' ? '全部' : f === 'published' ? '已发布' : f === 'draft' ? '草稿' : f === 'archived' ? '已归档' : f === 'missing_zh' ? '缺中文' : '缺英文'}
           </button>
         ))}
 
@@ -166,6 +199,7 @@ export default function AdminArticlesPage() {
                   </button>
                 </th>
                 <th className="px-4 py-3 text-left font-medium text-[#6B7280]">标题</th>
+                <th className="px-4 py-3 text-left font-medium hidden lg:table-cell text-[#6B7280]">语言</th>
                 <th className="px-4 py-3 text-left font-medium hidden md:table-cell text-[#6B7280]">分类</th>
                 <th className="px-4 py-3 text-left font-medium hidden lg:table-cell text-[#6B7280]">浏览量</th>
                 <th className="px-4 py-3 text-left font-medium text-[#6B7280]">状态</th>
@@ -193,6 +227,28 @@ export default function AdminArticlesPage() {
                     <p className="text-xs truncate max-w-56 text-[#9CA3AF]">
                       {article.title_en ?? article.slug}
                     </p>
+                  </td>
+                  <td className="px-4 py-3 hidden lg:table-cell">
+                    <div className="flex items-center gap-1">
+                      <span
+                        className="text-xs px-1.5 py-0.5 rounded font-medium"
+                        style={{
+                          backgroundColor: article.content_zh && article.content_zh.length > 50 ? '#DCFCE7' : '#FEF3C7',
+                          color: article.content_zh && article.content_zh.length > 50 ? '#16A34A' : '#D4830A',
+                        }}
+                      >
+                        中
+                      </span>
+                      <span
+                        className="text-xs px-1.5 py-0.5 rounded font-medium"
+                        style={{
+                          backgroundColor: article.content_en && article.content_en.length > 50 ? '#DCFCE7' : '#FEF3C7',
+                          color: article.content_en && article.content_en.length > 50 ? '#16A34A' : '#D4830A',
+                        }}
+                      >
+                        En
+                      </span>
+                    </div>
                   </td>
                   <td className="px-4 py-3 hidden md:table-cell">
                     <span className="text-xs text-[#6B7280]">

@@ -1,5 +1,5 @@
 import { createClient } from '@supabase/supabase-js'
-import { FileText, Users, CreditCard, TrendingUp } from 'lucide-react'
+import { FileText, Users, CreditCard, TrendingUp, Languages } from 'lucide-react'
 
 export const dynamic = 'force-dynamic'
 
@@ -17,6 +17,7 @@ async function getStats() {
     { count: authUsers },
     { data: activeSubs },
     { data: recentSignups },
+    { data: publishedForHealth },
   ] = await Promise.all([
     supabase.from('articles').select('*', { count: 'exact', head: true }),
     supabase.from('articles').select('*', { count: 'exact', head: true }).eq('status', 'published'),
@@ -32,7 +33,26 @@ async function getStats() {
       .select('id, display_name, subscription_tier, created_at')
       .order('created_at', { ascending: false })
       .limit(5),
+    supabase
+      .from('articles')
+      .select('id, content_zh, content_en')
+      .eq('status', 'published'),
   ])
+
+  // Calculate content health
+  const healthData = publishedForHealth ?? []
+  const bilingual = healthData.filter(a =>
+    a.content_zh && a.content_zh.length >= 50 &&
+    a.content_en && a.content_en.length >= 50
+  ).length
+  const zhOnly = healthData.filter(a =>
+    a.content_zh && a.content_zh.length >= 50 &&
+    (!a.content_en || a.content_en.length < 50)
+  ).length
+  const enOnly = healthData.filter(a =>
+    (!a.content_zh || a.content_zh.length < 50) &&
+    a.content_en && a.content_en.length >= 50
+  ).length
 
   const proPlan = { price: 19 }
   const elitePlan = { price: 199 }
@@ -51,6 +71,7 @@ async function getStats() {
     activeSubscriptions: (activeSubs ?? []).length,
     mrr,
     recentSignups: recentSignups ?? [],
+    contentHealth: { bilingual, zhOnly, enOnly, total: healthData.length },
   }
 }
 
@@ -120,6 +141,59 @@ export default async function AdminPage() {
             <p className="text-xs mt-0.5 text-[#9CA3AF]">{sub}</p>
           </div>
         ))}
+      </div>
+
+      {/* Content Health */}
+      <div className="rounded-2xl border bg-white dark:bg-[#242424] border-[#E5E3DF] dark:border-[#333333]">
+        <div className="px-4 py-3 border-b border-[#E5E3DF] dark:border-[#333333] flex items-center gap-2">
+          <Languages size={14} style={{ color: '#D4830A' }} />
+          <h2 className="text-sm font-semibold text-[#1A1A1A] dark:text-[#E5E3DF]">双语内容健康度</h2>
+        </div>
+        <div className="p-4 space-y-3">
+          <div className="flex items-center gap-3">
+            <div className="flex-1 h-3 rounded-full bg-gray-100 dark:bg-[#333333] overflow-hidden flex">
+              {stats.contentHealth.total > 0 && (
+                <>
+                  <div
+                    className="h-full"
+                    style={{
+                      width: `${(stats.contentHealth.bilingual / stats.contentHealth.total) * 100}%`,
+                      backgroundColor: '#16A34A',
+                    }}
+                  />
+                  <div
+                    className="h-full"
+                    style={{
+                      width: `${(stats.contentHealth.zhOnly / stats.contentHealth.total) * 100}%`,
+                      backgroundColor: '#3B82F6',
+                    }}
+                  />
+                  <div
+                    className="h-full"
+                    style={{
+                      width: `${(stats.contentHealth.enOnly / stats.contentHealth.total) * 100}%`,
+                      backgroundColor: '#D4830A',
+                    }}
+                  />
+                </>
+              )}
+            </div>
+          </div>
+          <div className="flex items-center gap-4 text-xs text-[#6B7280]">
+            <span className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#16A34A' }} />
+              双语完整 {stats.contentHealth.bilingual}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#3B82F6' }} />
+              仅中文 {stats.contentHealth.zhOnly}
+            </span>
+            <span className="flex items-center gap-1.5">
+              <span className="w-2.5 h-2.5 rounded-full" style={{ backgroundColor: '#D4830A' }} />
+              仅英文 {stats.contentHealth.enOnly}
+            </span>
+          </div>
+        </div>
       </div>
 
       {/* Recent signups */}

@@ -76,28 +76,50 @@ async function main() {
     const a = toImport[i]
     const slug = a.slug
 
-    // Read cleaned content (Chinese)
-    let contentZh = ''
-    let excerptZh = ''
+    // Read cleaned content (original language)
+    let cleanedContent = ''
+    let cleanedExcerpt = ''
     const cleanedPath = resolve(BASE, a.files?.cleaned || `cleaned/${slug}.md`)
     if (existsSync(cleanedPath)) {
       const raw = readFileSync(cleanedPath, 'utf-8')
       const [meta, body] = parseFrontmatter(raw)
-      contentZh = body
-      excerptZh = meta.excerpt || contentZh.slice(0, 300).replace(/\n/g, ' ').trim()
+      cleanedContent = body
+      cleanedExcerpt = meta.excerpt || cleanedContent.slice(0, 300).replace(/\n/g, ' ').trim()
     }
 
-    // Read translated content (English)
-    let contentEn = ''
+    // Detect if cleaned content is Chinese or English
+    const zhCharsInCleaned = (cleanedContent.match(/[\u4e00-\u9fff]/g) || []).length
+    const cleanedIsChinese = zhCharsInCleaned > 10
+
+    // Read translated content
+    let translatedContent = ''
     let titleEn = ''
-    let excerptEn = ''
+    let translatedExcerptZh = ''
+    let translatedExcerptEn = ''
     const translatedPath = resolve(BASE, `translated/${slug}-en.md`)
     if (existsSync(translatedPath)) {
       const raw = readFileSync(translatedPath, 'utf-8')
       const [meta, body] = parseFrontmatter(raw)
-      contentEn = body
+      translatedContent = body
       titleEn = meta.title_en || meta.title || ''
-      excerptEn = meta.excerpt_en || meta.excerpt || contentEn.slice(0, 300).replace(/\n/g, ' ').trim()
+      translatedExcerptZh = meta.excerpt_zh || ''
+      translatedExcerptEn = meta.excerpt_en || meta.excerpt || translatedContent.slice(0, 300).replace(/\n/g, ' ').trim()
+    }
+
+    // Assign content to correct language fields
+    let contentZh, contentEn, excerptZh, excerptEn
+    if (cleanedIsChinese) {
+      // Original is Chinese, translation is English
+      contentZh = cleanedContent
+      excerptZh = cleanedExcerpt
+      contentEn = translatedContent || ''
+      excerptEn = translatedExcerptEn
+    } else {
+      // Original is English, no Chinese body translation exists
+      contentEn = cleanedContent
+      excerptEn = cleanedExcerpt || translatedExcerptEn
+      contentZh = '' // No Chinese translation available
+      excerptZh = translatedExcerptZh || ''
     }
 
     // Skip if no content at all
