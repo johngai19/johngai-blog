@@ -117,6 +117,12 @@ function guessContentType(filename) {
     '.png': 'image/png', '.gif': 'image/gif',
     '.webp': 'image/webp', '.svg': 'image/svg+xml',
     '.bmp': 'image/bmp', '.ico': 'image/x-icon',
+    '.pdf': 'application/pdf',
+    '.zip': 'application/zip',
+    '.7z': 'application/x-7z-compressed',
+    '.gz': 'application/gzip',
+    '.tar': 'application/x-tar',
+    '.rar': 'application/vnd.rar',
   }
   return map[ext] || 'application/octet-stream'
 }

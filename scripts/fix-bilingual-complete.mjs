@@ -31,7 +31,7 @@ const dryRun = process.argv.includes('--dry-run')
 // ── LLM Gateway config ──────────────────────────────────────────
 const LLM_GATEWAY = 'https://llm.ngaisy.com/chat/completions'
 const LLM_KEY = 'sk-homelab-2026'
-const LLM_MODEL = 'azure/gpt-4o'
+const LLM_MODEL = 'azure-global/gpt-5.1'
 const RATE_LIMIT_MS = 2500 // 2.5s between LLM calls
 const MIN_CONTENT_LENGTH = 100 // skip very short content
 
@@ -79,21 +79,26 @@ async function translate(text, direction, retries = 2) {
       const controller = new AbortController()
       const timeout = setTimeout(() => controller.abort(), 120000) // 2min timeout
 
+      const bodyPayload = {
+        model: LLM_MODEL,
+        messages: [
+          { role: 'system', content: systemPrompt },
+          { role: 'user', content: inputText },
+        ],
+        max_tokens: maxTokens,
+      }
+      // GPT-5 family only supports temperature=1
+      if (!LLM_MODEL.includes('gpt-5')) {
+        bodyPayload.temperature = 0.3
+      }
+
       const resp = await fetch(LLM_GATEWAY, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${LLM_KEY}`,
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          model: LLM_MODEL,
-          messages: [
-            { role: 'system', content: systemPrompt },
-            { role: 'user', content: inputText },
-          ],
-          max_tokens: maxTokens,
-          temperature: 0.3,
-        }),
+        body: JSON.stringify(bodyPayload),
         signal: controller.signal,
       })
 
@@ -125,21 +130,25 @@ async function translateShort(text, direction) {
     ? 'Translate to Chinese. Output only the translation, nothing else.'
     : 'Translate to English. Output only the translation, nothing else.'
 
+  const shortPayload = {
+    model: LLM_MODEL,
+    messages: [
+      { role: 'system', content: systemPrompt },
+      { role: 'user', content: text },
+    ],
+    max_tokens: 500,
+  }
+  if (!LLM_MODEL.includes('gpt-5')) {
+    shortPayload.temperature = 0.2
+  }
+
   const resp = await fetch(LLM_GATEWAY, {
     method: 'POST',
     headers: {
       'Authorization': `Bearer ${LLM_KEY}`,
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({
-      model: LLM_MODEL,
-      messages: [
-        { role: 'system', content: systemPrompt },
-        { role: 'user', content: text },
-      ],
-      max_tokens: 500,
-      temperature: 0.2,
-    }),
+    body: JSON.stringify(shortPayload),
   })
 
   if (!resp.ok) {
