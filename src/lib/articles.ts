@@ -88,6 +88,46 @@ export async function getFeaturedArticles(limit = 3): Promise<Article[]> {
   return (data as Article[]) ?? []
 }
 
+export async function getLatestArticles(limit = 6): Promise<Article[]> {
+  const supabase = createServerClient()
+
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('status', 'published')
+    .order('published_at', { ascending: false })
+    .limit(limit)
+
+  if (error) {
+    console.error('Error fetching latest articles:', error)
+    return []
+  }
+
+  return (data as Article[]) ?? []
+}
+
+export async function getArticlesByCategory(
+  category: string,
+  limit = 2
+): Promise<Article[]> {
+  const supabase = createServerClient()
+
+  const { data, error } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('status', 'published')
+    .eq('category', category)
+    .order('published_at', { ascending: false })
+    .limit(limit)
+
+  if (error) {
+    console.error('Error fetching articles by category:', error)
+    return []
+  }
+
+  return (data as Article[]) ?? []
+}
+
 export async function getRelatedArticles(
   slug: string,
   category: string | null,
