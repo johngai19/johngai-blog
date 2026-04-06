@@ -59,10 +59,10 @@ export const CATEGORIES = [
 export type Category = (typeof CATEGORIES)[number]
 
 export const CATEGORY_LABELS: Record<string, { zh: string; en: string; color: string }> = {
-  engineering: { zh: '工程与技术', en: 'Engineering', color: 'bg-blue-50 text-blue-700' },
-  industry: { zh: '工业与行业', en: 'Industry', color: 'bg-slate-50 text-slate-700' },
-  books: { zh: '读书与思想', en: 'Books & Ideas', color: 'bg-purple-50 text-purple-700' },
-  life: { zh: '人生随笔', en: 'Life Notes', color: 'bg-green-50 text-green-700' },
-  startup: { zh: '创业与经营', en: 'Startup', color: 'bg-amber-50 text-amber-700' },
-  writing: { zh: '文学与创作', en: 'Writing', color: 'bg-rose-50 text-rose-700' },
+  engineering: { zh: '工程与技术', en: 'Engineering', color: 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300' },
+  industry: { zh: '工业与行业', en: 'Industry', color: 'bg-slate-50 text-slate-700 dark:bg-slate-900/30 dark:text-slate-300' },
+  books: { zh: '读书与思想', en: 'Books & Ideas', color: 'bg-purple-50 text-purple-700 dark:bg-purple-900/30 dark:text-purple-300' },
+  life: { zh: '人生随笔', en: 'Life Notes', color: 'bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-300' },
+  startup: { zh: '创业与经营', en: 'Startup', color: 'bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300' },
+  writing: { zh: '文学与创作', en: 'Writing', color: 'bg-rose-50 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300' },
 }

@@ -22,7 +22,7 @@ function highlightKeyword(text: string, keyword: string): React.ReactNode {
     part.toLowerCase() === keyword.toLowerCase() ? (
       <mark
         key={i}
-        style={{ backgroundColor: '#F5E6C8', color: '#D4830A', borderRadius: '2px', padding: '0 1px' }}
+        className="bg-amber-100 dark:bg-amber-900/40 text-amber-700 dark:text-amber-300 rounded-sm px-0.5"
       >
         {part}
       </mark>
@@ -47,8 +47,7 @@ function SearchResultCard({ result, lang, query }: { result: SearchResult; lang:
 
   return (
     <article
-      className="rounded-xl border p-5 transition-shadow hover:shadow-md"
-      style={{ borderColor: '#E5E3DF', backgroundColor: '#FFFFFF' }}
+      className="rounded-xl border p-5 transition-shadow hover:shadow-md border-gray-200 dark:border-gray-700 bg-white dark:bg-[#242424]"
     >
       {/* Category + date */}
       <div className="flex items-center justify-between mb-2">
@@ -56,14 +55,14 @@ function SearchResultCard({ result, lang, query }: { result: SearchResult; lang:
           {categoryLabel && (
             <span
               className={`inline-block text-xs font-medium px-2 py-0.5 rounded-full ${
-                categoryInfo?.color ?? 'bg-gray-50 text-gray-600'
+                categoryInfo?.color ?? 'bg-gray-50 text-gray-600 dark:bg-gray-800 dark:text-gray-400'
               }`}
             >
               {categoryLabel}
             </span>
           )}
         </div>
-        <span className="text-xs" style={{ color: '#6B7280' }}>
+        <span className="text-xs text-gray-500 dark:text-gray-400">
           {formatDate(article.published_at, lang)}
         </span>
       </div>
@@ -71,10 +70,9 @@ function SearchResultCard({ result, lang, query }: { result: SearchResult; lang:
       {/* Title */}
       <Link href={`/articles/${article.slug}?lang=${lang}`}>
         <h2
-          className={`font-semibold text-base leading-snug mb-2 hover:opacity-70 transition-opacity ${
+          className={`font-semibold text-base leading-snug mb-2 hover:opacity-70 transition-opacity text-gray-900 dark:text-gray-100 ${
             lang === 'zh' ? 'font-[var(--font-noto-serif-sc)]' : ''
           }`}
-          style={{ color: '#1A1A1A' }}
         >
           {highlightKeyword(title, query)}
         </h2>
@@ -82,13 +80,13 @@ function SearchResultCard({ result, lang, query }: { result: SearchResult; lang:
 
       {/* Snippet */}
       {snippet && (
-        <p className="text-sm leading-relaxed mb-3" style={{ color: '#6B7280' }}>
+        <p className="text-sm leading-relaxed mb-3 text-gray-500 dark:text-gray-400">
           {highlightKeyword(snippet, query)}
         </p>
       )}
 
       {/* Meta row */}
-      <div className="flex items-center gap-4 text-xs" style={{ color: '#9CA3AF' }}>
+      <div className="flex items-center gap-4 text-xs text-gray-400 dark:text-gray-500">
         {article.reading_time_min && (
           <span className="flex items-center gap-1">
             <Clock size={12} />
@@ -105,8 +103,7 @@ function SearchResultCard({ result, lang, query }: { result: SearchResult; lang:
         )}
         <Link
           href={`/articles/${article.slug}?lang=${lang}`}
-          className="ml-auto text-xs font-medium hover:opacity-70 transition-opacity"
-          style={{ color: '#D4830A' }}
+          className="ml-auto text-xs font-medium hover:opacity-70 transition-opacity text-amber-600 dark:text-amber-400"
         >
           {lang === 'zh' ? '阅读全文 →' : 'Read more →'}
         </Link>
@@ -163,29 +160,26 @@ export default function SearchContent() {
     <>
       <Header lang={lang} />
       <main className="flex-1 max-w-5xl mx-auto px-4 sm:px-6 py-10">
-        <h1 className="text-2xl font-bold mb-6" style={{ color: '#1A1A1A' }}>
+        <h1 className="text-2xl font-bold mb-6 text-gray-900 dark:text-gray-100">
           {lang === 'zh' ? '搜索文章' : 'Search Articles'}
         </h1>
 
         <form onSubmit={handleSubmit} className="mb-8">
           <div
-            className="flex items-center gap-2 px-4 py-3 rounded-xl border"
-            style={{ borderColor: '#E5E3DF', backgroundColor: '#FFFFFF' }}
+            className="flex items-center gap-2 px-4 py-3 rounded-xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-[#242424]"
           >
-            <SearchIcon size={18} style={{ color: '#9CA3AF' }} />
+            <SearchIcon size={18} className="text-gray-400 dark:text-gray-500" />
             <input
               type="text"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder={lang === 'zh' ? '输入关键词搜索…' : 'Search by keyword…'}
-              className="flex-1 outline-none text-sm bg-transparent"
-              style={{ color: '#1A1A1A' }}
+              className="flex-1 outline-none text-sm bg-transparent text-gray-900 dark:text-gray-100 placeholder:text-gray-400 dark:placeholder:text-gray-500"
               autoFocus
             />
             <button
               type="submit"
-              className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition-opacity hover:opacity-90"
-              style={{ backgroundColor: '#D4830A' }}
+              className="px-4 py-1.5 rounded-lg text-sm font-medium text-white transition-opacity hover:opacity-90 bg-amber-600 dark:bg-amber-500"
             >
               {lang === 'zh' ? '搜索' : 'Search'}
             </button>
@@ -193,13 +187,13 @@ export default function SearchContent() {
         </form>
 
         {loading && (
-          <p className="text-sm text-center" style={{ color: '#9CA3AF' }}>
+          <p className="text-sm text-center text-gray-400 dark:text-gray-500">
             {lang === 'zh' ? '搜索中…' : 'Searching…'}
           </p>
         )}
 
         {!loading && searched && results.length === 0 && (
-          <p className="text-sm text-center py-16" style={{ color: '#9CA3AF' }}>
+          <p className="text-sm text-center py-16 text-gray-400 dark:text-gray-500">
             {lang === 'zh'
               ? `没有找到与"${query}"相关的文章`
               : `No articles found for "${query}"`}
@@ -208,7 +202,7 @@ export default function SearchContent() {
 
         {results.length > 0 && (
           <>
-            <p className="text-sm mb-5" style={{ color: '#6B7280' }}>
+            <p className="text-sm mb-5 text-gray-500 dark:text-gray-400">
               {lang === 'zh'
                 ? `找到 ${results.length} 篇相关文章`
                 : `Found ${results.length} article${results.length !== 1 ? 's' : ''}`}

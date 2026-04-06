@@ -9,9 +9,24 @@ import type { Metadata } from 'next'
 
 export const revalidate = 600
 
-export const metadata: Metadata = {
-  title: 'Articles',
-  description: 'All articles by John Wei',
+export async function generateMetadata({ searchParams }: ArticlesPageProps): Promise<Metadata> {
+  const params = await searchParams
+  const lang = params.lang === 'zh' ? 'zh' : 'en'
+  const category = params.category
+
+  const categoryLabel = category
+    ? (CATEGORY_LABELS[category]?.[lang === 'zh' ? 'zh' : 'en'] ?? category)
+    : null
+
+  const title = lang === 'zh'
+    ? categoryLabel ? `${categoryLabel} — 文章` : '所有文章'
+    : categoryLabel ? `${categoryLabel} — Articles` : 'All Articles'
+
+  const description = lang === 'zh'
+    ? `John Wei 的个人博客文章${categoryLabel ? `（${categoryLabel}）` : ''}。`
+    : `Articles by John Wei${categoryLabel ? ` in ${categoryLabel}` : ''}.`
+
+  return { title, description }
 }
 
 interface ArticlesPageProps {
