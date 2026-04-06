@@ -16,3 +16,4 @@ content/covers/
 content/podcast/
 content/index.json
 tsconfig.tsbuildinfo
+.vercel
