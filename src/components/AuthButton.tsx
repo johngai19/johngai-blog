@@ -53,19 +53,14 @@ export default function AuthButton({ lang = 'zh' }: AuthButtonProps) {
   }
 
   if (loading) {
-    return <div className="w-8 h-8 rounded-full animate-pulse" style={{ backgroundColor: '#E5E3DF' }} />
+    return <div className="w-8 h-8 rounded-full animate-pulse bg-gray-200 dark:bg-gray-700" />
   }
 
   if (!user) {
     return (
       <Link
         href={`/login?lang=${lang}`}
-        className="flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium transition-colors hover:opacity-80"
-        style={{
-          borderColor: '#E5E3DF',
-          color: '#1A1A1A',
-          backgroundColor: '#FFFFFF',
-        }}
+        className="flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium transition-colors hover:opacity-80 border-gray-200 dark:border-gray-700 text-gray-900 dark:text-gray-100 bg-white dark:bg-gray-800"
       >
         {lang === 'zh' ? '登录' : 'Login'}
       </Link>
@@ -79,17 +74,13 @@ export default function AuthButton({ lang = 'zh' }: AuthButtonProps) {
     <div className="relative" ref={dropdownRef}>
       <button
         onClick={() => setOpen(!open)}
-        className="flex items-center gap-1.5 rounded-full border px-2 py-1 text-xs font-medium transition-opacity hover:opacity-80"
-        style={{ borderColor: '#E5E3DF', backgroundColor: '#FFFFFF', color: '#1A1A1A' }}
+        className="flex items-center gap-1.5 rounded-full border px-2 py-1 text-xs font-medium transition-opacity hover:opacity-80 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
       >
         {avatarUrl ? (
           // eslint-disable-next-line @next/next/no-img-element
           <img src={avatarUrl} alt={displayName} className="w-5 h-5 rounded-full object-cover" />
         ) : (
-          <div
-            className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white"
-            style={{ backgroundColor: '#D4830A' }}
-          >
+          <div className="w-5 h-5 rounded-full flex items-center justify-center text-xs font-bold text-white bg-amber-600">
             {displayName.charAt(0).toUpperCase()}
           </div>
         )}
@@ -98,24 +89,19 @@ export default function AuthButton({ lang = 'zh' }: AuthButtonProps) {
       </button>
 
       {open && (
-        <div
-          className="absolute right-0 mt-2 w-44 rounded-xl shadow-lg border py-1 z-50"
-          style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E3DF' }}
-        >
+        <div className="absolute right-0 mt-2 w-44 rounded-xl shadow-lg border py-1 z-50 bg-white dark:bg-gray-800 border-gray-200 dark:border-gray-700">
           <Link
             href={`/dashboard?lang=${lang}`}
             onClick={() => setOpen(false)}
-            className="flex items-center gap-2 px-3 py-2 text-sm transition-colors hover:opacity-60"
-            style={{ color: '#1A1A1A' }}
+            className="flex items-center gap-2 px-3 py-2 text-sm transition-colors hover:opacity-60 text-gray-900 dark:text-gray-100"
           >
             <LayoutDashboard size={14} />
             {lang === 'zh' ? '我的账号' : 'Dashboard'}
           </Link>
-          <div className="my-1 h-px" style={{ backgroundColor: '#E5E3DF' }} />
+          <div className="my-1 h-px bg-gray-200 dark:bg-gray-700" />
           <button
             onClick={handleSignOut}
-            className="w-full flex items-center gap-2 px-3 py-2 text-sm transition-colors hover:opacity-60"
-            style={{ color: '#6B7280' }}
+            className="w-full flex items-center gap-2 px-3 py-2 text-sm transition-colors hover:opacity-60 text-gray-500 dark:text-gray-400"
           >
             <LogOut size={14} />
             {lang === 'zh' ? '退出登录' : 'Sign out'}

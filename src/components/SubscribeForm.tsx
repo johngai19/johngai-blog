@@ -57,17 +57,12 @@ export default function SubscribeForm({ lang = 'zh', compact = false }: Subscrib
           onChange={(e) => setEmail(e.target.value)}
           placeholder={lang === 'zh' ? '您的邮箱' : 'Your email'}
           required
-          className="flex-1 min-w-0 rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2"
-          style={{
-            borderColor: '#E5E3DF',
-            backgroundColor: '#FFFFFF',
-          }}
+          className="flex-1 min-w-0 rounded-lg border px-3 py-2 text-sm outline-none focus:ring-2 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
         />
         <button
           type="submit"
           disabled={status === 'loading'}
-          className="px-4 py-2 rounded-lg text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60"
-          style={{ backgroundColor: '#D4830A' }}
+          className="px-4 py-2 rounded-lg text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60 bg-amber-600"
         >
           {status === 'loading' ? (
             <Loader2 size={16} className="animate-spin" />
@@ -80,21 +75,20 @@ export default function SubscribeForm({ lang = 'zh', compact = false }: Subscrib
   return (
     <div className="max-w-md mx-auto">
       {status === 'success' ? (
-        <div className="flex items-center gap-3 p-4 rounded-xl" style={{ backgroundColor: '#F0FDF4' }}>
-          <CheckCircle size={20} style={{ color: '#16A34A' }} />
-          <p className="text-sm" style={{ color: '#15803D' }}>{message}</p>
+        <div className="flex items-center gap-3 p-4 rounded-xl bg-green-50 dark:bg-green-900/20">
+          <CheckCircle size={20} className="text-green-600 dark:text-green-400" />
+          <p className="text-sm text-green-700 dark:text-green-300">{message}</p>
         </div>
       ) : (
         <form onSubmit={handleSubmit} className="space-y-4">
           <div>
-            <label className="block text-sm font-medium mb-1.5" htmlFor="sub-email">
+            <label className="block text-sm font-medium mb-1.5 text-gray-900 dark:text-gray-100" htmlFor="sub-email">
               {lang === 'zh' ? '邮箱地址' : 'Email address'}
             </label>
             <div className="relative">
               <Mail
                 size={16}
-                className="absolute left-3 top-1/2 -translate-y-1/2"
-                style={{ color: '#9CA3AF' }}
+                className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 dark:text-gray-500"
               />
               <input
                 id="sub-email"
@@ -103,14 +97,13 @@ export default function SubscribeForm({ lang = 'zh', compact = false }: Subscrib
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder={lang === 'zh' ? '请输入您的邮箱' : 'Enter your email'}
                 required
-                className="w-full rounded-lg border pl-9 pr-3 py-2.5 text-sm outline-none transition-shadow focus:ring-2 focus:ring-offset-0"
-                style={{ borderColor: '#E5E3DF', backgroundColor: '#FFFFFF' }}
+                className="w-full rounded-lg border pl-9 pr-3 py-2.5 text-sm outline-none transition-shadow focus:ring-2 focus:ring-offset-0 border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100"
               />
             </div>
           </div>
 
           <div>
-            <label className="block text-sm font-medium mb-1.5">
+            <label className="block text-sm font-medium mb-1.5 text-gray-900 dark:text-gray-100">
               {lang === 'zh' ? '内容语言偏好' : 'Language preference'}
             </label>
             <div className="flex gap-2">
@@ -119,12 +112,11 @@ export default function SubscribeForm({ lang = 'zh', compact = false }: Subscrib
                   key={l}
                   type="button"
                   onClick={() => setLangPref(l)}
-                  className="flex-1 py-2 rounded-lg border text-sm font-medium transition-colors"
-                  style={{
-                    borderColor: langPref === l ? '#D4830A' : '#E5E3DF',
-                    backgroundColor: langPref === l ? '#F5E6C8' : '#FFFFFF',
-                    color: langPref === l ? '#D4830A' : '#6B7280',
-                  }}
+                  className={`flex-1 py-2 rounded-lg border text-sm font-medium transition-colors ${
+                    langPref === l
+                      ? 'border-amber-600 dark:border-amber-500 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400'
+                      : 'border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-500 dark:text-gray-400'
+                  }`}
                 >
                   {l === 'zh' ? '中文' : l === 'en' ? 'English' : lang === 'zh' ? '两者' : 'Both'}
                 </button>
@@ -133,7 +125,7 @@ export default function SubscribeForm({ lang = 'zh', compact = false }: Subscrib
           </div>
 
           {status === 'error' && message && (
-            <div className="flex items-center gap-2 text-sm" style={{ color: '#DC2626' }}>
+            <div className="flex items-center gap-2 text-sm text-red-600 dark:text-red-400">
               <AlertCircle size={14} />
               <span>{message}</span>
             </div>
@@ -142,8 +134,7 @@ export default function SubscribeForm({ lang = 'zh', compact = false }: Subscrib
           <button
             type="submit"
             disabled={status === 'loading'}
-            className="w-full py-2.5 rounded-lg text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60 flex items-center justify-center gap-2"
-            style={{ backgroundColor: '#D4830A' }}
+            className="w-full py-2.5 rounded-lg text-sm font-medium text-white transition-opacity hover:opacity-90 disabled:opacity-60 flex items-center justify-center gap-2 bg-amber-600"
           >
             {status === 'loading' && <Loader2 size={16} className="animate-spin" />}
             {lang === 'zh' ? '立即订阅' : 'Subscribe Now'}

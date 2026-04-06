@@ -43,16 +43,13 @@ export default async function SubscribePage({ searchParams }: SubscribePageProps
           <div className="max-w-lg mx-auto">
             {/* Hero text */}
             <div className="text-center mb-10">
-              <div
-                className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-5"
-                style={{ backgroundColor: '#F5E6C8' }}
-              >
-                <Mail size={24} style={{ color: '#D4830A' }} />
+              <div className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-5 bg-amber-100 dark:bg-amber-900/30">
+                <Mail size={24} className="text-amber-600 dark:text-amber-400" />
               </div>
-              <h1 className="text-3xl font-bold mb-3" style={{ color: '#1A1A1A' }}>
+              <h1 className="text-3xl font-bold mb-3 text-gray-900 dark:text-gray-100">
                 {lang === 'zh' ? '订阅更新' : 'Stay Updated'}
               </h1>
-              <p className="text-base leading-relaxed" style={{ color: '#6B7280' }}>
+              <p className="text-base leading-relaxed text-gray-500 dark:text-gray-400">
                 {lang === 'zh'
                   ? '输入您的邮箱，当有新文章发布时我们会发邮件通知您。'
                   : 'Enter your email and we\'ll notify you when new articles are published.'}
@@ -63,13 +60,10 @@ export default async function SubscribePage({ searchParams }: SubscribePageProps
             <div className="space-y-3 mb-10">
               {features.map((f, i) => (
                 <div key={i} className="flex items-start gap-3">
-                  <div
-                    className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
-                    style={{ backgroundColor: '#F5E6C8' }}
-                  >
-                    <f.icon size={14} style={{ color: '#D4830A' }} />
+                  <div className="flex-shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5 bg-amber-100 dark:bg-amber-900/30">
+                    <f.icon size={14} className="text-amber-600 dark:text-amber-400" />
                   </div>
-                  <p className="text-sm pt-1.5" style={{ color: '#6B7280' }}>
+                  <p className="text-sm pt-1.5 text-gray-500 dark:text-gray-400">
                     {lang === 'zh' ? f.zh : f.en}
                   </p>
                 </div>
@@ -77,14 +71,11 @@ export default async function SubscribePage({ searchParams }: SubscribePageProps
             </div>
 
             {/* Form */}
-            <div
-              className="p-6 rounded-2xl border"
-              style={{ borderColor: '#E5E3DF', backgroundColor: '#FFFFFF' }}
-            >
+            <div className="p-6 rounded-2xl border border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800/50">
               <SubscribeForm lang={lang} />
             </div>
 
-            <p className="text-xs text-center mt-5" style={{ color: '#9CA3AF' }}>
+            <p className="text-xs text-center mt-5 text-gray-400 dark:text-gray-500">
               {lang === 'zh'
                 ? '我们不会向第三方分享您的邮箱地址。'
                 : 'We will never share your email with third parties.'}

@@ -87,8 +87,8 @@ function DashboardContent() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#FAFAF8' }}>
-        <Loader2 className="animate-spin" style={{ color: '#D4830A' }} />
+      <div className="min-h-screen flex items-center justify-center bg-[#FAFAF8] dark:bg-[#1A1A1A]">
+        <Loader2 className="animate-spin text-amber-600 dark:text-amber-400" />
       </div>
     )
   }
@@ -104,14 +104,14 @@ function DashboardContent() {
     : PLANS.elite[lang === 'zh' ? 'name' : 'nameEn']
 
   return (
-    <div className="min-h-screen" style={{ backgroundColor: '#FAFAF8' }}>
+    <div className="min-h-screen bg-[#FAFAF8] dark:bg-[#1A1A1A]">
       {/* Header bar */}
-      <div className="border-b" style={{ borderColor: '#E5E3DF', backgroundColor: '#FFFFFF' }}>
+      <div className="border-b border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-900">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between">
-          <Link href={`/?lang=${lang}`} className="font-semibold text-sm" style={{ color: '#1A1A1A' }}>
+          <Link href={`/?lang=${lang}`} className="font-semibold text-sm text-gray-900 dark:text-gray-100">
             ← {lang === 'zh' ? '返回首页' : 'Back to site'}
           </Link>
-          <span className="text-sm font-medium" style={{ color: '#6B7280' }}>
+          <span className="text-sm font-medium text-gray-500 dark:text-gray-400">
             {lang === 'zh' ? '个人账号' : 'Dashboard'}
           </span>
         </div>
@@ -122,8 +122,7 @@ function DashboardContent() {
         {user?.email === 'sandcabin83@gmail.com' && (
           <a
             href="/admin"
-            className="flex items-center justify-between p-4 rounded-xl text-sm font-medium transition-colors hover:opacity-90"
-            style={{ backgroundColor: '#FEF3C7', color: '#D4830A', border: '1px solid #FDE68A' }}
+            className="flex items-center justify-between p-4 rounded-xl text-sm font-medium transition-colors hover:opacity-90 bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400 border border-amber-200 dark:border-amber-800"
           >
             <span className="flex items-center gap-2">
               <Crown size={16} />
@@ -134,35 +133,32 @@ function DashboardContent() {
         )}
 
         {success && (
-          <div className="flex items-center gap-2 p-4 rounded-xl text-sm" style={{ backgroundColor: '#F0FDF4', color: '#16A34A', border: '1px solid #BBF7D0' }}>
+          <div className="flex items-center gap-2 p-4 rounded-xl text-sm bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border border-green-200 dark:border-green-800">
             <CheckCircle size={16} />
             {lang === 'zh' ? '订阅成功！欢迎加入会员。' : 'Subscription successful! Welcome aboard.'}
           </div>
         )}
 
         {/* Profile card */}
-        <div className="rounded-2xl border p-6" style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E3DF' }}>
+        <div className="rounded-2xl border p-6 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
           <div className="flex items-center gap-4">
             {avatarUrl ? (
               // eslint-disable-next-line @next/next/no-img-element
               <img src={avatarUrl} alt={displayName} className="w-16 h-16 rounded-full object-cover" />
             ) : (
-              <div
-                className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold text-white"
-                style={{ backgroundColor: '#D4830A' }}
-              >
+              <div className="w-16 h-16 rounded-full flex items-center justify-center text-2xl font-bold text-white bg-amber-600">
                 {displayName.charAt(0).toUpperCase()}
               </div>
             )}
             <div>
-              <h1 className="text-xl font-semibold" style={{ color: '#1A1A1A' }}>{displayName}</h1>
-              <p className="text-sm" style={{ color: '#6B7280' }}>{user?.email}</p>
+              <h1 className="text-xl font-semibold text-gray-900 dark:text-gray-100">{displayName}</h1>
+              <p className="text-sm text-gray-500 dark:text-gray-400">{user?.email}</p>
               <span
-                className="inline-flex items-center gap-1 mt-1 text-xs font-medium px-2 py-0.5 rounded-full"
-                style={{
-                  backgroundColor: tier !== 'free' ? '#FEF3C7' : '#F3F4F6',
-                  color: tier !== 'free' ? '#D4830A' : '#6B7280',
-                }}
+                className={`inline-flex items-center gap-1 mt-1 text-xs font-medium px-2 py-0.5 rounded-full ${
+                  tier !== 'free'
+                    ? 'bg-amber-50 dark:bg-amber-900/20 text-amber-600 dark:text-amber-400'
+                    : 'bg-gray-100 dark:bg-gray-800 text-gray-500 dark:text-gray-400'
+                }`}
               >
                 {tier !== 'free' && <Crown size={10} />}
                 {planLabel}
@@ -172,8 +168,8 @@ function DashboardContent() {
         </div>
 
         {/* Subscription card */}
-        <div className="rounded-2xl border p-6" style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E3DF' }}>
-          <h2 className="font-semibold mb-4 flex items-center gap-2" style={{ color: '#1A1A1A' }}>
+        <div className="rounded-2xl border p-6 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700">
+          <h2 className="font-semibold mb-4 flex items-center gap-2 text-gray-900 dark:text-gray-100">
             <CreditCard size={16} />
             {lang === 'zh' ? '订阅状态' : 'Subscription'}
           </h2>
@@ -182,10 +178,10 @@ function DashboardContent() {
             <div className="space-y-4">
               <div className="flex items-center justify-between">
                 <div>
-                  <p className="font-medium" style={{ color: '#1A1A1A' }}>
+                  <p className="font-medium text-gray-900 dark:text-gray-100">
                     {subscription.plan === 'pro' ? PLANS.pro[lang === 'zh' ? 'name' : 'nameEn'] : PLANS.elite[lang === 'zh' ? 'name' : 'nameEn']}
                   </p>
-                  <p className="text-sm" style={{ color: '#6B7280' }}>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">
                     {subscription.cancel_at_period_end
                       ? (lang === 'zh' ? '将在当前周期结束时取消' : 'Cancels at period end')
                       : (lang === 'zh' ? '自动续费' : 'Auto-renews')}
@@ -195,11 +191,11 @@ function DashboardContent() {
                   </p>
                 </div>
                 <span
-                  className="text-xs px-2 py-1 rounded-full font-medium"
-                  style={{
-                    backgroundColor: subscription.status === 'active' ? '#F0FDF4' : '#FEF2F2',
-                    color: subscription.status === 'active' ? '#16A34A' : '#DC2626',
-                  }}
+                  className={`text-xs px-2 py-1 rounded-full font-medium ${
+                    subscription.status === 'active'
+                      ? 'bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400'
+                      : 'bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400'
+                  }`}
                 >
                   {subscription.status === 'active'
                     ? (lang === 'zh' ? '正常' : 'Active')
@@ -212,15 +208,14 @@ function DashboardContent() {
               </div>
               <Link
                 href={`/dashboard/billing?lang=${lang}`}
-                className="inline-flex items-center text-sm font-medium transition-opacity hover:opacity-70"
-                style={{ color: '#D4830A' }}
+                className="inline-flex items-center text-sm font-medium transition-opacity hover:opacity-70 text-amber-600 dark:text-amber-400"
               >
                 {lang === 'zh' ? '管理账单 →' : 'Manage billing →'}
               </Link>
             </div>
           ) : (
             <div>
-              <p className="text-sm mb-4" style={{ color: '#6B7280' }}>
+              <p className="text-sm mb-4 text-gray-500 dark:text-gray-400">
                 {lang === 'zh'
                   ? '升级为会员，解锁每日技术前瞻、播客纯享版等专属内容。'
                   : 'Upgrade to unlock daily tech briefings, podcast audio, and exclusive content.'}
@@ -228,8 +223,7 @@ function DashboardContent() {
               <button
                 onClick={() => handleUpgrade('pro')}
                 disabled={checkoutLoading}
-                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-opacity hover:opacity-80 disabled:opacity-50"
-                style={{ backgroundColor: '#D4830A', color: '#FFFFFF' }}
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium transition-opacity hover:opacity-80 disabled:opacity-50 bg-amber-600 text-white"
               >
                 {checkoutLoading && <Loader2 size={14} className="animate-spin" />}
                 {lang === 'zh' ? '升级为 Pro 会员' : 'Upgrade to Pro'}
@@ -242,17 +236,16 @@ function DashboardContent() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <Link
             href={`/articles?lang=${lang}`}
-            className="flex items-center gap-3 rounded-2xl border p-4 transition-opacity hover:opacity-80"
-            style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E3DF' }}
+            className="flex items-center gap-3 rounded-2xl border p-4 transition-opacity hover:opacity-80 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
           >
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: '#FEF3C7' }}>
-              <FileText size={16} style={{ color: '#D4830A' }} />
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-amber-50 dark:bg-amber-900/20">
+              <FileText size={16} className="text-amber-600 dark:text-amber-400" />
             </div>
             <div>
-              <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>
+              <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
                 {lang === 'zh' ? '浏览文章' : 'Browse articles'}
               </p>
-              <p className="text-xs" style={{ color: '#9CA3AF' }}>
+              <p className="text-xs text-gray-400 dark:text-gray-500">
                 {lang === 'zh' ? '发现精选内容' : 'Discover curated content'}
               </p>
             </div>
@@ -260,17 +253,16 @@ function DashboardContent() {
 
           <Link
             href={`/subscribe?lang=${lang}`}
-            className="flex items-center gap-3 rounded-2xl border p-4 transition-opacity hover:opacity-80"
-            style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E3DF' }}
+            className="flex items-center gap-3 rounded-2xl border p-4 transition-opacity hover:opacity-80 bg-white dark:bg-gray-900 border-gray-200 dark:border-gray-700"
           >
-            <div className="w-9 h-9 rounded-xl flex items-center justify-center" style={{ backgroundColor: '#F0FDF4' }}>
-              <Mail size={16} style={{ color: '#16A34A' }} />
+            <div className="w-9 h-9 rounded-xl flex items-center justify-center bg-green-50 dark:bg-green-900/20">
+              <Mail size={16} className="text-green-600 dark:text-green-400" />
             </div>
             <div>
-              <p className="text-sm font-medium" style={{ color: '#1A1A1A' }}>
+              <p className="text-sm font-medium text-gray-900 dark:text-gray-100">
                 {lang === 'zh' ? '邮件订阅' : 'Newsletter'}
               </p>
-              <p className="text-xs" style={{ color: '#9CA3AF' }}>
+              <p className="text-xs text-gray-400 dark:text-gray-500">
                 {lang === 'zh' ? '管理邮件推送偏好' : 'Manage email preferences'}
               </p>
             </div>
@@ -284,8 +276,8 @@ function DashboardContent() {
 export default function DashboardPage() {
   return (
     <Suspense fallback={
-      <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#FAFAF8' }}>
-        <Loader2 className="animate-spin" style={{ color: '#D4830A' }} />
+      <div className="min-h-screen flex items-center justify-center bg-[#FAFAF8] dark:bg-[#1A1A1A]">
+        <Loader2 className="animate-spin text-amber-600 dark:text-amber-400" />
       </div>
     }>
       <DashboardContent />

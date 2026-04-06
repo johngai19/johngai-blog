@@ -59,16 +59,12 @@ function LoginContent() {
   }
 
   return (
-    <div
-      className="min-h-screen flex items-center justify-center px-4"
-      style={{ backgroundColor: '#FAFAF8' }}
-    >
+    <div className="min-h-screen flex items-center justify-center px-4 bg-[#FAFAF8] dark:bg-[#1A1A1A]">
       <div className="w-full max-w-sm">
         {/* Back link */}
         <Link
           href={`/?lang=${lang}`}
-          className="inline-flex items-center gap-1 text-sm mb-8 transition-opacity hover:opacity-60"
-          style={{ color: '#6B7280' }}
+          className="inline-flex items-center gap-1 text-sm mb-8 transition-opacity hover:opacity-60 text-gray-500 dark:text-gray-400"
         >
           <ArrowLeft size={14} />
           {lang === 'zh' ? '返回首页' : 'Back to home'}
@@ -76,16 +72,13 @@ function LoginContent() {
 
         {/* Header */}
         <div className="mb-8">
-          <div
-            className="w-10 h-10 rounded-full flex items-center justify-center text-base font-bold text-white mb-4"
-            style={{ backgroundColor: '#D4830A' }}
-          >
+          <div className="w-10 h-10 rounded-full flex items-center justify-center text-base font-bold text-white mb-4 bg-amber-600">
             J
           </div>
-          <h1 className="text-2xl font-semibold mb-1" style={{ color: '#1A1A1A' }}>
+          <h1 className="text-2xl font-semibold mb-1 text-gray-900 dark:text-gray-100">
             {lang === 'zh' ? '登录账号' : 'Sign in'}
           </h1>
-          <p className="text-sm" style={{ color: '#6B7280' }}>
+          <p className="text-sm text-gray-500 dark:text-gray-400">
             {lang === 'zh'
               ? '登录后可管理订阅和访问会员内容'
               : 'Sign in to manage your subscription and access member content'}
@@ -93,23 +86,17 @@ function LoginContent() {
         </div>
 
         {error && (
-          <div
-            className="mb-4 p-3 rounded-lg text-sm"
-            style={{ backgroundColor: '#FEE2E2', color: '#DC2626' }}
-          >
+          <div className="mb-4 p-3 rounded-lg text-sm bg-red-50 dark:bg-red-900/20 text-red-600 dark:text-red-400">
             {error}
           </div>
         )}
 
         {magicSent ? (
-          <div
-            className="p-4 rounded-xl text-sm text-center"
-            style={{ backgroundColor: '#F0FDF4', color: '#16A34A', border: '1px solid #BBF7D0' }}
-          >
+          <div className="p-4 rounded-xl text-sm text-center bg-green-50 dark:bg-green-900/20 text-green-600 dark:text-green-400 border border-green-200 dark:border-green-800">
             <p className="font-medium mb-1">
               {lang === 'zh' ? '邮件已发送！' : 'Email sent!'}
             </p>
-            <p style={{ color: '#6B7280' }}>
+            <p className="text-gray-500 dark:text-gray-400">
               {lang === 'zh'
                 ? `请查收 ${email} 的登录链接`
                 : `Check ${email} for your sign-in link`}
@@ -121,8 +108,7 @@ function LoginContent() {
             <button
               onClick={handleGitHubLogin}
               disabled={githubLoading}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-medium text-sm transition-opacity hover:opacity-80 disabled:opacity-50"
-              style={{ backgroundColor: '#1A1A1A', color: '#FFFFFF' }}
+              className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl font-medium text-sm transition-opacity hover:opacity-80 disabled:opacity-50 bg-gray-900 dark:bg-gray-100 text-white dark:text-gray-900"
             >
               {githubLoading ? (
                 <Loader2 size={16} className="animate-spin" />
@@ -133,17 +119,17 @@ function LoginContent() {
             </button>
 
             <div className="relative flex items-center gap-3">
-              <div className="flex-1 h-px" style={{ backgroundColor: '#E5E3DF' }} />
-              <span className="text-xs" style={{ color: '#9CA3AF' }}>
+              <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
+              <span className="text-xs text-gray-400 dark:text-gray-500">
                 {lang === 'zh' ? '或' : 'or'}
               </span>
-              <div className="flex-1 h-px" style={{ backgroundColor: '#E5E3DF' }} />
+              <div className="flex-1 h-px bg-gray-200 dark:bg-gray-700" />
             </div>
 
             {/* Magic Link */}
             <form onSubmit={handleMagicLink} className="space-y-3">
               <div>
-                <label className="block text-xs font-medium mb-1.5" style={{ color: '#6B7280' }}>
+                <label className="block text-xs font-medium mb-1.5 text-gray-500 dark:text-gray-400">
                   {lang === 'zh' ? '邮箱地址' : 'Email address'}
                 </label>
                 <input
@@ -152,21 +138,13 @@ function LoginContent() {
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder={lang === 'zh' ? '请输入邮箱' : 'Enter your email'}
                   required
-                  className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none transition-all"
-                  style={{
-                    borderColor: '#E5E3DF',
-                    backgroundColor: '#FFFFFF',
-                    color: '#1A1A1A',
-                  }}
-                  onFocus={(e) => (e.target.style.borderColor = '#D4830A')}
-                  onBlur={(e) => (e.target.style.borderColor = '#E5E3DF')}
+                  className="w-full px-3 py-2.5 rounded-lg border text-sm outline-none transition-all border-gray-200 dark:border-gray-700 bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 focus:border-amber-600 dark:focus:border-amber-500"
                 />
               </div>
               <button
                 type="submit"
                 disabled={loading || !email}
-                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-medium text-sm transition-opacity hover:opacity-80 disabled:opacity-50"
-                style={{ backgroundColor: '#D4830A', color: '#FFFFFF' }}
+                className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl font-medium text-sm transition-opacity hover:opacity-80 disabled:opacity-50 bg-amber-600 text-white"
               >
                 {loading ? (
                   <Loader2 size={16} className="animate-spin" />
@@ -179,7 +157,7 @@ function LoginContent() {
           </div>
         )}
 
-        <p className="mt-6 text-xs text-center" style={{ color: '#9CA3AF' }}>
+        <p className="mt-6 text-xs text-center text-gray-400 dark:text-gray-500">
           {lang === 'zh' ? '登录即表示同意' : 'By signing in you agree to our'}{' '}
           <Link href="/terms" className="underline">
             {lang === 'zh' ? '服务条款' : 'Terms of Service'}
@@ -192,7 +170,7 @@ function LoginContent() {
 
 export default function LoginPage() {
   return (
-    <Suspense fallback={<div className="min-h-screen" style={{ backgroundColor: '#FAFAF8' }} />}>
+    <Suspense fallback={<div className="min-h-screen bg-[#FAFAF8] dark:bg-[#1A1A1A]" />}>
       <LoginContent />
     </Suspense>
   )

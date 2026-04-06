@@ -152,6 +152,17 @@ export default function ArticleContent({ article, initialLang }: ArticleContentP
                   .replace(/[^\w\u4e00-\u9fa5-]/g, '')
                 return <h4 id={id} {...props}>{children}</h4>
               },
+              a: ({ href, children, ...props }) => {
+                const isExternal = href && (href.startsWith('http://') || href.startsWith('https://'))
+                if (isExternal) {
+                  return (
+                    <a href={href} target="_blank" rel="noopener noreferrer" {...props}>
+                      {children}
+                    </a>
+                  )
+                }
+                return <a href={href} {...props}>{children}</a>
+              },
               img: ({ src, alt, ...props }) => {
                 if (!src) return null
                 return (
