@@ -54,7 +54,9 @@ export async function middleware(request: NextRequest) {
   // Protect admin routes
   if (pathname.startsWith('/admin')) {
     if (!session) {
-      return NextResponse.redirect(new URL('/login', request.url))
+      const loginUrl = new URL('/login', request.url)
+      loginUrl.searchParams.set('next', pathname)
+      return NextResponse.redirect(loginUrl)
     }
     const adminEmail = process.env.ADMIN_EMAIL
     if (adminEmail && session.user.email !== adminEmail) {

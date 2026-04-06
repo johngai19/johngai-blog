@@ -14,6 +14,7 @@ function LoginContent() {
   const [magicSent, setMagicSent] = useState(false)
   const [error, setError] = useState('')
   const lang = searchParams.get('lang') ?? 'zh'
+  const nextPath = searchParams.get('next') || '/dashboard'
 
   useEffect(() => {
     if (searchParams.get('error') === 'auth') {
@@ -28,7 +29,7 @@ function LoginContent() {
     const { error } = await supabase.auth.signInWithOAuth({
       provider: 'github',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
+        redirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(nextPath)}`,
       },
     })
     if (error) {
@@ -46,7 +47,7 @@ function LoginContent() {
     const { error } = await supabase.auth.signInWithOtp({
       email,
       options: {
-        emailRedirectTo: `${window.location.origin}/auth/callback?next=/dashboard`,
+        emailRedirectTo: `${window.location.origin}/auth/callback?next=${encodeURIComponent(nextPath)}`,
       },
     })
     if (error) {
