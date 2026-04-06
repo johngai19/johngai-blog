@@ -85,10 +85,10 @@ export default function MediaPage() {
     <div className="p-6 space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-semibold" style={{ color: '#1A1A1A' }}>
+          <h1 className="text-xl font-semibold text-[#1A1A1A] dark:text-[#E5E3DF]">
             媒体库
           </h1>
-          <p className="text-sm mt-0.5" style={{ color: '#9CA3AF' }}>
+          <p className="text-sm mt-0.5 text-[#9CA3AF]">
             {currentFolder || '根目录'} · {files.length} 个文件
           </p>
         </div>
@@ -136,11 +136,10 @@ export default function MediaPage() {
                   currentFolder ? `${currentFolder}/${f.name}` : f.name
                 )
               }
-              className="flex items-center gap-2 px-4 py-3 rounded-xl border transition-colors hover:bg-gray-50"
-              style={{ borderColor: '#E5E3DF' }}
+              className="flex items-center gap-2 px-4 py-3 rounded-xl border transition-colors hover:bg-gray-50 dark:hover:bg-[#2A2A2A] border-[#E5E3DF] dark:border-[#333333]"
             >
               <FolderOpen size={16} style={{ color: '#D4830A' }} />
-              <span className="text-sm" style={{ color: '#1A1A1A' }}>
+              <span className="text-sm text-[#1A1A1A] dark:text-[#E5E3DF]">
                 {f.name}
               </span>
             </button>
@@ -155,8 +154,7 @@ export default function MediaPage() {
         </div>
       ) : files.length === 0 && folders.length === 0 ? (
         <div
-          className="p-12 text-center rounded-2xl border"
-          style={{ borderColor: '#E5E3DF', backgroundColor: '#FFFFFF' }}
+          className="p-12 text-center rounded-2xl border border-[#E5E3DF] dark:border-[#333333] bg-white dark:bg-[#242424]"
         >
           <ImageIcon
             size={32}
@@ -172,13 +170,11 @@ export default function MediaPage() {
           {files.map((file) => (
             <div
               key={file.path}
-              className="group rounded-xl border overflow-hidden transition-shadow hover:shadow-md"
-              style={{ borderColor: '#E5E3DF', backgroundColor: '#FFFFFF' }}
+              className="group rounded-xl border overflow-hidden transition-shadow hover:shadow-md border-[#E5E3DF] dark:border-[#333333] bg-white dark:bg-[#242424]"
             >
               {/* Image preview */}
               <div
-                className="aspect-square flex items-center justify-center overflow-hidden"
-                style={{ backgroundColor: '#F9FAFB' }}
+                className="aspect-square flex items-center justify-center overflow-hidden bg-[#F9FAFB] dark:bg-[#1A1A1A]"
               >
                 {isImage(file.name) ? (
                   <img
@@ -195,8 +191,7 @@ export default function MediaPage() {
               {/* Info + actions */}
               <div className="p-2">
                 <p
-                  className="text-xs truncate"
-                  style={{ color: '#1A1A1A' }}
+                  className="text-xs truncate text-[#1A1A1A] dark:text-[#E5E3DF]"
                   title={file.name}
                 >
                   {file.name}

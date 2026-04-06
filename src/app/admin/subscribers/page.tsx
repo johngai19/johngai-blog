@@ -76,15 +76,14 @@ export default function AdminSubscribersPage() {
     <div className="p-6 space-y-4">
       <div className="flex items-center justify-between">
         <div>
-          <h1 className="text-xl font-semibold" style={{ color: '#1A1A1A' }}>订阅者管理</h1>
-          <p className="text-sm mt-0.5" style={{ color: '#9CA3AF' }}>
+          <h1 className="text-xl font-semibold text-[#1A1A1A] dark:text-[#E5E3DF]">订阅者管理</h1>
+          <p className="text-sm mt-0.5 text-[#9CA3AF]">
             {emailSubs.length} 邮件订阅 · {profiles.length} 注册用户
           </p>
         </div>
         <button
           onClick={exportCSV}
-          className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium border transition-opacity hover:opacity-70"
-          style={{ borderColor: '#E5E3DF', color: '#6B7280', backgroundColor: '#FFFFFF' }}
+          className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-xs font-medium border transition-opacity hover:opacity-70 border-[#E5E3DF] dark:border-[#333333] text-[#6B7280] bg-white dark:bg-[#242424]"
         >
           <Download size={13} />
           导出 CSV
@@ -114,7 +113,7 @@ export default function AdminSubscribersPage() {
       </div>
 
       {/* Table */}
-      <div className="rounded-2xl border overflow-hidden" style={{ backgroundColor: '#FFFFFF', borderColor: '#E5E3DF' }}>
+      <div className="rounded-2xl border overflow-hidden bg-white dark:bg-[#242424] border-[#E5E3DF] dark:border-[#333333]">
         {loading ? (
           <div className="p-8 text-center text-sm" style={{ color: '#9CA3AF' }}>加载中…</div>
         ) : activeTab === 'email' ? (
@@ -133,7 +132,7 @@ export default function AdminSubscribersPage() {
               <tbody>
                 {emailSubs.map((sub) => (
                   <tr key={sub.id} style={{ borderBottom: '1px solid #F9FAFB' }} className="hover:bg-gray-50">
-                    <td className="px-4 py-3 font-medium" style={{ color: '#1A1A1A' }}>{sub.email}</td>
+                    <td className="px-4 py-3 font-medium text-[#1A1A1A] dark:text-[#E5E3DF]">{sub.email}</td>
                     <td className="px-4 py-3 hidden sm:table-cell">
                       <span
                         className="text-xs px-2 py-0.5 rounded-full font-medium"
@@ -175,7 +174,7 @@ export default function AdminSubscribersPage() {
               {profiles.map((profile) => (
                 <tr key={profile.id} style={{ borderBottom: '1px solid #F9FAFB' }} className="hover:bg-gray-50">
                   <td className="px-4 py-3">
-                    <p className="font-medium" style={{ color: '#1A1A1A' }}>
+                    <p className="font-medium text-[#1A1A1A] dark:text-[#E5E3DF]">
                       {profile.display_name ?? '未命名用户'}
                     </p>
                     <p className="text-xs font-mono" style={{ color: '#9CA3AF' }}>
