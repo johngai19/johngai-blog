@@ -1,0 +1,19 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="630" fill="#F5F1EA"/>
+  <circle cx="915" cy="118" r="84" fill="#E5D7C2" opacity="0.65"/>
+  <circle cx="210" cy="500" r="128" fill="#E9E2D6" opacity="0.8"/>
+  <rect x="428" y="122" width="344" height="386" rx="24" stroke="#C39A5B" stroke-width="6" opacity="0.9"/>
+  <path d="M600 216C555 216 519 252 519 297V339C519 373 547 401 581 401H619C653 401 681 373 681 339V297C681 252 645 216 600 216Z" fill="#C39A5B" opacity="0.15"/>
+  <circle cx="600" cy="192" r="46" fill="#B07B3A" opacity="0.88"/>
+  <path d="M520 443C548 412 571 401 600 401C629 401 652 412 680 443" stroke="#3A3027" stroke-width="12" stroke-linecap="round"/>
+  <path d="M480 337C528 360 566 372 600 372C634 372 672 360 720 337" stroke="#3A3027" stroke-width="10" stroke-linecap="round" opacity="0.85"/>
+  <path d="M472 281C525 259 567 248 600 248C633 248 675 259 728 281" stroke="#8B6A42" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 12" opacity="0.85"/>
+  <path d="M452 236C514 199 563 182 600 182C637 182 686 199 748 236" stroke="#8B6A42" stroke-width="3" stroke-linecap="round" stroke-dasharray="1 10" opacity="0.7"/>
+  <path d="M438 195C506 148 561 126 600 126C639 126 694 148 762 195" stroke="#D4B181" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="1 14" opacity="0.9"/>
+  <path d="M392 478C452 430 517 406 600 406C683 406 748 430 808 478" stroke="#3A3027" stroke-width="14" stroke-linecap="round" opacity="0.9"/>
+  <path d="M348 526C420 470 503 442 600 442C697 442 780 470 852 526" stroke="#B07B3A" stroke-width="4" stroke-linecap="round" stroke-dasharray="3 16" opacity="0.75"/>
+  <path d="M327 148C388 165 432 190 464 224" stroke="#A1825A" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M873 148C812 165 768 190 736 224" stroke="#A1825A" stroke-width="3" stroke-linecap="round" opacity="0.7"/>
+  <path d="M284 214C365 225 430 252 469 296" stroke="#A1825A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 10" opacity="0.65"/>
+  <path d="M916 214C835 225 770 252 731 296" stroke="#A1825A" stroke-width="2.5" stroke-linecap="round" stroke-dasharray="2 10" opacity="0.65"/>
+</svg>
