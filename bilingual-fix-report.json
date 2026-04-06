@@ -1,0 +1,32 @@
+[
+  {
+    "id": "270fa282-33f2-408e-9ca4-3ae3be674ef4",
+    "slug": "20221115-qt6e79a84modbuse",
+    "action": "TRANSLATE_ERROR",
+    "error": "LLM Gateway 403: {\"error\":{\"message\":\"litellm.APIError: AzureException APIError - Access denied due to Virtual Network/Firewall rules.. Received Model Group=azure/gpt-4o\\nAvailable Model Group Fallbacks=None\",\"type\":n"
+  },
+  {
+    "id": "53a61f53-5a0d-4114-90c8-17f67138fb08",
+    "slug": "qt6%e7%9a%84modbus%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%be%8b%e7%a8%8b%e6%ba%90%e7%a0%81%e5%88%86%e6%9e%90",
+    "action": "TRANSLATE_ERROR",
+    "error": "LLM Gateway 403: {\"error\":{\"message\":\"litellm.APIError: AzureException APIError - Access denied due to Virtual Network/Firewall rules.. Received Model Group=azure/gpt-4o\\nAvailable Model Group Fallbacks=None\",\"type\":n"
+  },
+  {
+    "id": "fa5f2fae-d01d-46e9-9078-ba56c9a57be7",
+    "slug": "from-idea-to-deployment-a-complete-guide-to-full-stack-development-with-cursor",
+    "action": "TRANSLATE_ERROR",
+    "error": "LLM Gateway 403: {\"error\":{\"message\":\"litellm.APIError: AzureException APIError - Access denied due to Virtual Network/Firewall rules.. Received Model Group=azure/gpt-4o\\nAvailable Model Group Fallbacks=None\",\"type\":n"
+  },
+  {
+    "id": "0d075d9d-5a31-4d4d-ba8c-1c4ef5bddafe",
+    "slug": "comprehensive-guide-for-developers-working-with-c-python-typescript-and-go-best-practices-solutions-and-quick-references",
+    "action": "TRANSLATE_ERROR",
+    "error": "LLM Gateway 403: {\"error\":{\"message\":\"litellm.APIError: AzureException APIError - Access denied due to Virtual Network/Firewall rules.. Received Model Group=azure/gpt-4o\\nAvailable Model Group Fallbacks=None\",\"type\":n"
+  },
+  {
+    "id": "cda99b49-7582-4182-89b5-f47dd6088a71",
+    "slug": "%e8%b7%af%e4%ba%ba-%e8%a5%bf%e8%b4%9d",
+    "action": "TRANSLATE_ERROR",
+    "error": "LLM Gateway 403: {\"error\":{\"message\":\"litellm.APIError: AzureException APIError - Access denied due to Virtual Network/Firewall rules.. Received Model Group=azure/gpt-4o\\nAvailable Model Group Fallbacks=None\",\"type\":n"
+  }
+]

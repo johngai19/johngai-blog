@@ -118,6 +118,21 @@ function DashboardContent() {
       </div>
 
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-8 space-y-6">
+        {/* Admin entrance - only visible to admin user */}
+        {user?.email === 'sandcabin83@gmail.com' && (
+          <a
+            href="/admin"
+            className="flex items-center justify-between p-4 rounded-xl text-sm font-medium transition-colors hover:opacity-90"
+            style={{ backgroundColor: '#FEF3C7', color: '#D4830A', border: '1px solid #FDE68A' }}
+          >
+            <span className="flex items-center gap-2">
+              <Crown size={16} />
+              {lang === 'zh' ? '进入管理后台' : 'Enter Admin Dashboard'}
+            </span>
+            <span>→</span>
+          </a>
+        )}
+
         {success && (
           <div className="flex items-center gap-2 p-4 rounded-xl text-sm" style={{ backgroundColor: '#F0FDF4', color: '#16A34A', border: '1px solid #BBF7D0' }}>
             <CheckCircle size={16} />

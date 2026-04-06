@@ -31,7 +31,7 @@ const dryRun = process.argv.includes('--dry-run')
 // ── LLM Gateway config ──────────────────────────────────────────
 const LLM_GATEWAY = 'https://llm.ngaisy.com/chat/completions'
 const LLM_KEY = 'sk-homelab-2026'
-const LLM_MODEL = 'sf/qwen2.5-72b'
+const LLM_MODEL = 'azure/gpt-4o'
 const RATE_LIMIT_MS = 2500 // 2.5s between LLM calls
 const MIN_CONTENT_LENGTH = 100 // skip very short content
 
