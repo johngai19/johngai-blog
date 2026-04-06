@@ -115,7 +115,7 @@ function SearchResultCard({ result, lang, query }: { result: SearchResult; lang:
 export default function SearchContent() {
   const searchParams = useSearchParams()
   const router = useRouter()
-  const lang = (searchParams.get('lang') === 'en' ? 'en' : 'zh') as Lang
+  const lang = (searchParams.get('lang') === 'zh' ? 'zh' : 'en') as Lang
   const initialQ = searchParams.get('q') ?? ''
 
   const [query, setQuery] = useState(initialQ)
