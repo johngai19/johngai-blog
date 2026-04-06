@@ -44,7 +44,10 @@ export async function generateMetadata({ params, searchParams }: ArticlePageProp
 
   const canonicalUrl = `${SITE_URL}/articles/${slug}`
 
-  const ogImage = article.cover_image || `${SITE_URL}/api/og?title=${encodeURIComponent(title)}&category=${article.category || 'writing'}&date=${article.published_at?.slice(0, 10) || ''}`
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || SITE_URL
+  const ogImage = article.cover_image
+    ? (article.cover_image.startsWith('http') ? article.cover_image : `${siteUrl}${article.cover_image}`)
+    : `${siteUrl}/api/og?title=${encodeURIComponent(title)}&category=${article.category || 'writing'}&date=${article.published_at?.slice(0, 10) || ''}`
 
   return {
     title,
@@ -123,7 +126,7 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
     '@type': 'BlogPosting',
     headline: title,
     description: excerpt,
-    ...(article.cover_image ? { image: article.cover_image } : {}),
+    ...(article.cover_image ? { image: article.cover_image.startsWith('http') ? article.cover_image : `${SITE_URL}${article.cover_image}` } : {}),
     ...(article.published_at ? { datePublished: article.published_at } : {}),
     ...(article.updated_at ? { dateModified: article.updated_at } : {}),
     author: {
