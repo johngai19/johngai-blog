@@ -90,7 +90,7 @@ export default function NewsletterPage() {
     if (article.title_zh) setSubjectZh(article.title_zh)
     if (article.title_en) setSubjectEn(article.title_en ?? '')
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://johngai.com'
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.johngai.com'
     const url = `${siteUrl}/articles/${slug}`
 
     if (article.excerpt_zh) {

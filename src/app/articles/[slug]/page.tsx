@@ -23,7 +23,7 @@ interface ArticlePageProps {
   searchParams: Promise<{ lang?: string; preview?: string }>
 }
 
-const SITE_URL = 'https://johngai.com'
+const SITE_URL = 'https://www.johngai.com'
 
 export async function generateMetadata({ params, searchParams }: ArticlePageProps): Promise<Metadata> {
   const { slug } = await params

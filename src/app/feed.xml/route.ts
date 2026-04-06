@@ -11,7 +11,7 @@ function escapeXml(s: string): string {
 
 export async function GET() {
   const { articles } = await getArticles({ pageSize: 50 })
-  const siteUrl = 'https://johngai.com'
+  const siteUrl = 'https://www.johngai.com'
 
   const items = articles
     .map((a) => {

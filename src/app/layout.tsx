@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   description:
     "John Wei's personal blog on technology, life, and ideas. 约翰·魏的个人博客，分享技术、生活与思考。",
-  metadataBase: new URL('https://johngai.com'),
+  metadataBase: new URL('https://www.johngai.com'),
   openGraph: {
     type: 'website',
     locale: 'zh_CN',

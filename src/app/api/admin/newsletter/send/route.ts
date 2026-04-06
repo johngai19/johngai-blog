@@ -136,7 +136,7 @@ export async function POST(req: NextRequest) {
         return NextResponse.json({ error: 'Article not found' }, { status: 404 })
       }
 
-      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://johngai.com'
+      const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.johngai.com'
       const articleUrl = `${siteUrl}/articles/${article.slug}`
 
       if (!subject_zh) subject_zh = article.title_zh ?? ''
@@ -175,7 +175,7 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ message: 'No confirmed subscribers', sent: 0 }, { status: 200 })
     }
 
-    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://johngai.com'
+    const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.johngai.com'
 
     // Check for Resend API key
     const resendApiKey = process.env.RESEND_API_KEY

@@ -9,6 +9,6 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin', '/dashboard', '/api'],
       },
     ],
-    sitemap: 'https://johngai.com/sitemap.xml',
+    sitemap: 'https://www.johngai.com/sitemap.xml',
   }
 }

@@ -62,7 +62,7 @@ export async function GET(req: NextRequest) {
 }
 
 function renderPage(title: string, message: string, success: boolean): string {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://johngai.com'
+  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.johngai.com'
   const color = success ? '#16A34A' : '#DC2626'
   const paragraphs = message
     .split('\n\n')
