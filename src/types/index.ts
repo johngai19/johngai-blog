@@ -24,7 +24,7 @@ export interface EmailSubscriber {
   id: string
   email: string
   confirmed: boolean
-  language: 'zh' | 'en' | 'both'
+  language_preference: 'zh' | 'en' | 'both'
   created_at: string
 }
 

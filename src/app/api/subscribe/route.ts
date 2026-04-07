@@ -42,10 +42,13 @@ export async function POST(req: NextRequest) {
       )
     }
 
+    // Auto-confirm: double opt-in requires a working email provider (Resend).
+    // Until RESEND_API_KEY is configured, auto-confirm so the newsletter
+    // send flow (which filters confirmed=true) can actually reach subscribers.
     const { error } = await supabase.from('email_subscribers').insert({
       email: email.toLowerCase(),
-      language,
-      confirmed: false,
+      language_preference: language,
+      confirmed: true,
     })
 
     if (error) {

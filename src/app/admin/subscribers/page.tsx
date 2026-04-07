@@ -48,7 +48,7 @@ export default function AdminSubscribersPage() {
             ...emailSubs.map((s) => [
               s.email,
               s.confirmed ? '已确认' : '未确认',
-              s.language,
+              s.language_preference,
               new Date(s.created_at).toLocaleDateString('zh-CN'),
             ]),
           ]
@@ -146,7 +146,7 @@ export default function AdminSubscribersPage() {
                     </td>
                     <td className="px-4 py-3 hidden md:table-cell">
                       <span className="text-xs" style={{ color: '#6B7280' }}>
-                        {sub.language === 'zh' ? '中文' : sub.language === 'en' ? '英文' : '双语'}
+                        {sub.language_preference === 'zh' ? '中文' : sub.language_preference === 'en' ? '英文' : '双语'}
                       </span>
                     </td>
                     <td className="px-4 py-3 hidden md:table-cell">
