@@ -32,7 +32,7 @@ export async function generateMetadata({ params, searchParams }: ArticlePageProp
   const isPreview = sp.preview === 'true'
   const article = await getArticle(slug, isPreview)
 
-  if (!article) return { title: 'Article Not Found' }
+  if (!article) notFound()
 
   const title = lang === 'zh'
     ? article.title_zh || article.title_en || 'Untitled'
@@ -44,7 +44,7 @@ export async function generateMetadata({ params, searchParams }: ArticlePageProp
 
   const canonicalUrl = `${SITE_URL}/articles/${slug}`
 
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || SITE_URL
+  const siteUrl = SITE_URL
   const ogImage = article.cover_image
     ? (article.cover_image.startsWith('http') ? article.cover_image : `${siteUrl}${article.cover_image}`)
     : `${siteUrl}/api/og?title=${encodeURIComponent(title)}&category=${article.category || 'writing'}&date=${article.published_at?.slice(0, 10) || ''}`

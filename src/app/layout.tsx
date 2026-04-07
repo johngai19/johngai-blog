@@ -30,6 +30,14 @@ export const metadata: Metadata = {
     locale: 'zh_CN',
     alternateLocale: 'en_US',
     siteName: "John's Blog",
+    images: [
+      {
+        url: '/api/og?title=John%27s+Blog&category=writing',
+        width: 1200,
+        height: 630,
+        alt: "John's Blog",
+      },
+    ],
   },
   twitter: {
     card: 'summary_large_image',
