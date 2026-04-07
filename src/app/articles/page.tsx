@@ -26,7 +26,13 @@ export async function generateMetadata({ searchParams }: ArticlesPageProps): Pro
     ? `John Wei 的个人博客文章${categoryLabel ? `（${categoryLabel}）` : ''}。`
     : `Articles by John Wei${categoryLabel ? ` in ${categoryLabel}` : ''}.`
 
-  return { title, description }
+  return {
+    title,
+    description,
+    alternates: {
+      canonical: 'https://www.johngai.com/articles',
+    },
+  }
 }
 
 interface ArticlesPageProps {
