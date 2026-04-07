@@ -12,6 +12,8 @@
  * Usage:
  *   node scripts/generate-and-upload-covers.mjs [--limit N] [--dry-run]
  *   node scripts/generate-and-upload-covers.mjs --ids id1,id2,id3
+ *   node scripts/generate-and-upload-covers.mjs --latest 2        # regenerate N most recent articles
+ *   node scripts/generate-and-upload-covers.mjs --force --limit 20 # regenerate even if cover exists
  */
 
 import { createClient } from '@supabase/supabase-js'
@@ -52,20 +54,55 @@ const limitIdx = args.indexOf('--limit')
 const LIMIT = limitIdx >= 0 ? parseInt(args[limitIdx + 1]) : 10
 const idsIdx = args.indexOf('--ids')
 const SPECIFIC_IDS = idsIdx >= 0 ? args[idsIdx + 1].split(',') : null
+const FORCE = args.includes('--force')
+const latestIdx = args.indexOf('--latest')
+const LATEST_N = latestIdx >= 0 ? parseInt(args[latestIdx + 1]) : 0
 
 // ─── Category styles for DALL-E prompts ──────────────────────────────────
+// Each category has an array of sub-styles for visual diversity.
+// Articles rotate through sub-styles based on their index in the batch.
 const CATEGORY_STYLES = {
-  engineering: 'minimalist tech illustration with clean geometric lines, circuit patterns, code elements. Dark blue and cyan color palette. Modern and professional.',
-  industry: 'abstract business visualization with flowing data streams, geometric shapes, professional atmosphere. Blue and grey color palette.',
-  books: 'warm literary illustration with soft ambient lighting, books, reading atmosphere. Amber and cream color palette with subtle textures.',
-  life: 'warm personal photography style, natural light, everyday beauty, nostalgic atmosphere. Earth tones with soft grain.',
-  startup: 'dynamic energetic illustration with growth metaphors, bold geometric shapes. Orange and white color palette.',
-  writing: 'contemplative East Asian ink wash painting style, minimalist brush strokes, elegant composition. Black ink on textured rice paper with subtle color accents.',
+  engineering: [
+    'minimalist tech illustration with clean geometric lines, circuit patterns, code elements. Dark blue and cyan color palette. Modern and professional.',
+    'isometric 3D illustration of technology components, soft shadows, pastel tech colors, clean white background.',
+    'dark mode UI-inspired abstract art, glowing neon lines on dark background, futuristic data visualization aesthetic.',
+  ],
+  industry: [
+    'abstract business visualization with flowing data streams, geometric shapes, professional atmosphere. Blue and grey color palette.',
+    'aerial photography style of urban landscapes, tilt-shift miniature effect, warm golden hour lighting.',
+    'modern infographic illustration style, clean flat shapes, muted corporate color palette with one accent color.',
+  ],
+  books: [
+    'warm literary illustration with soft ambient lighting, books, reading atmosphere. Amber and cream color palette with subtle textures.',
+    'vintage bookshop photography, shallow depth of field, warm tungsten lighting, rich wood tones.',
+    'whimsical storybook illustration, hand-drawn feel, soft watercolor washes, fantasy atmosphere.',
+  ],
+  life: [
+    'warm personal photography style, natural light, everyday beauty, nostalgic atmosphere. Earth tones with soft grain.',
+    'Japanese aesthetic wabi-sabi photography, minimalist composition, muted natural tones, serene atmosphere.',
+    'golden hour landscape photography, lens flare, warm saturated colors, cinematic wide angle.',
+  ],
+  startup: [
+    'dynamic energetic illustration with growth metaphors, bold geometric shapes. Orange and white color palette.',
+    'modern gradient mesh art, vibrant purple and orange, abstract flowing shapes, startup energy.',
+    'pop art inspired bold illustration, bright contrasting colors, comic-style halftone dots, energetic composition.',
+  ],
+  writing: [
+    'modern digital illustration, vibrant colors, clean composition, contemporary art style.',
+    'cinematic photography style, dramatic lighting, rich colors, film grain.',
+    'abstract geometric art, bold colors, modern minimalist design.',
+    'watercolor illustration, soft gradients, artistic brushwork, dreamy atmosphere.',
+    'vintage poster design, retro typography feel, warm color palette.',
+    'surreal digital art, imaginative composition, vivid colors.',
+    'flat design illustration, clean vectors, bright cheerful palette.',
+    'oil painting style, rich textures, classical composition with modern subject.',
+  ],
 }
 
-function buildImagePrompt(article) {
+function buildImagePrompt(article, index = 0) {
   const category = article.category || 'writing'
-  const style = CATEGORY_STYLES[category] || CATEGORY_STYLES.writing
+  const styles = CATEGORY_STYLES[category] || CATEGORY_STYLES.writing
+  const style = styles[index % styles.length]
   const title = article.title_en || article.title_zh || article.slug
 
   return `Create a beautiful blog cover image (landscape 1792x1024).
@@ -77,8 +114,8 @@ Clean, modern composition suitable as a blog header image.`
 }
 
 // ─── DALL-E 3 generation ──────────────────────────────────────────────────
-async function generateImage(article) {
-  const prompt = buildImagePrompt(article)
+async function generateImage(article, index = 0) {
+  const prompt = buildImagePrompt(article, index)
   console.log(`  Prompt: ${prompt.slice(0, 120)}...`)
 
   const res = await fetch('https://api.openai.com/v1/images/generations', {
@@ -150,7 +187,7 @@ async function main() {
   console.log('='.repeat(60))
   console.log('Cover Image Generation Pipeline')
   console.log(`  DALL-E 3 → Supabase Storage → DB Update`)
-  console.log(`  Limit: ${LIMIT} | Dry run: ${DRY_RUN}`)
+  console.log(`  Limit: ${LIMIT} | Dry run: ${DRY_RUN} | Force: ${FORCE} | Latest: ${LATEST_N || 'off'}`)
   console.log('='.repeat(60) + '\n')
 
   // Fetch target articles
@@ -162,16 +199,29 @@ async function main() {
       .in('id', SPECIFIC_IDS)
     if (error) throw error
     articles = data
-  } else {
-    // Get articles with OG covers, diverse by category, most recent first
+  } else if (LATEST_N > 0) {
+    // Get the N most recent published articles regardless of cover status
     const { data, error } = await supabase
       .from('articles')
       .select('id, slug, title_zh, title_en, category, cover_image, published_at')
       .eq('status', 'published')
-      .like('cover_image', '/api/og%')
       .order('published_at', { ascending: false })
-      .limit(1000)
+      .limit(LATEST_N)
+    if (error) throw error
+    articles = data
+  } else {
+    // Build query: articles needing covers (OG-only), or all published if --force
+    let query = supabase
+      .from('articles')
+      .select('id, slug, title_zh, title_en, category, cover_image, published_at')
+      .eq('status', 'published')
+      .order('published_at', { ascending: false })
 
+    if (!FORCE) {
+      query = query.like('cover_image', '/api/og%')
+    }
+
+    const { data, error } = await query.limit(1000)
     if (error) throw error
 
     // Pick diverse articles across categories
@@ -204,7 +254,10 @@ async function main() {
     const article = articles[i]
     const title = (article.title_en || article.title_zh || article.slug).slice(0, 60)
     console.log(`[${i + 1}/${articles.length}] ${title}`)
-    console.log(`  Category: ${article.category} | Slug: ${article.slug.slice(0, 50)}`)
+    const cat = article.category || 'writing'
+    const styles = CATEGORY_STYLES[cat] || CATEGORY_STYLES.writing
+    const styleIdx = i % styles.length
+    console.log(`  Category: ${cat} | Style: ${styleIdx + 1}/${styles.length} | Slug: ${article.slug.slice(0, 50)}`)
 
     if (DRY_RUN) {
       console.log(`  [DRY RUN] Would generate + upload\n`)
@@ -215,7 +268,7 @@ async function main() {
     try {
       // Step 1: Generate image
       console.log('  Generating with DALL-E 3...')
-      const imageBuffer = await generateImage(article)
+      const imageBuffer = await generateImage(article, i)
       const sizeKB = Math.round(imageBuffer.length / 1024)
       console.log(`  Generated: ${sizeKB} KB`)
 
