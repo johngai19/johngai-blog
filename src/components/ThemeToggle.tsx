@@ -28,8 +28,7 @@ export default function ThemeToggle() {
   return (
     <button
       onClick={toggle}
-      className="p-1.5 rounded-lg transition-opacity hover:opacity-60"
-      style={{ color: dark ? '#F59E0B' : '#6B7280' }}
+      className="p-1.5 rounded-lg transition-opacity hover:opacity-60 text-muted dark:text-amber-400"
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {dark ? <Sun size={16} /> : <Moon size={16} />}

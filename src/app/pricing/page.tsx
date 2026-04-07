@@ -8,7 +8,7 @@ import { Check, Loader2, Crown, Zap } from 'lucide-react'
 
 function PricingContent() {
   const searchParams = useSearchParams()
-  const lang = searchParams.get('lang') ?? 'zh'
+  const lang = searchParams.get('lang') === 'zh' ? 'zh' : 'en'
   const [loading, setLoading] = useState(false)
   const canceled = searchParams.get('canceled') === '1'
 

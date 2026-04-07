@@ -88,12 +88,12 @@ export default function ArticleContent({ article, initialLang }: ArticleContentP
           key={item.id}
           href={`#${item.id}`}
           onClick={() => setMobileTocOpen(false)}
-          className="block text-xs leading-relaxed transition-colors truncate"
-          style={{
-            paddingLeft: `${(item.level - 1) * 12}px`,
-            color: activeId === item.id ? '#D4830A' : '#9CA3AF',
-            fontWeight: activeId === item.id ? '500' : '400',
-          }}
+          className={`block text-xs leading-relaxed transition-colors truncate ${
+            activeId === item.id
+              ? 'text-accent font-medium'
+              : 'text-gray-400 dark:text-gray-500 font-normal'
+          }`}
+          style={{ paddingLeft: `${(item.level - 1) * 12}px` }}
         >
           {item.text}
         </a>
@@ -202,8 +202,7 @@ export default function ArticleContent({ article, initialLang }: ArticleContentP
         <>
           <button
             onClick={() => setMobileTocOpen(true)}
-            className="xl:hidden fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-105"
-            style={{ backgroundColor: '#D4830A', color: '#FFFFFF' }}
+            className="xl:hidden fixed bottom-6 right-6 z-40 w-12 h-12 rounded-full shadow-lg flex items-center justify-center transition-transform hover:scale-105 bg-accent text-white"
             aria-label={initialLang === 'zh' ? '目录' : 'Table of contents'}
           >
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">

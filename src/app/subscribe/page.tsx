@@ -5,8 +5,11 @@ import SubscribeForm from '@/components/SubscribeForm'
 import { Mail, BookOpen, Bell } from 'lucide-react'
 
 export const metadata: Metadata = {
-  title: 'Subscribe',
-  description: 'Subscribe to receive new articles from John Wei.',
+  title: 'Subscribe - John\'s Blog',
+  description: 'Subscribe to receive new articles from John Wei. Get notified when new posts are published.',
+  alternates: {
+    canonical: 'https://www.johngai.com/subscribe',
+  },
 }
 
 interface SubscribePageProps {

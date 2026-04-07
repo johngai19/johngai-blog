@@ -12,7 +12,7 @@ interface HeaderProps {
   lang?: 'zh' | 'en'
 }
 
-export default function Header({ lang = 'zh' }: HeaderProps) {
+export default function Header({ lang = 'en' }: HeaderProps) {
   const [mobileOpen, setMobileOpen] = useState(false)
   const router = useRouter()
   const pathname = usePathname()
@@ -41,8 +41,7 @@ export default function Header({ lang = 'zh' }: HeaderProps) {
             className="flex items-center gap-2 font-semibold text-lg tracking-tight text-[#1A1A1A] dark:text-[#E5E3DF]"
           >
             <span
-              className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white"
-              style={{ backgroundColor: '#D4830A' }}
+              className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white bg-accent"
             >
               J
             </span>
@@ -55,15 +54,13 @@ export default function Header({ lang = 'zh' }: HeaderProps) {
               <Link
                 key={link.href}
                 href={`${link.href}?lang=${lang}`}
-                className="text-sm transition-colors hover:opacity-60"
-                style={{ color: pathname === link.href ? '#D4830A' : undefined }}
+                className={`text-sm transition-colors hover:opacity-60 ${
+                  pathname === link.href
+                    ? 'text-accent'
+                    : 'text-[#1A1A1A] dark:text-[#E5E3DF]'
+                }`}
               >
-                {pathname !== link.href && (
-                  <span className="text-[#1A1A1A] dark:text-[#E5E3DF]">
-                    {lang === 'zh' ? link.label_zh : link.label_en}
-                  </span>
-                )}
-                {pathname === link.href && (lang === 'zh' ? link.label_zh : link.label_en)}
+                {lang === 'zh' ? link.label_zh : link.label_en}
               </Link>
             ))}
           </nav>
@@ -86,9 +83,9 @@ export default function Header({ lang = 'zh' }: HeaderProps) {
               className="flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium transition-colors border-[#E5E3DF] dark:border-[#333333] bg-white dark:bg-[#2A2A2A] text-[#1A1A1A] dark:text-[#E5E3DF]"
               aria-label="Switch language"
             >
-              <span style={{ color: lang === 'zh' ? '#D4830A' : '#6B7280' }}>中</span>
+              <span className={lang === 'zh' ? 'text-accent' : 'text-muted'}>中</span>
               <span className="text-[#E5E3DF] dark:text-[#555555]">/</span>
-              <span style={{ color: lang === 'en' ? '#D4830A' : '#6B7280' }}>EN</span>
+              <span className={lang === 'en' ? 'text-accent' : 'text-muted'}>EN</span>
             </button>
 
             {/* Mobile menu button */}

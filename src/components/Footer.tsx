@@ -4,7 +4,7 @@ interface FooterProps {
   lang?: 'zh' | 'en'
 }
 
-export default function Footer({ lang = 'zh' }: FooterProps) {
+export default function Footer({ lang = 'en' }: FooterProps) {
   const currentYear = new Date().getFullYear()
 
   return (
@@ -15,8 +15,7 @@ export default function Footer({ lang = 'zh' }: FooterProps) {
           <div>
             <div className="flex items-center gap-2 mb-3">
               <span
-                className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white"
-                style={{ backgroundColor: '#D4830A' }}
+                className="w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold text-white bg-accent"
               >
                 J
               </span>

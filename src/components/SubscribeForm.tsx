@@ -8,7 +8,7 @@ interface SubscribeFormProps {
   compact?: boolean
 }
 
-export default function SubscribeForm({ lang = 'zh', compact = false }: SubscribeFormProps) {
+export default function SubscribeForm({ lang = 'en', compact = false }: SubscribeFormProps) {
   const [email, setEmail] = useState('')
   const [langPref, setLangPref] = useState<'zh' | 'en' | 'both'>(lang === 'zh' ? 'zh' : 'en')
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')

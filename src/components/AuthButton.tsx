@@ -11,7 +11,7 @@ interface AuthButtonProps {
   lang?: 'zh' | 'en'
 }
 
-export default function AuthButton({ lang = 'zh' }: AuthButtonProps) {
+export default function AuthButton({ lang = 'en' }: AuthButtonProps) {
   const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const [open, setOpen] = useState(false)

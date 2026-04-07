@@ -152,7 +152,7 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
       <main className="flex-1">
         {article.status !== 'published' && (
           <div className="text-center text-sm py-2 font-medium bg-amber-50 dark:bg-amber-900/20 text-amber-800 dark:text-amber-200">
-            预览模式 — 此文章尚未发布
+            {lang === 'zh' ? '预览模式 -- 此文章尚未发布' : 'Preview mode -- This article is not yet published'}
           </div>
         )}
         <article className="max-w-5xl mx-auto px-4 sm:px-6 py-10">
@@ -180,8 +180,7 @@ export default async function ArticlePage({ params, searchParams }: ArticlePageP
             )}
 
             <h1
-              className="text-3xl sm:text-4xl font-bold leading-tight tracking-tight mb-4 text-gray-900 dark:text-gray-100"
-              style={{ fontFamily: lang === 'zh' ? "'Noto Serif SC', serif" : 'inherit' }}
+              className={`text-3xl sm:text-4xl font-bold leading-tight tracking-tight mb-4 text-gray-900 dark:text-gray-100 ${lang === 'zh' ? 'font-serif' : ''}`}
             >
               {title}
             </h1>

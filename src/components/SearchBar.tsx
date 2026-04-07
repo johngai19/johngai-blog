@@ -16,7 +16,7 @@ interface SearchBarProps {
   lang?: Lang
 }
 
-export default function SearchBar({ lang = 'zh' }: SearchBarProps) {
+export default function SearchBar({ lang = 'en' }: SearchBarProps) {
   const router = useRouter()
   const [open, setOpen] = useState(false)
   const [query, setQuery] = useState('')
@@ -99,7 +99,6 @@ export default function SearchBar({ lang = 'zh' }: SearchBarProps) {
         className={`flex items-center gap-1.5 rounded-lg border px-2 py-1 transition-colors bg-white dark:bg-[#2A2A2A] ${
           open ? 'border-[#D4830A]' : 'border-[#E5E3DF] dark:border-[#333333]'
         }`}
-        style={{ minWidth: '180px' }}
       >
         <Search size={14} className="text-[#9CA3AF] flex-shrink-0" />
         <input
@@ -132,8 +131,7 @@ export default function SearchBar({ lang = 'zh' }: SearchBarProps) {
       {/* Dropdown */}
       {showDropdown && (
         <div
-          className="absolute top-full left-0 right-0 mt-1 rounded-xl border shadow-lg overflow-hidden z-50 border-[#E5E3DF] dark:border-[#333333] bg-white dark:bg-[#242424]"
-          style={{ minWidth: '280px' }}
+          className="absolute top-full left-0 right-0 mt-1 rounded-xl border shadow-lg overflow-hidden z-50 border-[#E5E3DF] dark:border-[#333333] bg-white dark:bg-[#242424] min-w-[280px]"
           role="listbox"
         >
           {loading ? (
@@ -186,8 +184,7 @@ export default function SearchBar({ lang = 'zh' }: SearchBarProps) {
               <div className="border-t px-4 py-2.5 border-[#F0EDEA] dark:border-[#333333]">
                 <Link
                   href={`/search?q=${encodeURIComponent(query.trim())}&lang=${lang}`}
-                  className="flex items-center gap-1.5 text-xs font-medium hover:opacity-70 transition-opacity"
-                  style={{ color: '#D4830A' }}
+                  className="flex items-center gap-1.5 text-xs font-medium hover:opacity-70 transition-opacity text-accent"
                   onClick={() => setOpen(false)}
                 >
                   <Search size={12} />

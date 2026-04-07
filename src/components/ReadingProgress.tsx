@@ -19,10 +19,10 @@ export default function ReadingProgress() {
   }, [])
 
   return (
-    <div className="fixed top-0 left-0 w-full z-50 h-[3px]" style={{ backgroundColor: 'transparent' }}>
+    <div className="fixed top-0 left-0 w-full z-50 h-[3px] bg-transparent">
       <div
-        className="h-full transition-[width] duration-150 ease-out"
-        style={{ width: `${progress}%`, backgroundColor: '#D4830A' }}
+        className="h-full transition-[width] duration-150 ease-out bg-accent"
+        style={{ width: `${progress}%` }}
       />
     </div>
   )

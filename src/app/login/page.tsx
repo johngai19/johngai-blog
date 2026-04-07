@@ -13,7 +13,7 @@ function LoginContent() {
   const [githubLoading, setGithubLoading] = useState(false)
   const [magicSent, setMagicSent] = useState(false)
   const [error, setError] = useState('')
-  const lang = searchParams.get('lang') ?? 'zh'
+  const lang = searchParams.get('lang') === 'zh' ? 'zh' : 'en'
   const nextPath = searchParams.get('next') || '/dashboard'
 
   useEffect(() => {
