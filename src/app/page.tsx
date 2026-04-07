@@ -302,23 +302,47 @@ function CompactArticleCard({ article, lang }: { article: Article; lang: Lang })
   const title = getTitle(article, lang)
   const categoryInfo = article.category ? CATEGORY_LABELS[article.category] : null
   const categoryLabel = categoryInfo ? (lang === 'zh' ? categoryInfo.zh : categoryInfo.en) : article.category
-  const dotColor = CATEGORY_DOT[article.category ?? ''] ?? 'bg-gray-400'
+  const gradient = CATEGORY_GRADIENT[article.category ?? ''] ?? CATEGORY_GRADIENT.writing
 
   return (
     <Link
       href={`/articles/${article.slug}?lang=${lang}`}
-      className="flex items-start gap-3 p-4 rounded-lg border border-gray-100 dark:border-gray-800 hover:bg-gray-50 dark:hover:bg-gray-800/50 transition-colors group"
+      className="flex overflow-hidden rounded-lg border border-gray-100 dark:border-gray-800 hover:shadow-md dark:hover:shadow-[0_4px_12px_rgba(0,0,0,0.3)] transition-shadow group bg-white dark:bg-[#242424]"
     >
-      <span className={`w-2 h-2 rounded-full mt-1.5 flex-shrink-0 ${dotColor}`} />
-      <div className="min-w-0">
+      {/* Cover image / gradient thumbnail */}
+      <div className="relative w-28 sm:w-36 flex-shrink-0 overflow-hidden" style={{ aspectRatio: '16/9' }}>
+        {article.cover_image ? (
+          <Image
+            src={article.cover_image}
+            alt={title}
+            fill
+            className="object-cover transition-transform duration-300 group-hover:scale-105"
+            sizes="144px"
+          />
+        ) : (
+          <div className={`w-full h-full bg-gradient-to-br ${gradient} flex items-center justify-center`}>
+            <span className="text-2xl opacity-20">
+              {article.category === 'engineering' ? '\u2699\uFE0F' :
+               article.category === 'life' ? '\uD83C\uDF3F' :
+               article.category === 'books' ? '\uD83D\uDCDA' :
+               article.category === 'industry' ? '\uD83C\uDFED' :
+               article.category === 'startup' ? '\uD83D\uDE80' : '\u270D\uFE0F'}
+            </span>
+          </div>
+        )}
+      </div>
+
+      {/* Text content */}
+      <div className="flex-1 min-w-0 p-3 sm:p-4 flex flex-col justify-center">
         <h4 className={`text-sm font-medium text-gray-800 dark:text-gray-200 line-clamp-2 group-hover:text-amber-600 dark:group-hover:text-amber-400 transition-colors ${lang === 'zh' ? 'font-[var(--font-noto-serif-sc)]' : ''}`}>
           {title}
         </h4>
-        <div className="flex items-center gap-2 mt-1">
+        <div className="flex items-center gap-2 mt-1.5">
           {categoryLabel && (
-            <span className="text-xs text-gray-400 dark:text-gray-500">{categoryLabel}</span>
+            <span className={`text-xs font-medium px-1.5 py-0.5 rounded ${categoryInfo?.color ?? 'bg-gray-50 text-gray-600 dark:bg-gray-800 dark:text-gray-400'}`}>
+              {categoryLabel}
+            </span>
           )}
-          <span className="text-xs text-gray-300 dark:text-gray-600">|</span>
           <span className="text-xs text-gray-400 dark:text-gray-500">
             {formatDate(article.published_at, lang)}
           </span>
