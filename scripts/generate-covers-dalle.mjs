@@ -61,6 +61,7 @@ const CATEGORY_STYLES = {
   life: 'warm personal photography style, natural light, everyday beauty, nostalgic atmosphere. Earth tones with soft grain.',
   startup: 'dynamic energetic illustration with growth metaphors, bold geometric shapes. Orange and white color palette.',
   writing: 'contemplative East Asian ink wash painting style, minimalist brush strokes, elegant composition. Black ink on textured rice paper with subtle color accents.',
+  'zhihu-qa': 'clean knowledge-sharing illustration, Q&A conversation bubbles, blue gradient background, modern flat design with subtle depth.',
 }
 
 function buildImagePrompt(article) {

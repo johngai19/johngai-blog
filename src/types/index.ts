@@ -54,6 +54,7 @@ export const CATEGORIES = [
   'life',
   'startup',
   'writing',
+  'zhihu-qa',
 ] as const
 
 export type Category = (typeof CATEGORIES)[number]
@@ -65,4 +66,5 @@ export const CATEGORY_LABELS: Record<string, { zh: string; en: string; color: st
   life: { zh: '人生随笔', en: 'Life Notes', color: 'bg-green-50 text-green-700 dark:bg-green-900/30 dark:text-green-300' },
   startup: { zh: '创业与经营', en: 'Startup', color: 'bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300' },
   writing: { zh: '文学与创作', en: 'Writing', color: 'bg-rose-50 text-rose-700 dark:bg-rose-900/30 dark:text-rose-300' },
+  'zhihu-qa': { zh: '知乎问答', en: 'Zhihu Q&A', color: 'bg-sky-50 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300' },
 }

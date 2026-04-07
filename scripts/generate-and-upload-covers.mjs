@@ -97,6 +97,11 @@ const CATEGORY_STYLES = {
     'flat design illustration, clean vectors, bright cheerful palette.',
     'oil painting style, rich textures, classical composition with modern subject.',
   ],
+  'zhihu-qa': [
+    'clean knowledge-sharing illustration, Q&A conversation bubbles, blue gradient background, modern flat design with subtle depth.',
+    'minimalist question-answer visual, speech bubble icons, sky blue and white palette, professional knowledge exchange.',
+    'modern social media Q&A aesthetic, thought bubbles, clean lines, blue tones with warm accents.',
+  ],
 }
 
 function buildImagePrompt(article, index = 0) {

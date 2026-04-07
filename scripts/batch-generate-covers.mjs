@@ -30,6 +30,7 @@ const CATEGORY_STYLES = {
   life: 'personal photography style, warm natural light, everyday moments, nostalgic film grain, earth tones',
   startup: 'dynamic startup energy, rocket or growth metaphor, bold colors, orange and white palette',
   writing: 'contemplative ink wash painting style, Chinese brush strokes, minimalist, black ink on rice paper texture',
+  'zhihu-qa': 'clean knowledge-sharing illustration, Q&A conversation bubbles, blue gradient, modern flat design',
 };
 
 function buildPrompt(article) {
