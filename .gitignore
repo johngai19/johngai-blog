@@ -17,3 +17,4 @@ content/podcast/
 content/index.json
 tsconfig.tsbuildinfo
 .vercel
+supabase/.temp/
