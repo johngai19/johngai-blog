@@ -1,41 +1,71 @@
 {
-  "timestamp": "2026-04-07T11:47:27.217Z",
+  "timestamp": "2026-04-07T11:50:23.966Z",
   "results": {
-    "success": 5,
+    "success": 10,
     "failed": 0,
     "skipped": 0,
-    "totalBytes": 14035999
+    "totalBytes": 31315999
   },
   "generated": [
+    {
+      "slug": "这样的翻译是不懂英文还是不懂编程-0d867470",
+      "title": "Does this translation show a lack of English skills, or a la",
+      "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-0d867470.png",
+      "size": 3084
+    },
     {
       "slug": "娃哈哈传奇当豪门剧映入现实-6ff0bd1a",
       "title": "The Wahaha Legend: When a Billionaire Family Drama Plays Out",
       "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-6ff0bd1a.png",
-      "size": 3294
+      "size": 3584
     },
     {
       "slug": "黑客与画家信息时代的大预言家-06cf91c4",
       "title": "Hackers and Painters — A Great Prophet of the Information Ag",
       "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-06cf91c4.png",
-      "size": 2657
+      "size": 2893
     },
     {
       "slug": "麻瓜父母与有魔法的孩子们-171450f6",
       "title": "Muggle Parents and Their Magical Children",
       "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-171450f6.png",
-      "size": 2914
+      "size": 1467
     },
     {
       "slug": "骗子午餐和电子邮件别开生面的职场指南-b36afdb6",
       "title": "Liars, Lunch and Emails: An Unconventional Guide to the Work",
       "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-b36afdb6.png",
-      "size": 2080
+      "size": 4105
     },
     {
       "slug": "骗中骗蚂蚁的复仇-0a540522",
       "title": "The Sting: An Ant’s Revenge",
       "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-0a540522.png",
-      "size": 2762
+      "size": 3332
+    },
+    {
+      "slug": "食物能源经济与社会人类的明天会更好吗-f26645a4",
+      "title": "Food, Energy, Economy, and Society—Will Humanity’s Tomorrow ",
+      "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-f26645a4.png",
+      "size": 2663
+    },
+    {
+      "slug": "非标自动化行业的现状与前景-8c90abf5",
+      "title": "The Current State and Prospects of the Non-Standard Automati",
+      "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-8c90abf5.png",
+      "size": 2838
+    },
+    {
+      "slug": "难能可贵的宋慧乔-7c145960",
+      "title": "The Rare and Remarkable Song Hye-kyo",
+      "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-7c145960.png",
+      "size": 3045
+    },
+    {
+      "slug": "随你走遍全世界-2916d27d",
+      "title": "Travel the Whole World with You",
+      "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-2916d27d.png",
+      "size": 3570
     }
   ]
 }
