@@ -1,6 +1,7 @@
 # Articles Missing `content_en`
 
-> Generated: 2026-04-07 | Total: 8 articles | All are `status: published`, `category: writing`
+> **Status: RESOLVED** (2026-04-07 round 12) — All 8 articles translated by Claude, pushed to Supabase.
+> Original: 2026-04-07 | Total: 8 articles | All are `status: published`, `category: writing`
 
 | # | ID (short) | Slug | Title (EN) | Published |
 |---|-----------|------|------------|-----------|
