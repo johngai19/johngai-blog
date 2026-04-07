@@ -1,0 +1,477 @@
+[
+  {
+    "id": "48fe9c74-fa06-404e-9d3f-e49f6f57aeec",
+    "slug": "全球通史-4792df79",
+    "action": "RETRANSLATED",
+    "oldLen": 483,
+    "newLen": 363
+  },
+  {
+    "id": "4d002eb2-05bf-44fd-9e2d-d0b6bbc5f1e0",
+    "slug": "关于创业的五十本书二-c93709bc",
+    "action": "RETRANSLATED",
+    "oldLen": 2801,
+    "newLen": 4850
+  },
+  {
+    "id": "8a1c3572-f1bf-4029-967f-3b652d7bcb70",
+    "slug": "这样的翻译是不懂英文还是不懂编程-0d867470",
+    "action": "RETRANSLATED",
+    "oldLen": 1268,
+    "newLen": 2232
+  },
+  {
+    "id": "0e9dcbae-1b8d-46ad-9af5-e94b62049b7c",
+    "slug": "running-local-docker-images-in-minikube-a-quick-guide",
+    "action": "RETRANSLATED",
+    "oldLen": 1913,
+    "newLen": 1918
+  },
+  {
+    "id": "8a702af7-0846-4815-a641-c74206a68182",
+    "slug": "how-to-built-a-webpage-with-help-of-ai",
+    "action": "RETRANSLATED",
+    "oldLen": 2933,
+    "newLen": 2576
+  },
+  {
+    "id": "856709ff-08c7-4999-b717-beef3804ec90",
+    "slug": "exploring-su-shis-recalling-old-times-at-mianchi-composed-following-the-rhymes-of-ziyou",
+    "action": "RETRANSLATED",
+    "oldLen": 3432,
+    "newLen": 3549
+  },
+  {
+    "id": "15756813-63e7-49f1-ba59-2cc90bafa6cf",
+    "slug": "embracing-solitude-finding-fulfillment-and-peace",
+    "action": "RETRANSLATED",
+    "oldLen": 3241,
+    "newLen": 3226
+  },
+  {
+    "id": "173fc682-f6d5-4d97-919b-93b427c8c8e0",
+    "slug": "雨巷戴望舒-98af1ea6",
+    "action": "RETRANSLATED",
+    "oldLen": 356,
+    "newLen": 268
+  },
+  {
+    "id": "ae1b21be-eaa4-491f-8f44-abc15a43fdc4",
+    "slug": "使用javascript递归计算fibo-39856fc1",
+    "action": "RETRANSLATED",
+    "oldLen": 1111,
+    "newLen": 1420
+  },
+  {
+    "id": "294804fc-44b9-4ded-bd95-676ccae1c00f",
+    "slug": "enhancing-pytorch-with-gpu-acceleration-a-comprehensive-guide",
+    "action": "RETRANSLATED",
+    "oldLen": 4958,
+    "newLen": 4696
+  },
+  {
+    "id": "fa222db5-2b3c-4a5f-82da-69b09a2f711e",
+    "slug": "python找不到googleproto-9874bd8a",
+    "action": "RETRANSLATED",
+    "oldLen": 834,
+    "newLen": 930
+  },
+  {
+    "id": "1675486d-5169-4cc5-a753-30ec92a20f6d",
+    "slug": "关于创业的五十本书三-d11f0c78",
+    "action": "RETRANSLATED",
+    "oldLen": 5942,
+    "newLen": 7017
+  },
+  {
+    "id": "1210e2b6-d2a5-4ea1-9c59-1076143fc7a8",
+    "slug": "the-world-is-not-flat-anymore-rethinking-globalization-in-a-fragmented-era",
+    "action": "RETRANSLATED",
+    "oldLen": 7805,
+    "newLen": 6961
+  },
+  {
+    "id": "aecd2dad-339c-4e5e-a0b0-1fcfdc649800",
+    "slug": "van-gogh-style-painting",
+    "action": "RETRANSLATED",
+    "oldLen": 351,
+    "newLen": 402
+  },
+  {
+    "id": "e6d0ebf4-398c-45b8-85a9-3c0cb1343fa2",
+    "slug": "tensorflow-js%e5%ae%98%e6%96%b9%e6%95%99%e7%a8%8b%ef%bc%8c%e4%bd%bf%e7%94%a8cnn%e8%af%86%e5%88%ab%e6%89%8b%e5%86%99%e6%95%b0%e5%ad%97",
+    "action": "RETRANSLATED",
+    "oldLen": 6752,
+    "newLen": 15498
+  },
+  {
+    "id": "0d075d9d-5a31-4d4d-ba8c-1c4ef5bddafe",
+    "slug": "comprehensive-guide-for-developers-working-with-c-python-typescript-and-go-best-practices-solutions-and-quick-references",
+    "action": "RETRANSLATED",
+    "oldLen": 23482,
+    "newLen": 14710
+  },
+  {
+    "id": "0a092dfc-f4b8-45e9-99b8-84c3d5fc18ce",
+    "slug": "practical-guide-debugging-kubernetes-nodes-and-managing-docker-in-custom-setups",
+    "action": "RETRANSLATED",
+    "oldLen": 3488,
+    "newLen": 3531
+  },
+  {
+    "id": "48577ffd-8015-4553-82d9-f384ce78684c",
+    "slug": "how-to-fix-ssh-client_loop-send-disconnect-broken-pipe-error",
+    "action": "RETRANSLATED",
+    "oldLen": 2953,
+    "newLen": 2755
+  },
+  {
+    "id": "53a61f53-5a0d-4114-90c8-17f67138fb08",
+    "slug": "qt6%e7%9a%84modbus%e6%9c%8d%e5%8a%a1%e5%99%a8%e4%be%8b%e7%a8%8b%e6%ba%90%e7%a0%81%e5%88%86%e6%9e%90",
+    "action": "RETRANSLATED",
+    "oldLen": 17368,
+    "newLen": 11566
+  },
+  {
+    "id": "ccc97db8-fc14-4ad6-a0f7-008edefa46e1",
+    "slug": "introduction-to-homebrew-the-ultimate-package-manager-for-macos",
+    "action": "RETRANSLATED",
+    "oldLen": 3568,
+    "newLen": 4067
+  },
+  {
+    "id": "f5744d7e-9161-40df-9e13-9ed884709622",
+    "slug": "setting-up-your-python-environment-for-data-science-a-complete-guide",
+    "action": "RETRANSLATED",
+    "oldLen": 6329,
+    "newLen": 5520
+  },
+  {
+    "id": "fc800d10-bf99-488f-b753-704b837e7b85",
+    "slug": "my-journey-through-the-ibm-data-science-professional-certificate",
+    "action": "RETRANSLATED",
+    "oldLen": 3081,
+    "newLen": 2839
+  },
+  {
+    "id": "41acfe6a-cf42-4a6f-b15c-c86d4f10e021",
+    "slug": "harnessing-the-power-of-integration-in-a-multidisciplinary-tech-world",
+    "action": "RETRANSLATED",
+    "oldLen": 5337,
+    "newLen": 5098
+  },
+  {
+    "id": "d3fe385f-7be4-49f1-b59d-ac68f2f20f0c",
+    "slug": "guide-to-using-poe-api-to-create-a-custom-chatbot",
+    "action": "RETRANSLATED",
+    "oldLen": 4866,
+    "newLen": 4839
+  },
+  {
+    "id": "5a567b37-3afd-4bc4-9f74-4415b6841ac2",
+    "slug": "%e6%9c%80%e5%a5%bd%e7%9a%84kms%e6%bf%80%e6%b4%bbwindows%e5%92%8coffice%e7%bd%91%e7%ab%99v0v%e5%ae%98%e6%96%b9%e8%af%b4%e6%98%8e",
+    "action": "RETRANSLATED",
+    "oldLen": 1846,
+    "newLen": 19540
+  },
+  {
+    "id": "6b5e6859-b45e-4e97-8af2-a451ee65f4d0",
+    "slug": "embracing-open-source-my-journey-through-popular-software-alternatives",
+    "action": "RETRANSLATED",
+    "oldLen": 6699,
+    "newLen": 6339
+  },
+  {
+    "id": "1e967540-a6f9-4a68-b443-4d10bc9475ff",
+    "slug": "guide-to-using-gradio-for-deep-learning-interfaces",
+    "action": "RETRANSLATED",
+    "oldLen": 3773,
+    "newLen": 3521
+  },
+  {
+    "id": "263aee8e-4345-4788-8add-b93805b22832",
+    "slug": "decoding-the-economic-signals-a-personal-exploration",
+    "action": "RETRANSLATED",
+    "oldLen": 4334,
+    "newLen": 4799
+  },
+  {
+    "id": "8dcae1a6-07ac-4f98-943c-08b98428d2b9",
+    "slug": "how-to-find-format-and-auto-mount-hard-disks-in-ubuntu-22-04",
+    "action": "RETRANSLATED",
+    "oldLen": 2360,
+    "newLen": 2250
+  },
+  {
+    "id": "b25754cd-f37f-470f-95ab-20c40f03292a",
+    "slug": "embracing-a-new-name-embracing-a-new-attitude",
+    "action": "RETRANSLATED",
+    "oldLen": 3104,
+    "newLen": 3312
+  },
+  {
+    "id": "aab467b3-c9f4-44d0-87b7-4bca892b5315",
+    "slug": "the-rare-satisfaction-of-finishing-a-technical-book",
+    "action": "RETRANSLATED",
+    "oldLen": 4944,
+    "newLen": 4979
+  },
+  {
+    "id": "e8806fb2-bfaa-43f2-a8b2-064bc9459f68",
+    "slug": "the-evolving-role-of-games-in-my-life",
+    "action": "RETRANSLATED",
+    "oldLen": 6052,
+    "newLen": 5931
+  },
+  {
+    "id": "3744977c-71a6-4d2a-b86b-751e279098e5",
+    "slug": "setting-up-nextcloud-on-synology-nas-with-ssl-certificate",
+    "action": "RETRANSLATED",
+    "oldLen": 2868,
+    "newLen": 2713
+  },
+  {
+    "id": "7956fc31-3b5e-48b3-96be-c6b46454f8db",
+    "slug": "the-duality-of-qi-ye-unveiling-the-profound-meaning-behind-the-chinese-translation-of-enterprise",
+    "action": "RETRANSLATED",
+    "oldLen": 4199,
+    "newLen": 3961
+  },
+  {
+    "id": "9eb612c3-757e-466b-a964-c898fabb1604",
+    "slug": "three-books-that-shaped-my-life",
+    "action": "RETRANSLATED",
+    "oldLen": 4745,
+    "newLen": 4806
+  },
+  {
+    "id": "7a42710d-de45-4cae-a88b-6220096724bc",
+    "slug": "when-automation-becomes-the-enemy-lessons-from-awss-october-2025-dynamodb-outage",
+    "action": "RETRANSLATED",
+    "oldLen": 9593,
+    "newLen": 9330
+  },
+  {
+    "id": "416c4b5f-70d0-4997-953f-3880cd90646c",
+    "slug": "updating-deprecated-commands-in-kubernetes-in-action",
+    "action": "RETRANSLATED",
+    "oldLen": 4550,
+    "newLen": 4461
+  },
+  {
+    "id": "b926956a-952a-47ab-9be9-fec60f46cda4",
+    "slug": "introducing-haruki-murakamis-new-novel-the-city-and-its-uncertain-walls",
+    "action": "RETRANSLATED",
+    "oldLen": 5970,
+    "newLen": 5809
+  },
+  {
+    "id": "a2bc79f3-74a9-467d-b3c6-8857876b26ae",
+    "slug": "my-dream-chocolate-bar-a-journey-of-unexpected-sweetness",
+    "action": "RETRANSLATED",
+    "oldLen": 3883,
+    "newLen": 3900
+  },
+  {
+    "id": "1f02b014-46b3-49e3-ba47-e0ee1fbad773",
+    "slug": "ten-certainties-in-a-world-of-variables",
+    "action": "RETRANSLATED",
+    "oldLen": 3633,
+    "newLen": 3745
+  },
+  {
+    "id": "0d434069-7bff-4640-899d-73e018d79f92",
+    "slug": "walk-out-of-norwegian-wood",
+    "action": "RETRANSLATED",
+    "oldLen": 5730,
+    "newLen": 5783
+  },
+  {
+    "id": "b0f0edd5-5c56-453f-b8c9-39e8d363f42b",
+    "slug": "how-to-setup-and-enable-ssh-on-wsl-and-access-from-other-computers",
+    "action": "RETRANSLATED",
+    "oldLen": 7525,
+    "newLen": 6212
+  },
+  {
+    "id": "3e9beadd-3053-425f-869b-2673c8384a61",
+    "slug": "%e9%95%bf%e9%a3%8e%e7%a0%b4%e6%b5%aa%e4%bc%9a%e6%9c%89%e6%97%b6%ef%bc%8c%e7%9b%b4%e6%8c%82%e4%ba%91%e5%b8%86%e6%b5%8e%e6%b2%a7%e6%b5%b7",
+    "action": "RETRANSLATED",
+    "oldLen": 3783,
+    "newLen": 18597
+  },
+  {
+    "id": "a36b55b3-9ceb-438f-a558-40401d06860e",
+    "slug": "kms%e6%bf%80%e6%b4%bbwindows10-windows11-office-%e8%bd%ac%e8%87%aav0v-bid",
+    "action": "RETRANSLATED",
+    "oldLen": 3450,
+    "newLen": 20228
+  },
+  {
+    "id": "2409ce28-998b-462a-8382-b975c7832c60",
+    "slug": "the-wahaha-saga-when-reality-outshines-fiction",
+    "action": "RETRANSLATED",
+    "oldLen": 11191,
+    "newLen": 7776
+  },
+  {
+    "id": "b901a255-e53f-4877-8584-f226f2f13663",
+    "slug": "my-journey-to-google-professional-workspace-administrator-certification",
+    "action": "RETRANSLATED",
+    "oldLen": 3519,
+    "newLen": 3303
+  },
+  {
+    "id": "2aa563ac-8f3c-4254-87f6-32b919db4789",
+    "slug": "背景音乐之mydecember-a4de979f",
+    "action": "RETRANSLATED",
+    "oldLen": 750,
+    "newLen": 272
+  },
+  {
+    "id": "0bacb97b-cbbc-4384-8655-265feff48fa6",
+    "slug": "troubleshooting-kubernetes-service-exposure-with-minikube",
+    "action": "RETRANSLATED",
+    "oldLen": 3352,
+    "newLen": 3372
+  },
+  {
+    "id": "5d6500c0-add6-4947-91d7-89bb00d326e6",
+    "slug": "optimize-llm-performance-on-mac-and-ubuntu",
+    "action": "RETRANSLATED",
+    "oldLen": 6071,
+    "newLen": 5490
+  },
+  {
+    "id": "491e46d3-35c2-4ecb-a4b3-6995143ef783",
+    "slug": "rediscovering-macos-30-essential-tips-shortcuts-and-suggestions",
+    "action": "RETRANSLATED",
+    "oldLen": 6336,
+    "newLen": 6455
+  },
+  {
+    "id": "e3e2e4f9-1760-4a50-9479-328afc731fd5",
+    "slug": "cloud-vs-open-source-comparing-aws-azure-gcp-services",
+    "action": "RETRANSLATED",
+    "oldLen": 87324,
+    "newLen": 8140
+  },
+  {
+    "id": "95f63762-be41-4165-97f9-f947f0e68e3f",
+    "slug": "from-devops-to-gitops-navigating-it-operations",
+    "action": "RETRANSLATED",
+    "oldLen": 6149,
+    "newLen": 6137
+  },
+  {
+    "id": "5aaa926c-bff1-4d54-b153-46c953754a95",
+    "slug": "fighting-data-bias-a-personal-and-technological-perspective",
+    "action": "RETRANSLATED",
+    "oldLen": 5118,
+    "newLen": 4708
+  },
+  {
+    "id": "fa5f2fae-d01d-46e9-9078-ba56c9a57be7",
+    "slug": "from-idea-to-deployment-a-complete-guide-to-full-stack-development-with-cursor",
+    "action": "ERROR",
+    "error": "fetch failed"
+  },
+  {
+    "id": "5337e33e-4f3e-4a17-af57-b6974ca6c224",
+    "slug": "introducing-ollama-your-gateway-to-local-llms-building-your-own-chatbot",
+    "action": "RETRANSLATED",
+    "oldLen": 4208,
+    "newLen": 4024
+  },
+  {
+    "id": "d4617f8a-0345-4fa7-938f-83f4ee6c83e0",
+    "slug": "introducing-the-preview-release-of-ai-toolkit-for-vs-code-with-mcp-server-integration",
+    "action": "RETRANSLATED",
+    "oldLen": 5606,
+    "newLen": 5516
+  },
+  {
+    "id": "99153d5d-fd9e-4156-8023-b3d2db1cfa77",
+    "slug": "learn-rust-in-30-minutes-a-step-by-step-guide",
+    "action": "RETRANSLATED",
+    "oldLen": 6434,
+    "newLen": 6307
+  },
+  {
+    "id": "d3b7f406-ac3e-41d9-a8a8-6cd21f3fbaeb",
+    "slug": "my-journey-through-the-technological-labyrinth-a-personal-tale",
+    "action": "RETRANSLATED",
+    "oldLen": 3388,
+    "newLen": 3705
+  },
+  {
+    "id": "68cab1b0-67d4-405c-bfd6-f6e7d0014055",
+    "slug": "the-celebration-of-chuxi-a-reflection-on-ageism-in-modern-commentary",
+    "action": "RETRANSLATED",
+    "oldLen": 4707,
+    "newLen": 4469
+  },
+  {
+    "id": "9225d602-8749-4187-8659-ab63b667aa12",
+    "slug": "unlocking-ai-skills-a-guide-to-ibms-specialization",
+    "action": "RETRANSLATED",
+    "oldLen": 3421,
+    "newLen": 3326
+  },
+  {
+    "id": "c214bd4b-bc2f-4406-804b-ccb250153570",
+    "slug": "人生的智慧-dc848a48",
+    "action": "RETRANSLATED",
+    "oldLen": 241,
+    "newLen": 1203
+  },
+  {
+    "id": "953bb0c8-9365-4add-988d-b889d1cfea37",
+    "slug": "转载儒家艺术-a7a92159",
+    "action": "RETRANSLATED",
+    "oldLen": 886,
+    "newLen": 999
+  },
+  {
+    "id": "0487069f-b576-4503-9be5-fcc742dd2904",
+    "slug": "industrial-internet-the-future-of-manufacturing",
+    "action": "RETRANSLATED",
+    "oldLen": 3435,
+    "newLen": 3395
+  },
+  {
+    "id": "148d2a45-b41a-4f65-9c82-5e6de063c59f",
+    "slug": "solidworks-realview-for-all-non-approved-graphic-cards-solidworks",
+    "action": "RETRANSLATED",
+    "oldLen": 4141,
+    "newLen": 4076
+  },
+  {
+    "id": "140161dc-5032-4aa5-9f8c-946e39437bca",
+    "slug": "低压开关电器试验需要考虑哪些因素-74e5aabe",
+    "action": "RETRANSLATED",
+    "oldLen": 1251,
+    "newLen": 2306
+  },
+  {
+    "id": "47fa723b-46a2-44b1-a210-fe82c3068c12",
+    "slug": "关于创业的五十本书一-878812cc",
+    "action": "RETRANSLATED",
+    "oldLen": 319,
+    "newLen": 8495
+  },
+  {
+    "id": "5a770a9b-b9ac-493a-94e8-864c13feda2b",
+    "slug": "关于创业的五十本书四-9da4738a",
+    "action": "RETRANSLATED",
+    "oldLen": 2337,
+    "newLen": 5699
+  },
+  {
+    "id": "24eb4956-80cb-4b0f-970b-af9a450fecd4",
+    "slug": "娃哈哈传奇当豪门剧映入现实-6ff0bd1a",
+    "action": "RETRANSLATED",
+    "oldLen": 6658,
+    "newLen": 10487
+  }
+]
