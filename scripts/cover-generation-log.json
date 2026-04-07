@@ -1,0 +1,41 @@
+{
+  "timestamp": "2026-04-07T11:47:27.217Z",
+  "results": {
+    "success": 5,
+    "failed": 0,
+    "skipped": 0,
+    "totalBytes": 14035999
+  },
+  "generated": [
+    {
+      "slug": "娃哈哈传奇当豪门剧映入现实-6ff0bd1a",
+      "title": "The Wahaha Legend: When a Billionaire Family Drama Plays Out",
+      "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-6ff0bd1a.png",
+      "size": 3294
+    },
+    {
+      "slug": "黑客与画家信息时代的大预言家-06cf91c4",
+      "title": "Hackers and Painters — A Great Prophet of the Information Ag",
+      "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-06cf91c4.png",
+      "size": 2657
+    },
+    {
+      "slug": "麻瓜父母与有魔法的孩子们-171450f6",
+      "title": "Muggle Parents and Their Magical Children",
+      "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-171450f6.png",
+      "size": 2914
+    },
+    {
+      "slug": "骗子午餐和电子邮件别开生面的职场指南-b36afdb6",
+      "title": "Liars, Lunch and Emails: An Unconventional Guide to the Work",
+      "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-b36afdb6.png",
+      "size": 2080
+    },
+    {
+      "slug": "骗中骗蚂蚁的复仇-0a540522",
+      "title": "The Sting: An Ant’s Revenge",
+      "url": "https://lxunzzzdnokdqhipbmdf.supabase.co/storage/v1/object/public/media/covers/-0a540522.png",
+      "size": 2762
+    }
+  ]
+}
