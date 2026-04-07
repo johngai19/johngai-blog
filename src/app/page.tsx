@@ -6,11 +6,18 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import SubscribeForm from '@/components/SubscribeForm'
 import { CATEGORY_LABELS } from '@/types'
+import type { Metadata } from 'next'
 import type { Article, Lang } from '@/types'
 import { ArrowRight, Clock } from 'lucide-react'
 import { formatDate } from '@/lib/utils'
 
 export const revalidate = 3600
+
+export const metadata: Metadata = {
+  alternates: {
+    canonical: 'https://www.johngai.com',
+  },
+}
 
 const CATEGORY_GRADIENT: Record<string, string> = {
   engineering: 'from-blue-500/20 to-cyan-500/20 dark:from-blue-900/40 dark:to-cyan-900/40',
