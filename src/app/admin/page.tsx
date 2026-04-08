@@ -17,21 +17,21 @@ async function getStats() {
     { data: recentSignups },
     { data: publishedForHealth },
   ] = await Promise.all([
-    supabase.from('articles').select('*', { count: 'exact', head: true }),
-    supabase.from('articles').select('*', { count: 'exact', head: true }).eq('status', 'published'),
-    supabase.from('articles').select('*', { count: 'exact', head: true }).eq('status', 'draft'),
-    supabase.from('email_subscribers').select('*', { count: 'exact', head: true }),
-    supabase.from('profiles').select('*', { count: 'exact', head: true }),
-    supabase
+    getSb().from('articles').select('*', { count: 'exact', head: true }),
+    getSb().from('articles').select('*', { count: 'exact', head: true }).eq('status', 'published'),
+    getSb().from('articles').select('*', { count: 'exact', head: true }).eq('status', 'draft'),
+    getSb().from('email_subscribers').select('*', { count: 'exact', head: true }),
+    getSb().from('profiles').select('*', { count: 'exact', head: true }),
+    getSb()
       .from('subscriptions')
       .select('plan, status')
       .eq('status', 'active'),
-    supabase
+    getSb()
       .from('profiles')
       .select('id, display_name, subscription_tier, created_at')
       .order('created_at', { ascending: false })
       .limit(5),
-    supabase
+    getSb()
       .from('articles')
       .select('id, content_zh, content_en')
       .eq('status', 'published'),
