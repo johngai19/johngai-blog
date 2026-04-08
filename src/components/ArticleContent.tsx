@@ -173,6 +173,10 @@ export default function ArticleContent({ article, initialLang }: ArticleContentP
                       alt={alt || ''}
                       loading="lazy"
                       className="max-w-full h-auto rounded-lg mx-auto"
+                      onError={(e) => {
+                        const target = e.currentTarget
+                        target.style.display = 'none'
+                      }}
                       {...props}
                     />
                   </span>

@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
   }
 
   const ext = file.name.split('.').pop()?.toLowerCase() || 'bin'
-  const allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'avif']
+  const allowed = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg', 'avif', 'heic', 'heif']
   if (!allowed.includes(ext)) {
     return NextResponse.json(
       { error: `File type .${ext} not allowed` },
