@@ -3,10 +3,8 @@ import { FileText, Users, CreditCard, TrendingUp, Languages } from 'lucide-react
 
 export const dynamic = 'force-dynamic'
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
+let _sb: ReturnType<typeof createClient> | null = null
+function getSb() { if (!_sb) _sb = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!); return _sb }
 
 async function getStats() {
   const [

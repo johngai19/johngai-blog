@@ -4,10 +4,8 @@ import { Resend } from 'resend'
 
 export const dynamic = 'force-dynamic'
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
+let _sb: ReturnType<typeof createClient> | null = null
+function getSb() { if (!_sb) _sb = createClient(process.env.NEXT_PUBLIC_SUPABASE_URL!, process.env.SUPABASE_SERVICE_ROLE_KEY!); return _sb }
 
 function generateUnsubscribeToken(email: string): string {
   return Buffer.from(email).toString('base64url')
