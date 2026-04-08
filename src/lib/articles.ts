@@ -1,6 +1,22 @@
 import { createServerClient } from './supabase'
 import type { Article, ArticleListParams, PaginatedArticles } from '@/types'
 
+/**
+ * Sanitize user input for use in PostgREST / Supabase `.or()` filter strings.
+ * Escapes characters that have special meaning in PostgREST filter syntax
+ * (commas, dots, parentheses, backslashes) and SQL LIKE wildcards (%, _).
+ */
+function sanitizeFilterValue(input: string): string {
+  return input
+    .replace(/\\/g, '\\\\')   // backslash first (avoid double-escaping)
+    .replace(/%/g, '\\%')     // SQL LIKE wildcard
+    .replace(/_/g, '\\_')     // SQL LIKE wildcard
+    .replace(/,/g, '\\,')     // PostgREST OR separator
+    .replace(/\./g, '\\.')    // PostgREST operator separator
+    .replace(/\(/g, '\\(')    // PostgREST grouping
+    .replace(/\)/g, '\\)')    // PostgREST grouping
+}
+
 export async function getArticles(params: ArticleListParams = {}): Promise<PaginatedArticles> {
   const { page = 1, pageSize = 12, category, status = 'published', search } = params
   const supabase = createServerClient()
@@ -16,9 +32,10 @@ export async function getArticles(params: ArticleListParams = {}): Promise<Pagin
   }
 
   if (search) {
+    const safe = sanitizeFilterValue(search)
     // Search in both Chinese and English titles and content
     query = query.or(
-      `title_zh.ilike.%${search}%,title_en.ilike.%${search}%,content_zh.ilike.%${search}%,content_en.ilike.%${search}%`
+      `title_zh.ilike.%${safe}%,title_en.ilike.%${safe}%,content_zh.ilike.%${safe}%,content_en.ilike.%${safe}%`
     )
   }
 
@@ -216,13 +233,14 @@ export async function searchArticles(
 
   const supabase = createServerClient()
   const term = q.trim()
+  const safeTerm = sanitizeFilterValue(term)
 
   const { data, error } = await supabase
     .from('articles')
     .select('*')
     .eq('status', 'published')
     .or(
-      `title_zh.ilike.%${term}%,title_en.ilike.%${term}%,excerpt_zh.ilike.%${term}%,excerpt_en.ilike.%${term}%,content_zh.ilike.%${term}%,content_en.ilike.%${term}%`
+      `title_zh.ilike.%${safeTerm}%,title_en.ilike.%${safeTerm}%,excerpt_zh.ilike.%${safeTerm}%,excerpt_en.ilike.%${safeTerm}%,content_zh.ilike.%${safeTerm}%,content_en.ilike.%${safeTerm}%`
     )
     .order('published_at', { ascending: false })
     .limit(limit)
