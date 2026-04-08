@@ -40,6 +40,11 @@ const LLM_KEY = 'sk-homelab-2026'
 const LLM_MODEL = 'azure-global/gpt-5.1'
 const RATE_LIMIT_MS = 3000
 
+// ── OpenAI fallback (used when homelab gateway is unavailable) ───
+const OPENAI_GATEWAY = 'https://api.openai.com/v1/chat/completions'
+const OPENAI_KEY = env.OPENAI_API_KEY || ''
+const OPENAI_MODEL = 'gpt-4.1'
+
 // ── Author's writing style (extracted from 5 original Chinese articles) ──
 const STYLE_GUIDANCE = `
 ## Author Voice Profile (John Wei / 魏智勇)
@@ -105,6 +110,35 @@ function sleep(ms) {
   return new Promise(r => setTimeout(r, ms))
 }
 
+async function callLLM(gateway, apiKey, model, messages, maxTokens) {
+  const bodyPayload = { model, messages, max_tokens: maxTokens }
+  // GPT-5 family only supports temperature=1; others get 0.7
+  if (!model.includes('gpt-5')) {
+    bodyPayload.temperature = 0.7
+  }
+
+  const controller = new AbortController()
+  const timeout = setTimeout(() => controller.abort(), 180000) // 3min timeout
+
+  try {
+    const resp = await fetch(gateway, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(bodyPayload),
+      signal: controller.signal,
+    })
+
+    clearTimeout(timeout)
+    return resp
+  } catch (e) {
+    clearTimeout(timeout)
+    throw e
+  }
+}
+
 async function translate(text, retries = 2) {
   const maxInput = 10000
   let inputText = text
@@ -114,6 +148,10 @@ async function translate(text, retries = 2) {
   }
 
   const maxTokens = Math.min(12000, Math.max(3000, Math.ceil(inputText.length * 1.8)))
+  const messages = [
+    { role: 'system', content: SYSTEM_PROMPT },
+    { role: 'user', content: `Translate this Chinese blog article to English:\n\n${inputText}` },
+  ]
 
   for (let attempt = 0; attempt <= retries; attempt++) {
     try {
@@ -122,40 +160,20 @@ async function translate(text, retries = 2) {
         await sleep(5000 * attempt)
       }
 
-      const controller = new AbortController()
-      const timeout = setTimeout(() => controller.abort(), 180000) // 3min timeout
+      let resp = await callLLM(LLM_GATEWAY, LLM_KEY, LLM_MODEL, messages, maxTokens)
 
-      const bodyPayload = {
-        model: LLM_MODEL,
-        messages: [
-          { role: 'system', content: SYSTEM_PROMPT },
-          { role: 'user', content: `Translate this Chinese blog article to English:\n\n${inputText}` },
-        ],
-        max_tokens: maxTokens,
+      // If homelab gateway is unavailable, fall back to OpenAI directly
+      if ((resp.status === 502 || resp.status === 503) && OPENAI_KEY) {
+        console.log(`    (homelab gateway ${resp.status} → falling back to OpenAI ${OPENAI_MODEL})`)
+        resp = await callLLM(OPENAI_GATEWAY, OPENAI_KEY, OPENAI_MODEL, messages, maxTokens)
       }
-      // GPT-5 family only supports temperature=1
-      if (!LLM_MODEL.includes('gpt-5')) {
-        bodyPayload.temperature = 0.7
-      }
-
-      const resp = await fetch(LLM_GATEWAY, {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${LLM_KEY}`,
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(bodyPayload),
-        signal: controller.signal,
-      })
-
-      clearTimeout(timeout)
 
       if (!resp.ok) {
         const body = await resp.text()
-        if (attempt < retries && (resp.status === 502 || resp.status === 503 || resp.status === 429)) {
+        if (attempt < retries && (resp.status === 429)) {
           continue
         }
-        throw new Error(`LLM Gateway ${resp.status}: ${body.substring(0, 200)}`)
+        throw new Error(`LLM ${resp.status}: ${body.substring(0, 200)}`)
       }
 
       const data = await resp.json()
@@ -171,23 +189,19 @@ async function translate(text, retries = 2) {
 }
 
 async function translateShort(text) {
-  const resp = await fetch(LLM_GATEWAY, {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${LLM_KEY}`,
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      model: LLM_MODEL,
-      messages: [
-        { role: 'system', content: 'Translate to English. Match the tone of a personal blog — warm and natural. Output only the translation.' },
-        { role: 'user', content: text },
-      ],
-      max_tokens: 500,
-    }),
-  })
+  const messages = [
+    { role: 'system', content: 'Translate to English. Match the tone of a personal blog — warm and natural. Output only the translation.' },
+    { role: 'user', content: text },
+  ]
 
-  if (!resp.ok) throw new Error(`LLM Gateway ${resp.status}`)
+  let resp = await callLLM(LLM_GATEWAY, LLM_KEY, LLM_MODEL, messages, 500)
+
+  // Fall back to OpenAI if homelab gateway is unavailable
+  if ((resp.status === 502 || resp.status === 503) && OPENAI_KEY) {
+    resp = await callLLM(OPENAI_GATEWAY, OPENAI_KEY, OPENAI_MODEL, messages, 500)
+  }
+
+  if (!resp.ok) throw new Error(`LLM ${resp.status}`)
   const data = await resp.json()
   return data.choices?.[0]?.message?.content?.trim() || null
 }
