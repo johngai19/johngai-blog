@@ -1,12 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { getStripe } from '@/lib/stripe'
-import { createClient } from '@supabase/supabase-js'
+import { createClient, SupabaseClient } from '@supabase/supabase-js'
 import type Stripe from 'stripe'
 
-const supabase = createClient(
-  process.env.NEXT_PUBLIC_SUPABASE_URL!,
-  process.env.SUPABASE_SERVICE_ROLE_KEY!
-)
+let _supabase: SupabaseClient | null = null
+function getServiceSupabase() {
+  if (!_supabase) {
+    _supabase = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    )
+  }
+  return _supabase
+}
 
 export async function POST(request: NextRequest) {
   const body = await request.text()
@@ -41,7 +47,7 @@ export async function POST(request: NextRequest) {
         const periodStart = firstItem?.current_period_start ?? null
         const periodEnd = firstItem?.current_period_end ?? null
 
-        await supabase.from('subscriptions').upsert({
+        await getServiceSupabase().from('subscriptions').upsert({
           user_id: userId,
           stripe_subscription_id: subscriptionId,
           stripe_customer_id: session.customer as string,
@@ -53,7 +59,7 @@ export async function POST(request: NextRequest) {
           updated_at: new Date().toISOString(),
         }, { onConflict: 'stripe_subscription_id' })
 
-        await supabase
+        await getServiceSupabase()
           .from('profiles')
           .update({ subscription_tier: plan, updated_at: new Date().toISOString() })
           .eq('id', userId)
@@ -69,7 +75,7 @@ export async function POST(request: NextRequest) {
         const updPeriodStart = updatedItem?.current_period_start ?? null
         const updPeriodEnd = updatedItem?.current_period_end ?? null
 
-        await supabase
+        await getServiceSupabase()
           .from('subscriptions')
           .update({
             status: subscription.status,
@@ -83,7 +89,7 @@ export async function POST(request: NextRequest) {
         if (userId && subscription.status === 'active') {
           const plan = subscription.metadata?.plan
           if (plan) {
-            await supabase
+            await getServiceSupabase()
               .from('profiles')
               .update({ subscription_tier: plan, updated_at: new Date().toISOString() })
               .eq('id', userId)
@@ -96,7 +102,7 @@ export async function POST(request: NextRequest) {
         const subscription = event.data.object as Stripe.Subscription
         const userId = subscription.metadata?.supabase_user_id
 
-        await supabase
+        await getServiceSupabase()
           .from('subscriptions')
           .update({
             status: 'canceled',
@@ -106,7 +112,7 @@ export async function POST(request: NextRequest) {
           .eq('stripe_subscription_id', subscription.id)
 
         if (userId) {
-          await supabase
+          await getServiceSupabase()
             .from('profiles')
             .update({ subscription_tier: 'free', updated_at: new Date().toISOString() })
             .eq('id', userId)
@@ -122,7 +128,7 @@ export async function POST(request: NextRequest) {
         const subscriptionId = typeof rawSub === 'string' ? rawSub : rawSub?.id
 
         if (subscriptionId) {
-          await supabase
+          await getServiceSupabase()
             .from('subscriptions')
             .update({ status: 'past_due', updated_at: new Date().toISOString() })
             .eq('stripe_subscription_id', subscriptionId)
