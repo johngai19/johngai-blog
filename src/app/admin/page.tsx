@@ -38,23 +38,23 @@ async function getStats() {
   ])
 
   // Calculate content health
-  const healthData = publishedForHealth ?? []
-  const bilingual = healthData.filter(a =>
+  const healthData = (publishedForHealth ?? []) as Array<{ id: string; content_zh: string | null; content_en: string | null }>
+  const bilingual = healthData.filter((a: { content_zh: string | null; content_en: string | null }) =>
     a.content_zh && a.content_zh.length >= 50 &&
     a.content_en && a.content_en.length >= 50
   ).length
-  const zhOnly = healthData.filter(a =>
+  const zhOnly = healthData.filter((a: { content_zh: string | null; content_en: string | null }) =>
     a.content_zh && a.content_zh.length >= 50 &&
     (!a.content_en || a.content_en.length < 50)
   ).length
-  const enOnly = healthData.filter(a =>
+  const enOnly = healthData.filter((a: { content_zh: string | null; content_en: string | null }) =>
     (!a.content_zh || a.content_zh.length < 50) &&
     a.content_en && a.content_en.length >= 50
   ).length
 
   const proPlan = { price: 19 }
   const elitePlan = { price: 199 }
-  const mrr = (activeSubs ?? []).reduce((sum, sub) => {
+  const mrr = (activeSubs ?? [] as Array<{ plan: string; status: string }>).reduce((sum: number, sub: { plan: string }) => {
     if (sub.plan === 'pro') return sum + proPlan.price
     if (sub.plan === 'elite') return sum + elitePlan.price
     return sum
@@ -203,7 +203,7 @@ export default async function AdminPage() {
           {stats.recentSignups.length === 0 ? (
             <p className="px-4 py-6 text-sm text-center text-[#9CA3AF]">暂无数据</p>
           ) : (
-            stats.recentSignups.map((u) => (
+            stats.recentSignups.map((u: { id: string; display_name: string | null; subscription_tier: string | null; created_at: string }) => (
               <div key={u.id} className="flex items-center justify-between px-4 py-3">
                 <div>
                   <p className="text-sm font-medium text-[#1A1A1A] dark:text-[#E5E3DF]">
