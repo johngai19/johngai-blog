@@ -124,7 +124,7 @@ export async function POST(req: NextRequest) {
 
     // If articleSlug is provided, auto-generate from article content
     if (articleSlug) {
-      const { data: article, error: articleError } = await supabase
+      const { data: article, error: articleError } = await getSb()
         .from('articles')
         .select('title_zh, title_en, excerpt_zh, excerpt_en, content_zh, content_en, slug')
         .eq('slug', articleSlug)
@@ -159,7 +159,7 @@ export async function POST(req: NextRequest) {
     }
 
     // Fetch confirmed subscribers
-    const { data: subscribers, error: subError } = await supabase
+    const { data: subscribers, error: subError } = await getSb()
       .from('email_subscribers')
       .select('email, language_preference')
       .eq('confirmed', true)

@@ -36,7 +36,7 @@ export async function GET(req: NextRequest) {
     )
   }
 
-  const { error } = await supabase
+  const { error } = await getSb()
     .from('email_subscribers')
     .update({ confirmed: false })
     .eq('email', email)
