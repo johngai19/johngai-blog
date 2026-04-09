@@ -262,6 +262,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/windowsautoruns',
         permanent: true,
       },
+      {
+        source: '/articles/vs-code-xml-显示中文乱码',
+        destination: '/articles/vs-code-xml',
+        permanent: true,
+      },
+      {
+        source: '/articles/vs-code-xml-%E6%98%BE%E7%A4%BA%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81',
+        destination: '/articles/vs-code-xml',
+        permanent: true,
+      },
+      {
+        source: '/articles/vs-code-xml-%e6%98%be%e7%a4%ba%e4%b8%ad%e6%96%87%e4%b9%b1%e7%a0%81',
+        destination: '/articles/vs-code-xml',
+        permanent: true,
+      },
     ]
   },
 }
