@@ -422,6 +422,31 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220327-e7bea4e69996dsm7',
         permanent: true,
       },
+      {
+        source: '/articles/使用javascript递归计算fibonacci（斐波那契）数列',
+        destination: '/articles/javascriptfibonacci',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BD%BF%E7%94%A8javascript%E9%80%92%E5%BD%92%E8%AE%A1%E7%AE%97fibonacci%EF%BC%88%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%EF%BC%89%E6%95%B0%E5%88%97',
+        destination: '/articles/javascriptfibonacci',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e4%bd%bf%e7%94%a8javascript%e9%80%92%e5%bd%92%e8%ae%a1%e7%ae%97fibonacci%ef%bc%88%e6%96%90%e6%b3%a2%e9%82%a3%e5%a5%91%ef%bc%89%e6%95%b0%e5%88%97',
+        destination: '/articles/javascriptfibonacci',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BD%BF%E7%94%A8javascript%E9%80%92%E5%BD%92%E8%AE%A1%E7%AE%97fibonacci%EF%BC%88%E6%96%90%E6%B3%A2%E9%82%A3%E5%A5%91%EF%BC%89%E6%95%B0%E5%88%97%E5%92%8C%E9%98%B6%E4%B9%98',
+        destination: '/articles/javascriptfibonacci',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e4%bd%bf%e7%94%a8javascript%e9%80%92%e5%bd%92%e8%ae%a1%e7%ae%97fibonacci%ef%bc%88%e6%96%90%e6%b3%a2%e9%82%a3%e5%a5%91%ef%bc%89%e6%95%b0%e5%88%97%e5%92%8c%e9%98%b6%e4%b9%98',
+        destination: '/articles/javascriptfibonacci',
+        permanent: true,
+      },
     ]
   },
 }
