@@ -167,6 +167,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20221105-e59fbae4ba8estm3',
         permanent: true,
       },
+      {
+        source: '/articles/耦合，交流耦合与直流耦合',
+        destination: '/articles/20221116-e880a6e59088efbc',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E8%80%A6%E5%90%88%EF%BC%8C%E4%BA%A4%E6%B5%81%E8%80%A6%E5%90%88%E4%B8%8E%E7%9B%B4%E6%B5%81%E8%80%A6%E5%90%88',
+        destination: '/articles/20221116-e880a6e59088efbc',
+        permanent: true,
+      },
     ]
   },
 }
