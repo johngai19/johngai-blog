@@ -67,6 +67,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220225-e4bdbfe794a8e7be',
         permanent: true,
       },
+      {
+        source: '/articles/如何从官方地址下载google-chrome的离线安装包',
+        destination: '/articles/20220207-e5a682e4bd95e4bb',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E5%A6%82%E4%BD%95%E4%BB%8E%E5%AE%98%E6%96%B9%E5%9C%B0%E5%9D%80%E4%B8%8B%E8%BD%BDgoogle-chrome%E7%9A%84%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E5%8C%85',
+        destination: '/articles/20220207-e5a682e4bd95e4bb',
+        permanent: true,
+      },
     ]
   },
 }
