@@ -232,6 +232,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/chromehttphttps',
         permanent: true,
       },
+      {
+        source: '/articles/labview常用技巧：2-使用通道传递数据',
+        destination: '/articles/20231011-labviewe5b8b8e79',
+        permanent: true,
+      },
+      {
+        source: '/articles/labview%E5%B8%B8%E7%94%A8%E6%8A%80%E5%B7%A7%EF%BC%9A2-%E4%BD%BF%E7%94%A8%E9%80%9A%E9%81%93%E4%BC%A0%E9%80%92%E6%95%B0%E6%8D%AE',
+        destination: '/articles/20231011-labviewe5b8b8e79',
+        permanent: true,
+      },
+      {
+        source: '/articles/labview%e5%b8%b8%e7%94%a8%e6%8a%80%e5%b7%a7%ef%bc%9a2-%e4%bd%bf%e7%94%a8%e9%80%9a%e9%81%93%e4%bc%a0%e9%80%92%e6%95%b0%e6%8d%ae',
+        destination: '/articles/20231011-labviewe5b8b8e79',
+        permanent: true,
+      },
     ]
   },
 }
