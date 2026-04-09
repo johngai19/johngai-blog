@@ -147,6 +147,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220104-e3808ae9bca0e796',
         permanent: true,
       },
+      {
+        source: '/articles/《小妇人》-爱是种惊人的力量',
+        destination: '/articles/20220328-e3808ae5b08fe5a6',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E3%80%8A%E5%B0%8F%E5%A6%87%E4%BA%BA%E3%80%8B-%E7%88%B1%E6%98%AF%E7%A7%8D%E6%83%8A%E4%BA%BA%E7%9A%84%E5%8A%9B%E9%87%8F',
+        destination: '/articles/20220328-e3808ae5b08fe5a6',
+        permanent: true,
+      },
     ]
   },
 }
