@@ -107,6 +107,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220824-e4b8bae4bb80e4b9',
         permanent: true,
       },
+      {
+        source: '/articles/串口调试工具、方法和步骤',
+        destination: '/articles/20221103-e4b8b2e58fa3e8b0',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%B8%B2%E5%8F%A3%E8%B0%83%E8%AF%95%E5%B7%A5%E5%85%B7%E3%80%81%E6%96%B9%E6%B3%95%E5%92%8C%E6%AD%A5%E9%AA%A4',
+        destination: '/articles/20221103-e4b8b2e58fa3e8b0',
+        permanent: true,
+      },
     ]
   },
 }
