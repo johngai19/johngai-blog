@@ -322,6 +322,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/20221025-e9809ae8bf87labv',
         permanent: true,
       },
+      {
+        source: '/articles/程序员如何少写无用的代码',
+        destination: '/articles/20220104-e7a88be5ba8fe591',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E7%A8%8B%E5%BA%8F%E5%91%98%E5%A6%82%E4%BD%95%E5%B0%91%E5%86%99%E6%97%A0%E7%94%A8%E7%9A%84%E4%BB%A3%E7%A0%81',
+        destination: '/articles/20220104-e7a88be5ba8fe591',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e7%a8%8b%e5%ba%8f%e5%91%98%e5%a6%82%e4%bd%95%e5%b0%91%e5%86%99%e6%97%a0%e7%94%a8%e7%9a%84%e4%bb%a3%e7%a0%81',
+        destination: '/articles/20220104-e7a88be5ba8fe591',
+        permanent: true,
+      },
     ]
   },
 }
