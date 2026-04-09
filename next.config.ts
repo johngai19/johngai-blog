@@ -392,6 +392,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/windows10-wsl2cpu',
         permanent: true,
       },
+      {
+        source: '/articles/ubuntu-20-04离线安装docker-社区版',
+        destination: '/articles/ubuntu-20-04docker',
+        permanent: true,
+      },
+      {
+        source: '/articles/ubuntu-20-04%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85docker-%E7%A4%BE%E5%8C%BA%E7%89%88',
+        destination: '/articles/ubuntu-20-04docker',
+        permanent: true,
+      },
+      {
+        source: '/articles/ubuntu-20-04%e7%a6%bb%e7%ba%bf%e5%ae%89%e8%a3%85docker-%e7%a4%be%e5%8c%ba%e7%89%88',
+        destination: '/articles/ubuntu-20-04docker',
+        permanent: true,
+      },
     ]
   },
 }
