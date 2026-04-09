@@ -207,6 +207,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20230227-e5b7a5e4b89ae4ba',
         permanent: true,
       },
+      {
+        source: '/articles/艾默生成功收购ni公司，进一步巩固全球自动化领导',
+        destination: '/articles/20231011-e889bee9bb98e794',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E8%89%BE%E9%BB%98%E7%94%9F%E6%88%90%E5%8A%9F%E6%94%B6%E8%B4%ADni%E5%85%AC%E5%8F%B8%EF%BC%8C%E8%BF%9B%E4%B8%80%E6%AD%A5%E5%B7%A9%E5%9B%BA%E5%85%A8%E7%90%83%E8%87%AA%E5%8A%A8%E5%8C%96%E9%A2%86%E5%AF%BC',
+        destination: '/articles/20231011-e889bee9bb98e794',
+        permanent: true,
+      },
     ]
   },
 }
