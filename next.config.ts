@@ -127,6 +127,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20070606-e788b1c2b7e79086',
         permanent: true,
       },
+      {
+        source: '/articles/了解自我与认识世界-李银河《中国女性的感情与',
+        destination: '/articles/20220104-e4ba86e8a7a3e887',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BA%86%E8%A7%A3%E8%87%AA%E6%88%91%E4%B8%8E%E8%AE%A4%E8%AF%86%E4%B8%96%E7%95%8C-%E6%9D%8E%E9%93%B6%E6%B2%B3%E3%80%8A%E4%B8%AD%E5%9B%BD%E5%A5%B3%E6%80%A7%E7%9A%84%E6%84%9F%E6%83%85%E4%B8%8E',
+        destination: '/articles/20220104-e4ba86e8a7a3e887',
+        permanent: true,
+      },
     ]
   },
 }
