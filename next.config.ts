@@ -197,6 +197,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20230226-e585b3e4ba8ee4bd',
         permanent: true,
       },
+      {
+        source: '/articles/工业互联网制造业的未来',
+        destination: '/articles/20230227-e5b7a5e4b89ae4ba',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E5%B7%A5%E4%B8%9A%E4%BA%92%E8%81%94%E7%BD%91%E5%88%B6%E9%80%A0%E4%B8%9A%E7%9A%84%E6%9C%AA%E6%9D%A5',
+        destination: '/articles/20230227-e5b7a5e4b89ae4ba',
+        permanent: true,
+      },
     ]
   },
 }
