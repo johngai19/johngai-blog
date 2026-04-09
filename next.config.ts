@@ -47,6 +47,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/ubuntu-20-04p4cudacudnn',
         permanent: true,
       },
+      {
+        source: '/articles/rabbitmq和kafka，两种消息队列架构的对比',
+        destination: '/articles/20220104-rabbitmqe5928cka',
+        permanent: true,
+      },
+      {
+        source: '/articles/rabbitmq%E5%92%8Ckafka%EF%BC%8C%E4%B8%A4%E7%A7%8D%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97%E6%9E%B6%E6%9E%84%E7%9A%84%E5%AF%B9%E6%AF%94',
+        destination: '/articles/20220104-rabbitmqe5928cka',
+        permanent: true,
+      },
     ]
   },
 }
