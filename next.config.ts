@@ -337,6 +337,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220104-e7a88be5ba8fe591',
         permanent: true,
       },
+      {
+        source: '/articles/常用邮箱客户端设置指南',
+        destination: '/articles/20231007-e5b8b8e794a8e982',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E5%B8%B8%E7%94%A8%E9%82%AE%E7%AE%B1%E5%AE%A2%E6%88%B7%E7%AB%AF%E8%AE%BE%E7%BD%AE%E6%8C%87%E5%8D%97',
+        destination: '/articles/20231007-e5b8b8e794a8e982',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e5%b8%b8%e7%94%a8%e9%82%ae%e7%ae%b1%e5%ae%a2%e6%88%b7%e7%ab%af%e8%ae%be%e7%bd%ae%e6%8c%87%e5%8d%97',
+        destination: '/articles/20231007-e5b8b8e794a8e982',
+        permanent: true,
+      },
     ]
   },
 }
