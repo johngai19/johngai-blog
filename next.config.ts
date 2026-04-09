@@ -37,6 +37,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/windows10wsl2wsl2docker',
         permanent: true,
       },
+      {
+        source: '/articles/ubuntu-20-04安装p4显卡cuda和cudnn',
+        destination: '/articles/ubuntu-20-04p4cudacudnn',
+        permanent: true,
+      },
+      {
+        source: '/articles/ubuntu-20-04%E5%AE%89%E8%A3%85p4%E6%98%BE%E5%8D%A1cuda%E5%92%8Ccudnn',
+        destination: '/articles/ubuntu-20-04p4cudacudnn',
+        permanent: true,
+      },
     ]
   },
 }
