@@ -407,6 +407,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/ubuntu-20-04docker',
         permanent: true,
       },
+      {
+        source: '/articles/群晖dsm7安装ipkg包管理器及第三方社区安装包步骤',
+        destination: '/articles/20220327-e7bea4e69996dsm7',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E7%BE%A4%E6%99%96dsm7%E5%AE%89%E8%A3%85ipkg%E5%8C%85%E7%AE%A1%E7%90%86%E5%99%A8%E5%8F%8A%E7%AC%AC%E4%B8%89%E6%96%B9%E7%A4%BE%E5%8C%BA%E5%AE%89%E8%A3%85%E5%8C%85%E6%AD%A5%E9%AA%A4',
+        destination: '/articles/20220327-e7bea4e69996dsm7',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e7%be%a4%e6%99%96dsm7%e5%ae%89%e8%a3%85ipkg%e5%8c%85%e7%ae%a1%e7%90%86%e5%99%a8%e5%8f%8a%e7%ac%ac%e4%b8%89%e6%96%b9%e7%a4%be%e5%8c%ba%e5%ae%89%e8%a3%85%e5%8c%85%e6%ad%a5%e9%aa%a4',
+        destination: '/articles/20220327-e7bea4e69996dsm7',
+        permanent: true,
+      },
     ]
   },
 }
