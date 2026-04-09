@@ -117,6 +117,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20221103-e4b8b2e58fa3e8b0',
         permanent: true,
       },
+      {
+        source: '/articles/爱·理想·生活-说说吕克·贝松的《subway》',
+        destination: '/articles/20070606-e788b1c2b7e79086',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E7%88%B1%C2%B7%E7%90%86%E6%83%B3%C2%B7%E7%94%9F%E6%B4%BB-%E8%AF%B4%E8%AF%B4%E5%90%95%E5%85%8B%C2%B7%E8%B4%9D%E6%9D%BE%E7%9A%84%E3%80%8Asubway%E3%80%8B',
+        destination: '/articles/20070606-e788b1c2b7e79086',
+        permanent: true,
+      },
     ]
   },
 }
