@@ -377,6 +377,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/vs-codec',
         permanent: true,
       },
+      {
+        source: '/articles/windows10-wsl2限制cpu和内存',
+        destination: '/articles/windows10-wsl2cpu',
+        permanent: true,
+      },
+      {
+        source: '/articles/windows10-wsl2%E9%99%90%E5%88%B6cpu%E5%92%8C%E5%86%85%E5%AD%98',
+        destination: '/articles/windows10-wsl2cpu',
+        permanent: true,
+      },
+      {
+        source: '/articles/windows10-wsl2%e9%99%90%e5%88%b6cpu%e5%92%8c%e5%86%85%e5%ad%98',
+        destination: '/articles/windows10-wsl2cpu',
+        permanent: true,
+      },
     ]
   },
 }
