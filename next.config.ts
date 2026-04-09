@@ -247,6 +247,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/20231011-labviewe5b8b8e79',
         permanent: true,
       },
+      {
+        source: '/articles/windows官方清理工具autoruns介绍',
+        destination: '/articles/windowsautoruns',
+        permanent: true,
+      },
+      {
+        source: '/articles/windows%E5%AE%98%E6%96%B9%E6%B8%85%E7%90%86%E5%B7%A5%E5%85%B7autoruns%E4%BB%8B%E7%BB%8D',
+        destination: '/articles/windowsautoruns',
+        permanent: true,
+      },
+      {
+        source: '/articles/windows%e5%ae%98%e6%96%b9%e6%b8%85%e7%90%86%e5%b7%a5%e5%85%b7autoruns%e4%bb%8b%e7%bb%8d',
+        destination: '/articles/windowsautoruns',
+        permanent: true,
+      },
     ]
   },
 }
