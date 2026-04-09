@@ -187,6 +187,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20221130-e8a5bfe997a8e5ad',
         permanent: true,
       },
+      {
+        source: '/articles/关于低压电器、物联网和工业自动化，我们问了chatgpt',
+        destination: '/articles/20230226-e585b3e4ba8ee4bd',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E5%85%B3%E4%BA%8E%E4%BD%8E%E5%8E%8B%E7%94%B5%E5%99%A8%E3%80%81%E7%89%A9%E8%81%94%E7%BD%91%E5%92%8C%E5%B7%A5%E4%B8%9A%E8%87%AA%E5%8A%A8%E5%8C%96%EF%BC%8C%E6%88%91%E4%BB%AC%E9%97%AE%E4%BA%86chatgpt',
+        destination: '/articles/20230226-e585b3e4ba8ee4bd',
+        permanent: true,
+      },
     ]
   },
 }
