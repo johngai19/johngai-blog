@@ -87,6 +87,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220921-e8a5bfe997a8e5ad',
         permanent: true,
       },
+      {
+        source: '/articles/使用edge浏览器的ie模式打开兼容网站',
+        destination: '/articles/20220204-e4bdbfe794a8edge',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BD%BF%E7%94%A8edge%E6%B5%8F%E8%A7%88%E5%99%A8%E7%9A%84ie%E6%A8%A1%E5%BC%8F%E6%89%93%E5%BC%80%E5%85%BC%E5%AE%B9%E7%BD%91%E7%AB%99',
+        destination: '/articles/20220204-e4bdbfe794a8edge',
+        permanent: true,
+      },
     ]
   },
 }
