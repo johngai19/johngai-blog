@@ -137,6 +137,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220104-e4ba86e8a7a3e887',
         permanent: true,
       },
+      {
+        source: '/articles/《鼠疫》-当灾难降临时我们该何去何从',
+        destination: '/articles/20220104-e3808ae9bca0e796',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E3%80%8A%E9%BC%A0%E7%96%AB%E3%80%8B-%E5%BD%93%E7%81%BE%E9%9A%BE%E9%99%8D%E4%B8%B4%E6%97%B6%E6%88%91%E4%BB%AC%E8%AF%A5%E4%BD%95%E5%8E%BB%E4%BD%95%E4%BB%8E',
+        destination: '/articles/20220104-e3808ae9bca0e796',
+        permanent: true,
+      },
     ]
   },
 }
