@@ -307,6 +307,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220104-e5b7a5e4b89ae789',
         permanent: true,
       },
+      {
+        source: '/articles/通过labview创建与调用动态链接库-dll文件',
+        destination: '/articles/20221025-e9809ae8bf87labv',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E9%80%9A%E8%BF%87LabVIEW%E5%88%9B%E5%BB%BA%E4%B8%8E%E8%B0%83%E7%94%A8%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93-dll%E6%96%87%E4%BB%B6',
+        destination: '/articles/20221025-e9809ae8bf87labv',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e9%80%9a%e8%bf%87labview%e5%88%9b%e5%bb%ba%e4%b8%8e%e8%b0%83%e7%94%a8%e5%8a%a8%e6%80%81%e9%93%be%e6%8e%a5%e5%ba%93-dll%e6%96%87%e4%bb%b6',
+        destination: '/articles/20221025-e9809ae8bf87labv',
+        permanent: true,
+      },
     ]
   },
 }
