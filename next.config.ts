@@ -277,6 +277,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/vs-code-xml',
         permanent: true,
       },
+      {
+        source: '/articles/使用nvm-nvm-windows安装与配置nodejs开发环境',
+        destination: '/articles/nvm-nvm-windowsnodejs',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BD%BF%E7%94%A8nvm-nvm-windows%E5%AE%89%E8%A3%85%E4%B8%8E%E9%85%8D%E7%BD%AEnodejs%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83',
+        destination: '/articles/nvm-nvm-windowsnodejs',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e4%bd%bf%e7%94%a8nvm-nvm-windows%e5%ae%89%e8%a3%85%e4%b8%8e%e9%85%8d%e7%bd%aenodejs%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83',
+        destination: '/articles/nvm-nvm-windowsnodejs',
+        permanent: true,
+      },
     ]
   },
 }
