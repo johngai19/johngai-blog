@@ -467,6 +467,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/nodejs-commonjsecmascript-esm',
         permanent: true,
       },
+      {
+        source: '/articles/使用qt模板新建命令行项目并读取输入',
+        destination: '/articles/20221106-e4bdbfe794a8qte6',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BD%BF%E7%94%A8qt%E6%A8%A1%E6%9D%BF%E6%96%B0%E5%BB%BA%E5%91%BD%E4%BB%A4%E8%A1%8C%E9%A1%B9%E7%9B%AE%E5%B9%B6%E8%AF%BB%E5%8F%96%E8%BE%93%E5%85%A5',
+        destination: '/articles/20221106-e4bdbfe794a8qte6',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e4%bd%bf%e7%94%a8qt%e6%a8%a1%e6%9d%bf%e6%96%b0%e5%bb%ba%e5%91%bd%e4%bb%a4%e8%a1%8c%e9%a1%b9%e7%9b%ae%e5%b9%b6%e8%af%bb%e5%8f%96%e8%be%93%e5%85%a5',
+        destination: '/articles/20221106-e4bdbfe794a8qte6',
+        permanent: true,
+      },
     ]
   },
 }
