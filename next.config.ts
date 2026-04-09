@@ -157,6 +157,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220328-e3808ae5b08fe5a6',
         permanent: true,
       },
+      {
+        source: '/articles/基于stm32的canfd评估板程序编辑下载说明',
+        destination: '/articles/20221105-e59fbae4ba8estm3',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E5%9F%BA%E4%BA%8Estm32%E7%9A%84canfd%E8%AF%84%E4%BC%B0%E6%9D%BF%E7%A8%8B%E5%BA%8F%E7%BC%96%E8%BE%91%E4%B8%8B%E8%BD%BD%E8%AF%B4%E6%98%8E',
+        destination: '/articles/20221105-e59fbae4ba8estm3',
+        permanent: true,
+      },
     ]
   },
 }
