@@ -217,6 +217,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/20231011-e889bee9bb98e794',
         permanent: true,
       },
+      {
+        source: '/articles/chrome解决http自动跳转https问题',
+        destination: '/articles/chromehttphttps',
+        permanent: true,
+      },
+      {
+        source: '/articles/chrome%E8%A7%A3%E5%86%B3http%E8%87%AA%E5%8A%A8%E8%B7%B3%E8%BD%AChttps%E9%97%AE%E9%A2%98',
+        destination: '/articles/chromehttphttps',
+        permanent: true,
+      },
+      {
+        source: '/articles/chrome%e8%a7%a3%e5%86%b3http%e8%87%aa%e5%8a%a8%e8%b7%b3%e8%bd%achttps%e9%97%ae%e9%a2%98',
+        destination: '/articles/chromehttphttps',
+        permanent: true,
+      },
     ]
   },
 }
