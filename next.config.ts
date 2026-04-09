@@ -57,6 +57,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220104-rabbitmqe5928cka',
         permanent: true,
       },
+      {
+        source: '/articles/使用群晖dsm7-0自带的任务计划更新ddns',
+        destination: '/articles/20220225-e4bdbfe794a8e7be',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BD%BF%E7%94%A8%E7%BE%A4%E6%99%96dsm7-0%E8%87%AA%E5%B8%A6%E7%9A%84%E4%BB%BB%E5%8A%A1%E8%AE%A1%E5%88%92%E6%9B%B4%E6%96%B0ddns',
+        destination: '/articles/20220225-e4bdbfe794a8e7be',
+        permanent: true,
+      },
     ]
   },
 }
