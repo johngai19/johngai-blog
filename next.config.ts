@@ -77,6 +77,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220207-e5a682e4bd95e4bb',
         permanent: true,
       },
+      {
+        source: '/articles/西门子博途（tia-portal）软件安装要求重启的解决办法',
+        destination: '/articles/20220921-e8a5bfe997a8e5ad',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E8%A5%BF%E9%97%A8%E5%AD%90%E5%8D%9A%E9%80%94%EF%BC%88tia-portal%EF%BC%89%E8%BD%AF%E4%BB%B6%E5%AE%89%E8%A3%85%E8%A6%81%E6%B1%82%E9%87%8D%E5%90%AF%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95',
+        destination: '/articles/20220921-e8a5bfe997a8e5ad',
+        permanent: true,
+      },
     ]
   },
 }
