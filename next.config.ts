@@ -352,6 +352,31 @@ const nextConfig: NextConfig = {
         destination: '/articles/20231007-e5b8b8e794a8e982',
         permanent: true,
       },
+      {
+        source: '/articles/配置vs-code进行c-开发',
+        destination: '/articles/vs-codec',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E9%85%8D%E7%BD%AEvs-code%E8%BF%9B%E8%A1%8Cc-%E5%BC%80%E5%8F%91',
+        destination: '/articles/vs-codec',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e9%85%8d%e7%bd%aevs-code%e8%bf%9b%e8%a1%8cc-%e5%bc%80%e5%8f%91',
+        destination: '/articles/vs-codec',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E9%85%8D%E7%BD%AEvs-code%E8%BF%9B%E8%A1%8Cc-%23-%E5%BC%80%E5%8F%91',
+        destination: '/articles/vs-codec',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e9%85%8d%e7%bd%aevs-code%e8%bf%9b%e8%a1%8cc-%23-%e5%bc%80%e5%8f%91',
+        destination: '/articles/vs-codec',
+        permanent: true,
+      },
     ]
   },
 }
