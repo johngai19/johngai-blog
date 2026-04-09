@@ -97,6 +97,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220204-e4bdbfe794a8edge',
         permanent: true,
       },
+      {
+        source: '/articles/为什么要用javascript实现人工智能',
+        destination: '/articles/20220824-e4b8bae4bb80e4b9',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E7%94%A8javascript%E5%AE%9E%E7%8E%B0%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD',
+        destination: '/articles/20220824-e4b8bae4bb80e4b9',
+        permanent: true,
+      },
     ]
   },
 }
