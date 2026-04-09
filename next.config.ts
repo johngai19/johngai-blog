@@ -443,8 +443,28 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        source: '/articles/%e4%bd%bf%e7%94%a8javascript%e9%80%92%e5%bd%92%e8%ae%a1%e7%ae%97fibonacci%ef%bc%88%e6%96%90%e6%b3%a2%e9%82%a3%e5%a5%91%ef%bc%89%e6%95%b0%e5%88%97%e5%92%8c%e9%98%b6%e4%b9%98',
+        source: '/articles/%e4%bd%bf%e7%94%a8javascript%e9%80%92%e5%bd%92%e8%ae%a1%e7%ae%97fibonacci%ef%bc%88%e6%96%90%e6%b3%a2%e9%82%a3%e5%a5%91%ef%bc%89%e6%95%b0%e5%88%97%e5%92%8C%e9%98%b6%e4%b9%98',
         destination: '/articles/javascriptfibonacci',
+        permanent: true,
+      },
+      {
+        source: '/articles/Nodejs-Commonjs和ECMAScript-ESM模块系统导出与导入',
+        destination: '/articles/nodejs-commonjsecmascript-esm',
+        permanent: true,
+      },
+      {
+        source: '/articles/Nodejs-Commonjs%E5%92%8CECMAScript-ESM%E6%A8%A1%E5%9D%97%E7%B3%BB%E7%BB%9F%E5%AF%BC%E5%87%BA%E4%B8%8E%E5%AF%BC%E5%85%A5',
+        destination: '/articles/nodejs-commonjsecmascript-esm',
+        permanent: true,
+      },
+      {
+        source: '/articles/nodejs-commonjs%E5%92%8Cecmascriptesm%E6%A8%A1%E5%9D%97%E7%B3%BB%E7%BB%9F%E5%AF%BC%E5%87%BA%E4%B8%8E%E5%AF%BC%E5%85%A5',
+        destination: '/articles/nodejs-commonjsecmascript-esm',
+        permanent: true,
+      },
+      {
+        source: '/articles/nodejs-commonjs%25e5%2592%258cecmascriptesm%25e6%25a8%25a1%25e5%259d%2597%25e7%25b3%25bb%25e7%25bb%259f%25e5%25af%25bc%25e5%2587%25ba%25e4%25b8%258e%25e5%25af%25bc%25e5%2585%25a5',
+        destination: '/articles/nodejs-commonjsecmascript-esm',
         permanent: true,
       },
     ]
