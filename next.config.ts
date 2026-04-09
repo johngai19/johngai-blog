@@ -177,6 +177,16 @@ const nextConfig: NextConfig = {
         destination: '/articles/20221116-e880a6e59088efbc',
         permanent: true,
       },
+      {
+        source: '/articles/西门子工控产品的特点与优势',
+        destination: '/articles/20221130-e8a5bfe997a8e5ad',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E8%A5%BF%E9%97%A8%E5%AD%90%E5%B7%A5%E6%8E%A7%E4%BA%A7%E5%93%81%E7%9A%84%E7%89%B9%E7%82%B9%E4%B8%8E%E4%BC%98%E5%8A%BF',
+        destination: '/articles/20221130-e8a5bfe997a8e5ad',
+        permanent: true,
+      },
     ]
   },
 }
