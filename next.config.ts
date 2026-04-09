@@ -292,6 +292,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/nvm-nvm-windowsnodejs',
         permanent: true,
       },
+      {
+        source: '/articles/工业物联网技术在智慧能源系统中的应用',
+        destination: '/articles/20220104-e5b7a5e4b89ae789',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E5%B7%A5%E4%B8%9A%E7%89%A9%E8%81%94%E7%BD%91%E6%8A%80%E6%9C%AF%E5%9C%A8%E6%99%BA%E6%85%A7%E8%83%BD%E6%BA%90%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8',
+        destination: '/articles/20220104-e5b7a5e4b89ae789',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e5%b7%a5%e4%b8%9a%e7%89%a9%e8%81%94%e7%bd%91%e6%8a%80%e6%9c%af%e5%9c%a8%e6%99%ba%e6%85%a7%e8%83%bd%e6%ba%90%e7%b3%bb%e7%bb%9f%e4%b8%ad%e7%9a%84%e5%ba%94%e7%94%a8',
+        destination: '/articles/20220104-e5b7a5e4b89ae789',
+        permanent: true,
+      },
     ]
   },
 }
