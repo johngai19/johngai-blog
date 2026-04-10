@@ -607,6 +607,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/20090606-e799bde5a49ce8a1',
         permanent: true,
       },
+      {
+        source: '/articles/你知道“回车键”究竟回的是哪个车吗？成为专业人士的必修读物',
+        destination: '/articles/20190421-e4bda0e79fa5e981',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BD%A0%E7%9F%A5%E9%81%93%E2%80%9C%E5%9B%9E%E8%BD%A6%E9%94%AE%E2%80%9D%E7%A9%B6%E7%AB%9F%E5%9B%9E%E7%9A%84%E6%98%AF%E5%93%AA%E4%B8%AA%E8%BD%A6%E5%90%97%EF%BC%9F%E6%88%90%E4%B8%BA%E4%B8%93%E4%B8%9A%E4%BA%BA%E5%A3%AB%E7%9A%84%E5%BF%85%E4%BF%AE%E8%AF%BB%E7%89%A9',
+        destination: '/articles/20190421-e4bda0e79fa5e981',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e4%bd%a0%e7%9f%a5%e9%81%93%e2%80%9c%e5%9b%9e%e8%bd%a6%e9%94%ae%e2%80%9d%e7%a9%b6%e7%ab%9f%e5%9b%9e%e7%9a%84%e6%98%af%e5%93%aa%e4%b8%aa%e8%bd%a6%e5%90%97%ef%bc%9f%e6%88%90%e4%b8%ba%e4%b8%93%e4%b8%9a%e4%ba%ba%e5%a3%ab%e7%9a%84%e5%bf%85%e4%bf%ae%e8%af%bb%e7%89%a9',
+        destination: '/articles/20190421-e4bda0e79fa5e981',
+        permanent: true,
+      },
     ]
   },
 }
