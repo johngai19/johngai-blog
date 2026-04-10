@@ -497,6 +497,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/c-netmailkitsmtp',
         permanent: true,
       },
+      {
+        source: '/articles/使用c创建并调用动态链接库dll',
+        destination: '/articles/20221031-e4bdbfe794a8ce58',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BD%BF%E7%94%A8c%E5%88%9B%E5%BB%BA%E5%B9%B6%E8%B0%83%E7%94%A8%E5%8A%A8%E6%80%81%E9%93%BE%E6%8E%A5%E5%BA%93dll',
+        destination: '/articles/20221031-e4bdbfe794a8ce58',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e4%bd%bf%e7%94%a8c%e5%88%9b%e5%bb%ba%e5%b9%b6%e8%b0%83%e7%94%a8%e5%8a%a8%e6%80%81%e9%93%be%e6%8e%a5%e5%ba%93dll',
+        destination: '/articles/20221031-e4bdbfe794a8ce58',
+        permanent: true,
+      },
     ]
   },
 }
