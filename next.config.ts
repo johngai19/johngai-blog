@@ -512,6 +512,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/20221031-e4bdbfe794a8ce58',
         permanent: true,
       },
+      {
+        source: '/articles/人工智能技术在高速公路分布式能源系统中的应用',
+        destination: '/articles/20220113-e4babae5b7a5e699',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD%E6%8A%80%E6%9C%AF%E5%9C%A8%E9%AB%98%E9%80%9F%E5%85%AC%E8%B7%AF%E5%88%86%E5%B8%83%E5%BC%8F%E8%83%BD%E6%BA%90%E7%B3%BB%E7%BB%9F%E4%B8%AD%E7%9A%84%E5%BA%94%E7%94%A8',
+        destination: '/articles/20220113-e4babae5b7a5e699',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e4%ba%ba%e5%b7%a5%e6%99%ba%e8%83%bd%e6%8a%80%e6%9c%af%e5%9c%a8%e9%ab%98%e9%80%9f%e5%85%ac%e8%b7%af%e5%88%86%e5%b8%83%e5%bc%8f%e8%83%bd%e6%ba%90%e7%b3%bb%e7%bb%9f%e4%b8%ad%e7%9a%84%e5%ba%94%e7%94%A8',
+        destination: '/articles/20220113-e4babae5b7a5e699',
+        permanent: true,
+      },
     ]
   },
 }
