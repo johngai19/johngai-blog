@@ -592,6 +592,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/20221120-e887aae58aa8e68e',
         permanent: true,
       },
+      {
+        source: '/articles/白夜行，一夜难言的悲伤',
+        destination: '/articles/20090606-e799bde5a49ce8a1',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E7%99%BD%E5%A4%9C%E8%A1%8C%EF%BC%8C%E4%B8%80%E5%A4%9C%E9%9A%BE%E8%A8%80%E7%9A%84%E6%82%B2%E4%BC%A4',
+        destination: '/articles/20090606-e799bde5a49ce8a1',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e7%99%bd%e5%a4%9c%e8%a1%8c%ef%bc%8c%e4%b8%80%e5%a4%9c%e9%9a%be%e8%a8%80%e7%9a%84%e6%82%b2%e4%bc%a4',
+        destination: '/articles/20090606-e799bde5a49ce8a1',
+        permanent: true,
+      },
     ]
   },
 }
