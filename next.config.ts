@@ -527,6 +527,26 @@ const nextConfig: NextConfig = {
         destination: '/articles/20220113-e4babae5b7a5e699',
         permanent: true,
       },
+      {
+        source: '/articles/Ubuntu-20.04安装XRDP远程桌面服务及xfce轻量桌面',
+        destination: '/articles/ubuntu-20-04xrdpxfce',
+        permanent: true,
+      },
+      {
+        source: '/articles/ubuntu-20-04安装xrdp远程桌面服务及xfce轻量桌面',
+        destination: '/articles/ubuntu-20-04xrdpxfce',
+        permanent: true,
+      },
+      {
+        source: '/articles/Ubuntu-20.04%E5%AE%89%E8%A3%85XRDP%E8%BF%9C%E7%A8%8B%E6%A1%8C%E9%9D%A2%E6%9C%8D%E5%8A%A1%E5%8F%8Axfce%E8%BD%BB%E9%87%8F%E6%A1%8C%E9%9D%A2',
+        destination: '/articles/ubuntu-20-04xrdpxfce',
+        permanent: true,
+      },
+      {
+        source: '/articles/ubuntu-20-04%e5%ae%89%e8%a3%85xrdp%e8%bf%9c%e7%a8%8b%e6%a1%8c%e9%9d%a2%e6%9c%8d%e5%8a%a1%e5%8f%8axfce%e8%bd%bb%e9%87%8f%e6%a1%8c%e9%9d%a2',
+        destination: '/articles/ubuntu-20-04xrdpxfce',
+        permanent: true,
+      },
     ]
   },
 }
