@@ -547,6 +547,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/ubuntu-20-04xrdpxfce',
         permanent: true,
       },
+      {
+        source: '/articles/使用SerialPort库进行Node物联网项目开发',
+        destination: '/articles/serialportnode',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BD%BF%E7%94%A8SerialPort%E5%BA%93%E8%BF%9B%E8%A1%8CNode%E7%89%A9%E8%81%94%E7%BD%91%E9%A1%B9%E7%9B%AE%E5%BC%80%E5%8F%91',
+        destination: '/articles/serialportnode',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e4%bd%bf%e7%94%a8serialport%e5%ba%93%e8%bf%9b%e8%a1%8cnode%e7%89%a9%e8%81%94%e7%bd%91%e9%a1%b9%e7%9b%ae%e5%bc%80%e5%8f%91',
+        destination: '/articles/serialportnode',
+        permanent: true,
+      },
     ]
   },
 }
