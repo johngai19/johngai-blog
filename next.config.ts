@@ -622,6 +622,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/20190421-e4bda0e79fa5e981',
         permanent: true,
       },
+      {
+        source: '/articles/项目型组织市场营销最重要的十个方面',
+        destination: '/articles/20190509-e9a1b9e79baee59e',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E9%A1%B9%E7%9B%AE%E5%9E%8B%E7%BB%84%E7%BB%87%E5%B8%82%E5%9C%BA%E8%90%A5%E9%94%80%E6%9C%80%E9%87%8D%E8%A6%81%E7%9A%84%E5%8D%81%E4%B8%AA%E6%96%B9%E9%9D%A2',
+        destination: '/articles/20190509-e9a1b9e79baee59e',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e9%a1%b9%e7%9b%ae%e5%9e%8b%e7%bb%84%e7%bb%87%e5%b8%82%e5%9c%ba%e8%90%a5%e9%94%80%e6%9c%80%e9%87%8d%e8%a6%81%e7%9a%84%e5%8d%81%e4%b8%aa%e6%96%b9%e9%9d%A2',
+        destination: '/articles/20190509-e9a1b9e79baee59e',
+        permanent: true,
+      },
     ]
   },
 }
