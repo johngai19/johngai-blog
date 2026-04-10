@@ -577,6 +577,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/javascript',
         permanent: true,
       },
+      {
+        source: '/articles/自动控制系统抗电磁干扰的措施',
+        destination: '/articles/20221120-e887aae58aa8e68e',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E8%87%AA%E5%8A%A8%E6%8E%A7%E5%88%B6%E7%B3%BB%E7%BB%9F%E6%8A%97%E7%94%B5%E7%A3%81%E5%B9%B2%E6%89%B0%E7%9A%84%E6%8E%AA%E6%96%BD',
+        destination: '/articles/20221120-e887aae58aa8e68e',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e8%87%aa%e5%8a%a8%e6%8e%a7%e5%88%b6%e7%b3%bb%e7%bb%9f%e6%8a%97%e7%94%b5%e7%a3%81%e5%b9%b2%e6%89%b0%e7%9a%84%e6%8e%aa%e6%96%bd',
+        destination: '/articles/20221120-e887aae58aa8e68e',
+        permanent: true,
+      },
     ]
   },
 }
