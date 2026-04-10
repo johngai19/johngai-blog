@@ -562,6 +562,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/serialportnode',
         permanent: true,
       },
+      {
+        source: '/articles/JavaScript进阶特性和技巧',
+        destination: '/articles/javascript',
+        permanent: true,
+      },
+      {
+        source: '/articles/JavaScript%E8%BF%9B%E9%98%B6%E7%89%B9%E6%80%A7%E5%92%8C%E6%8A%80%E5%B7%A7',
+        destination: '/articles/javascript',
+        permanent: true,
+      },
+      {
+        source: '/articles/javascript%e8%bf%9b%e9%98%b6%e7%89%b9%e6%80%a7%e5%92%8c%e6%8a%80%e5%b7%a7',
+        destination: '/articles/javascript',
+        permanent: true,
+      },
     ]
   },
 }
