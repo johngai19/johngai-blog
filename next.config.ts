@@ -637,6 +637,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/20190509-e9a1b9e79baee59e',
         permanent: true,
       },
+      {
+        source: '/articles/维思自动化工业互联网项目案例集正式上线',
+        destination: '/articles/20220323-e7bbb4e6809de887',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E7%BB%B4%E6%80%9D%E8%87%AA%E5%8A%A8%E5%8C%96%E5%B7%A5%E4%B8%9A%E4%BA%92%E8%81%94%E7%BD%91%E9%A1%B9%E7%9B%AE%E6%A1%88%E4%BE%8B%E9%9B%86%E6%AD%A3%E5%BC%8F%E4%B8%8A%E7%BA%BF',
+        destination: '/articles/20220323-e7bbb4e6809de887',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e7%bb%b4%e6%80%9d%e8%87%aa%e5%8a%a8%e5%8c%96%e5%b7%a5%e4%b8%9a%e4%ba%92%e8%81%94%e7%bd%91%e9%a1%b9%e7%9b%ae%e6%a1%88%e4%be%8b%e9%9b%86%e6%ad%a3%e5%bc%8f%e4%b8%8a%e7%ba%bf',
+        destination: '/articles/20220323-e7bbb4e6809de887',
+        permanent: true,
+      },
     ]
   },
 }
