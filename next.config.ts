@@ -482,6 +482,21 @@ const nextConfig: NextConfig = {
         destination: '/articles/20221106-e4bdbfe794a8qte6',
         permanent: true,
       },
+      {
+        source: '/articles/使用c-net的mailkit库发送smtp邮件',
+        destination: '/articles/c-netmailkitsmtp',
+        permanent: true,
+      },
+      {
+        source: '/articles/%E4%BD%BF%E7%94%A8c-net%E7%9A%84mailkit%E5%BA%93%E5%8F%91%E9%80%81smtp%E9%82%AE%E4%BB%B6',
+        destination: '/articles/c-netmailkitsmtp',
+        permanent: true,
+      },
+      {
+        source: '/articles/%e4%bd%bf%e7%94%a8c-net%e7%9a%84mailkit%e5%ba%93%e5%8f%91%e9%80%81smtp%e9%82%ae%e4%bb%b6',
+        destination: '/articles/c-netmailkitsmtp',
+        permanent: true,
+      },
     ]
   },
 }
