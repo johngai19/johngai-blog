@@ -38,13 +38,15 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  const { data: { session } } = await supabase.auth.getSession()
+  // Use getUser() instead of getSession() — validates the JWT server-side
+  // and prevents cookie-spoofing attacks (Supabase security recommendation).
+  const { data: { user } } = await supabase.auth.getUser()
 
   const pathname = request.nextUrl.pathname
 
   // Protect dashboard routes
   if (pathname.startsWith('/dashboard')) {
-    if (!session) {
+    if (!user) {
       const loginUrl = new URL('/login', request.url)
       loginUrl.searchParams.set('next', pathname)
       return NextResponse.redirect(loginUrl)
@@ -53,13 +55,13 @@ export async function middleware(request: NextRequest) {
 
   // Protect admin routes
   if (pathname.startsWith('/admin')) {
-    if (!session) {
+    if (!user) {
       const loginUrl = new URL('/login', request.url)
       loginUrl.searchParams.set('next', pathname)
       return NextResponse.redirect(loginUrl)
     }
     const adminEmail = process.env.ADMIN_EMAIL
-    if (adminEmail && session.user.email !== adminEmail) {
+    if (adminEmail && user.email !== adminEmail) {
       return NextResponse.redirect(new URL('/', request.url))
     }
   }
